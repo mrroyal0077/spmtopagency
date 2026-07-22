@@ -1,121 +1,76 @@
-// ===============================
+// ================================
 // SPM TOP AGENCY
-// script.js
-// ===============================
+// Premium Website Script
+// ================================
 
-// Loader
-window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
-    if (loader) {
-        loader.style.opacity = "0";
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 500);
-    }
-});
+// Current Year
+const year = new Date().getFullYear();
 
-// Mobile Menu
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
+const footer = document.querySelector("footer p:last-child");
 
-if (menuBtn && navLinks) {
-    menuBtn.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+if (footer) {
+    footer.innerHTML = `© ${year} SPM TOP AGENCY. All Rights Reserved.`;
 }
 
-// Smooth Scroll
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener("click", function(e) {
-        e.preventDefault();
+// Active Navigation
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("nav a");
 
-        const target = document.querySelector(this.getAttribute("href"));
+window.addEventListener("scroll", () => {
 
-        if(target){
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop = section.offsetTop - 120;
+
+        if (pageYOffset >= sectionTop) {
+            current = section.getAttribute("id");
         }
+
     });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+
+    });
+
 });
 
-// Counter Animation
-const counters = document.querySelectorAll(".stat-box h2");
+// Card Animation
+const cards = document.querySelectorAll(".card");
 
-counters.forEach(counter => {
+const observer = new IntersectionObserver((entries) => {
 
-    const targetText = counter.innerText;
+    entries.forEach(entry => {
 
-    const number = parseInt(targetText);
+        if (entry.isIntersecting) {
 
-    if(isNaN(number)) return;
-
-    let count = 0;
-
-    const speed = Math.ceil(number / 100);
-
-    const update = () => {
-
-        count += speed;
-
-        if(count >= number){
-
-            counter.innerText = targetText;
-
-        }else{
-
-            counter.innerText = count + "+";
-
-            requestAnimationFrame(update);
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
 
         }
 
-    };
+    });
 
-    update();
+}, {
+    threshold: 0.2
+});
+
+cards.forEach(card => {
+
+    card.style.opacity = "0";
+    card.style.transform = "translateY(40px)";
+    card.style.transition = "0.6s";
+
+    observer.observe(card);
 
 });
 
-// Active Navbar
-window.addEventListener("scroll",()=>{
-
-const header=document.querySelector("header");
-
-if(window.scrollY>50){
-
-header.style.background="#000";
-
-header.style.boxShadow="0 0 20px gold";
-
-}else{
-
-header.style.background="#111";
-
-header.style.boxShadow="none";
-
-}
-
-});
-
-// Fade Animation
-const observer=new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-});
-
-document.querySelectorAll(".service-card,.package-card,.stat-box").forEach(el=>{
-
-observer.observe(el);
-
-});
-
-console.log("SPM TOP AGENCY Loaded Successfully");
+// Console Message
+console.log("SPM TOP AGENCY Website Loaded Successfully");
