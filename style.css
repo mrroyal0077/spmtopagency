@@ -104,3 +104,30 @@ margin:15px auto;
 border-radius:50%;
 box-shadow:0 0 20px gold;
 }
+#services{
+padding:50px 20px;
+text-align:center;
+}
+
+.card{
+background:#151515;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+margin:20px 0;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.03);
+box-shadow:0 0 20px gold;
+}
+
+.card h3{
+color:gold;
+margin-bottom:10px;
+}
+
+.card p{
+color:#fff;
+}
