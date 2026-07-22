@@ -1,0 +1,28 @@
+body{
+    background:#000;
+    color:#fff;
+    font-family:Arial,sans-serif;
+}
+
+header{
+    background:#111;
+    border-bottom:2px solid gold;
+}
+
+.btn{
+    background:gold;
+    color:#000;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#fff;
+    transform:scale(1.05);
+}
+
+.card{
+    border:1px solid gold;
+    border-radius:15px;
+    box-shadow:0 0 20px rgba(255,215,0,.3);
+}
