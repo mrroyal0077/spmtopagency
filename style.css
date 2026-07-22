@@ -150,3 +150,32 @@ margin-top:15px;
 .btn:hover{
 background:#fff;
 }
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:#111;
+border:2px solid gold;
+border-radius:15px;
+padding:20px;
+text-align:center;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px gold;
+}
+
+.card h3{
+color:gold;
+margin-bottom:10px;
+}
+
+.card p{
+color:#ddd;
+}
