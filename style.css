@@ -383,3 +383,7 @@ bottom:15px;
 html{
 scroll-behavior:smooth;
 }
+nav a.active{
+    color:#d4af37;
+    font-weight:700;
+}
