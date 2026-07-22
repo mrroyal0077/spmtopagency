@@ -179,3 +179,35 @@ margin-bottom:10px;
 .card p{
 color:#ddd;
 }
+.stats{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+padding:40px 20px;
+background:#0d0d0d;
+}
+
+.stat-box{
+width:180px;
+padding:20px;
+border:2px solid gold;
+border-radius:15px;
+text-align:center;
+background:#151515;
+transition:.3s;
+}
+
+.stat-box:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px gold;
+}
+
+.stat-box h2{
+color:gold;
+font-size:32px;
+}
+
+.stat-box p{
+color:#ddd;
+}
