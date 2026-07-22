@@ -1,4 +1,7 @@
-/* ===== SPM TOP AGENCY ===== */
+/* ===========================
+   SPM TOP AGENCY
+   Premium Black & Gold Theme
+=========================== */
 
 *{
 margin:0;
@@ -9,13 +12,20 @@ scroll-behavior:smooth;
 
 body{
 font-family:'Poppins',sans-serif;
-background:#050505;
-color:#fff;
-overflow-x:hidden;
+background:#0b0b0b;
+color:#ffffff;
+line-height:1.6;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
 }
 
 a{
 text-decoration:none;
+color:#fff;
 }
 
 img{
@@ -23,64 +33,23 @@ max-width:100%;
 display:block;
 }
 
-section{
-padding:80px 8%;
-}
-
-.section-title{
-font-size:38px;
-color:#FFD700;
-text-align:center;
-margin-bottom:40px;
-font-weight:700;
-text-shadow:0 0 15px rgba(255,215,0,.5);
-}
-
-/* ===== Loader ===== */
-
-#loader{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:#000;
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
-}
-
-.spinner{
-width:70px;
-height:70px;
-border:6px solid #333;
-border-top:6px solid gold;
-border-radius:50%;
-animation:spin 1s linear infinite;
-}
-
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-/* ===== Navbar ===== */
+/* ===========================
+   Header
+=========================== */
 
 header{
 position:sticky;
 top:0;
-z-index:999;
+z-index:1000;
 background:#111;
-box-shadow:0 2px 15px rgba(255,215,0,.15);
+border-bottom:2px solid #d4af37;
 }
 
-.navbar{
+header .container{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:18px 8%;
+padding:18px 0;
 }
 
 .logo{
@@ -93,276 +62,324 @@ gap:12px;
 width:55px;
 height:55px;
 border-radius:50%;
-border:2px solid gold;
 }
 
-.logo span{
+.logo h2{
+color:#d4af37;
 font-size:24px;
 font-weight:700;
-color:gold;
 }
 
-.nav-links{
+nav{
 display:flex;
-list-style:none;
-gap:28px;
+gap:25px;
 }
 
-.nav-links a{
+nav a{
 color:#fff;
 font-weight:500;
 transition:.3s;
 }
 
-.nav-links a:hover{
-color:gold;
+nav a:hover{
+color:#d4af37;
 }
 
-.menu-btn{
-display:none;
-font-size:28px;
-color:gold;
-cursor:pointer;
-}
-
-/* ===== Hero ===== */
+/* ===========================
+   Hero Section
+=========================== */
 
 .hero{
-min-height:90vh;
-display:flex;
-justify-content:center;
-align-items:center;
 text-align:center;
-background:linear-gradient(135deg,#000,#111,#1c1c1c);
+padding:100px 20px;
+background:linear-gradient(180deg,#111,#000);
 }
 
 .hero h1{
-font-size:60px;
-color:gold;
-margin-bottom:15px;
-text-shadow:0 0 20px gold;
+font-size:24px;
+color:#d4af37;
 }
 
 .hero h2{
-font-size:32px;
-margin-bottom:20px;
+font-size:52px;
+margin:15px 0;
+font-weight:800;
 }
 
 .hero p{
-font-size:20px;
-color:#ddd;
-margin-bottom:35px;
+font-size:18px;
+max-width:700px;
+margin:auto;
+color:#cccccc;
 }
 
-.hero-buttons{
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-}
+/* ===========================
+   Button
+=========================== */
 
-.btn,
-.btn2{
-padding:15px 35px;
-border-radius:40px;
-font-weight:bold;
+.btn{
+display:inline-block;
+margin-top:30px;
+padding:14px 35px;
+background:#d4af37;
+color:#000;
+font-weight:700;
+border-radius:50px;
 transition:.3s;
 }
 
-.btn{
-background:gold;
-color:#000;
-}
-
 .btn:hover{
-transform:translateY(-5px);
-box-shadow:0 0 20px gold;
-}
-
-.btn2{
-border:2px solid gold;
-color:gold;
-}
-
-.btn2:hover{
-background:gold;
-color:#000;
+background:#ffd95b;
+transform:translateY(-3px);
 }
 /* ===========================
-   STATS
+   Sections
 =========================== */
 
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:25px;
-padding:60px 8%;
+section{
+padding:80px 0;
 }
 
-.stat-box{
-background:#111;
-border:2px solid #FFD700;
+.title{
+text-align:center;
+font-size:38px;
+font-weight:700;
+color:#d4af37;
+margin-bottom:50px;
+}
+
+.center{
+text-align:center;
+max-width:800px;
+margin:auto;
+color:#cccccc;
+font-size:17px;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.card{
+background:#151515;
+border:1px solid #2d2d2d;
 border-radius:18px;
 padding:30px;
 text-align:center;
-transition:.4s;
+transition:.3s;
 }
 
-.stat-box:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px gold;
+.card:hover{
+transform:translateY(-8px);
+border-color:#d4af37;
+box-shadow:0 0 20px rgba(212,175,55,.35);
 }
 
-.stat-box h2{
-font-size:42px;
-color:#FFD700;
-margin-bottom:10px;
+.card h3{
+font-size:26px;
+color:#d4af37;
+margin-bottom:12px;
 }
 
-.stat-box p{
-font-size:18px;
-color:#ddd;
+.card p{
+color:#cccccc;
+font-size:16px;
 }
 
 /* ===========================
-   PACKAGES
+   Contact Box
 =========================== */
 
-.package-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:25px;
-}
-
-.package-card{
-background:#111;
-border:2px solid #333;
+.contact-box{
+max-width:650px;
+margin:40px auto;
+padding:35px;
+background:#151515;
 border-radius:18px;
-padding:35px 20px;
-text-align:center;
-transition:.4s;
-position:relative;
-}
-
-.package-card:hover{
-transform:translateY(-10px);
-border-color:#FFD700;
-box-shadow:0 0 30px rgba(255,215,0,.6);
-}
-
-.package-card h3{
-font-size:28px;
-color:#FFD700;
-}
-
-.package-card h1{
-font-size:36px;
-margin:20px 0;
-}
-
-.package-card p{
-color:#bbb;
-margin-bottom:20px;
-}
-
-.best{
-border:2px solid gold;
-}
-
-.badge{
-position:absolute;
-top:-12px;
-right:20px;
-background:#FFD700;
-color:#000;
-padding:8px 16px;
-font-size:14px;
-font-weight:bold;
-border-radius:30px;
-}
-
-/* ===========================
-   SERVICES
-=========================== */
-
-.service-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:
-    /* ===========================
-   REVIEWS
-=========================== */
-
-#reviews .service-card{
-text-align:left;
-}
-
-#reviews .service-card h3{
-margin-top:10px;
-}
-
-/* ===========================
-   FAQ
-=========================== */
-
-#faq .service-card{
-text-align:left;
-}
-
-#faq h3{
-color:#FFD700;
-margin:20px 0 10px;
-}
-
-#faq p{
-color:#ddd;
-line-height:1.8;
-}
-
-/* ===========================
-   CONTACT
-=========================== */
-
-#contact{
+border:1px solid #d4af37;
 text-align:center;
 }
 
-#contact .service-card{
-max-width:600px;
-margin:auto;
-}
-
-#contact p{
-font-size:20px;
-margin:20px 0;
+.contact-box p{
+margin:12px 0;
+font-size:18px;
+color:#ffffff;
 }
 
 /* ===========================
-   FOOTER
+   Footer
 =========================== */
 
 footer{
-background:#080808;
-padding:50px 20px;
+background:#000;
+border-top:2px solid #d4af37;
+padding:40px 20px;
 text-align:center;
-border-top:2px solid #FFD700;
 }
 
-footer h2{
-color:#FFD700;
-margin-bottom:15px;
+footer h3{
+color:#d4af37;
+margin-bottom:10px;
+font-size:28px;
 }
 
 footer p{
-color:#aaa;
+color:#bbbbbb;
 margin:8px 0;
+font-size:15px;
+}
+/* ===========================
+   Floating WhatsApp Button
+=========================== */
+
+.whatsapp-float{
+position:fixed;
+right:20px;
+bottom:20px;
+width:60px;
+height:60px;
+background:#25D366;
+color:#fff;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+box-shadow:0 8px 20px rgba(0,0,0,.35);
+z-index:999;
+transition:.3s;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
 }
 
 /* ===========================
-   FLOATING WHATSAPP
+   Scroll Animation
 =========================== */
 
-.floating-whatsapp{
-position:fixed;
-right:20px;
-bottom:20
+.card,
+.contact-box,
+.hero,
+.title{
+animation:fadeUp .8s ease;
+}
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(30px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ===========================
+   Scrollbar
+=========================== */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+background:#d4af37;
+border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+background:#f5c542;
+}
+
+/* ===========================
+   Mobile Responsive
+=========================== */
+
+@media(max-width:768px){
+
+header .container{
+flex-direction:column;
+gap:15px;
+}
+
+.logo{
+flex-direction:column;
+text-align:center;
+}
+
+.logo h2{
+font-size:20px;
+}
+
+nav{
+flex-wrap:wrap;
+justify-content:center;
+gap:12px;
+}
+
+nav a{
+font-size:14px;
+}
+
+.hero{
+padding:70px 15px;
+}
+
+.hero h1{
+font-size:20px;
+}
+
+.hero h2{
+font-size:34px;
+}
+
+.hero p{
+font-size:16px;
+}
+
+.title{
+font-size:28px;
+}
+
+.card{
+padding:20px;
+}
+
+.contact-box{
+padding:25px;
+}
+
+.btn{
+padding:12px 25px;
+font-size:15px;
+}
+
+.whatsapp-float{
+width:55px;
+height:55px;
+font-size:28px;
+right:15px;
+bottom:15px;
+}
+
+}
+
+html{
+scroll-behavior:smooth;
+}
