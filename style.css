@@ -26,3 +26,73 @@ header{
     border-radius:15px;
     box-shadow:0 0 20px rgba(255,215,0,.3);
 }
+nav{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:15px;
+background:#111;
+position:sticky;
+top:0;
+z-index:999;
+}
+
+nav a{
+color:gold;
+text-decoration:none;
+font-weight:bold;
+}
+
+table{
+width:95%;
+margin:20px auto;
+border-collapse:collapse;
+background:#111;
+}
+
+th{
+background:gold;
+color:#000;
+padding:12px;
+}
+
+td{
+padding:12px;
+border:1px solid #444;
+text-align:center;
+color:#fff;
+}
+
+tr:hover{
+background:#222;
+}
+
+.hero{
+text-align:center;
+padding:60px 20px;
+}
+
+h2{
+color:gold;
+}
+
+footer{
+background:#111;
+padding:20px;
+text-align:center;
+margin-top:30px;
+color:#fff;
+}
+
+.whatsapp-float{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+color:#fff;
+padding:15px 18px;
+border-radius:50%;
+font-size:24px;
+text-decoration:none;
+box-shadow:0 0 15px #25D366;
+}
