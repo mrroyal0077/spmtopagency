@@ -44,3 +44,23 @@ SPM-TOP-AGENCY/
     ├── icon-192.png
     ├── icon-512.png
     └── favicon.ico
+SPM-TOP-AGENCY/
+
+assets/
+
+ ├── css/
+ │     variables.css
+ │     components.css
+ │     utilities.css
+ │
+ ├── js/
+ │     config.js
+ │     app.js
+ │     ui.js
+ │     effects.js
+ │
+ ├── images/
+ │
+ ├── icons/
+ │
+ └── fonts/
