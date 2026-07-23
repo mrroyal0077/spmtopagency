@@ -2020,3 +2020,56 @@ margin-top:12px;
 text-align:center;
 
 }
+/* ==========================
+LIVE DASHBOARD
+========================== */
+
+.dashboard-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:25px;
+
+margin-top:40px;
+
+}
+
+.dashboard-card{
+
+padding:30px;
+
+border-radius:22px;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.12);
+
+text-align:center;
+
+transition:.35s;
+
+}
+
+.dashboard-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 0 35px rgba(0,234,255,.35);
+
+}
+
+.dashboard-card p{
+
+font-size:28px;
+
+font-weight:700;
+
+color:var(--primary);
+
+margin-top:10px;
+
+}
