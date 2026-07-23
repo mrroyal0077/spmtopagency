@@ -2257,3 +2257,32 @@ z-index:999;
 transform:scale(1.08);
 
 }
+/*=========================================
+CURSOR GLOW
+=========================================*/
+
+.cursor-glow{
+
+position:fixed;
+
+width:28px;
+height:28px;
+
+border-radius:50%;
+
+background:rgba(255,215,0,.35);
+
+pointer-events:none;
+
+transform:translate(-50%,-50%);
+
+box-shadow:
+0 0 20px gold,
+0 0 40px #2D7DFF;
+
+z-index:99999;
+
+transition:left .05s linear,
+top .05s linear;
+
+}
