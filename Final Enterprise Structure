@@ -1,0 +1,46 @@
+SPM-TOP-AGENCY/
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+│
+├── index.html
+├── style.css
+├── responsive.css
+├── animations.css
+├── theme.css
+│
+├── config.js
+├── script.js
+├── particles.js
+├── slider.js
+├── calculator.js
+├── ai-assistant.js
+├── analytics.js
+├── notification.js
+├── performance.js
+├── loading.js
+├── offline.js
+├── accessibility.js
+├── admin.js
+├── security.js
+├── language.js
+├── seo.js
+├── pwa.js
+│
+├── manifest.json
+├── service-worker.js
+├── robots.txt
+├── sitemap.xml
+├── 404.html
+├── README.md
+├── LICENSE
+│
+└── assets/
+    ├── logo.svg
+    ├── banner1.webp
+    ├── banner2.webp
+    ├── banner3.webp
+    ├── icon-192.png
+    ├── icon-512.png
+    └── favicon.ico
