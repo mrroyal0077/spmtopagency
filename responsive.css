@@ -1,0 +1,161 @@
+/* ==========================
+   V100 ELITE Responsive
+========================== */
+
+/* Large Tablets */
+
+@media (max-width:1200px){
+
+.container{
+width:95%;
+}
+
+.hero-left h1{
+font-size:58px;
+}
+
+.hero-logo{
+width:360px;
+}
+
+}
+
+/* Tablets */
+
+@media (max-width:992px){
+
+header{
+top:10px;
+width:96%;
+}
+
+.hero .container,
+.yoyo-card{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-left{
+order:2;
+}
+
+.hero-right{
+order:1;
+}
+
+.hero-left h1{
+font-size:48px;
+}
+
+.hero-left p{
+font-size:17px;
+}
+
+nav{
+display:none;
+}
+
+.menu-btn{
+display:block;
+}
+
+.section-title{
+font-size:40px;
+}
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.hero{
+padding-top:140px;
+padding-bottom:70px;
+}
+
+.hero-left h1{
+font-size:36px;
+}
+
+.hero-left p{
+font-size:16px;
+}
+
+.hero-logo{
+width:240px;
+}
+
+.logo{
+width:50px;
+}
+
+.status-grid,
+.coin-grid,
+.vip-grid,
+.contact-grid,
+.stats-grid,
+.feature-grid,
+.updates-grid{
+grid-template-columns:1fr;
+}
+
+.btn,
+.coin-btn,
+.vip-btn,
+.contact-btn{
+width:100%;
+text-align:center;
+}
+
+.hero-buttons{
+flex-direction:column;
+}
+
+.floating-buttons{
+right:15px;
+bottom:15px;
+}
+
+.float-btn{
+width:55px;
+height:55px;
+font-size:24px;
+}
+
+}
+
+/* Small Phones */
+
+@media (max-width:480px){
+
+.hero-left h1{
+font-size:30px;
+}
+
+.section-title{
+font-size:30px;
+}
+
+.section-subtitle{
+font-size:15px;
+}
+
+.status-card,
+.coin-card,
+.vip-card,
+.contact-card,
+.stat-card,
+.update-card{
+padding:24px;
+}
+
+.logo-box h2{
+font-size:20px;
+}
+
+.logo-box span{
+font-size:11px;
+}
+
+}
