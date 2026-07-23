@@ -2202,3 +2202,76 @@ border-left:5px solid #ff3d71;
 border-left:5px solid #00eaff;
 
 }
+/*==========================
+ADMIN PANEL
+==========================*/
+
+.admin-panel{
+
+position:fixed;
+
+top:50%;
+
+right:-360px;
+
+transform:translateY(-50%);
+
+width:320px;
+
+padding:24px;
+
+background:rgba(15,20,35,.96);
+
+backdrop-filter:blur(18px);
+
+border-radius:20px;
+
+transition:.4s;
+
+z-index:9999;
+
+}
+
+.admin-panel.open{
+
+right:20px;
+
+}
+
+.admin-panel input{
+
+width:100%;
+
+padding:14px;
+
+margin:15px 0;
+
+border-radius:12px;
+
+border:none;
+
+outline:none;
+
+background:#101828;
+
+color:#fff;
+
+}
+
+.announcement{
+
+padding:40px 20px;
+
+text-align:center;
+
+}
+
+.announcement p{
+
+font-size:20px;
+
+color:var(--primary);
+
+font-weight:600;
+
+}
