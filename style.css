@@ -2121,3 +2121,28 @@ font-size:28px;
 }
 
 }
+.coin-card,
+.vip-card,
+.update-card,
+.why-card,
+.contact-card,
+.stat-card{
+
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
+
+}
+
+.show{
+
+opacity:1 !important;
+transform:translateY(0) !important;
+
+}
+
+nav a.active{
+
+color:var(--gold);
+
+}
