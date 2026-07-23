@@ -1732,3 +1732,56 @@ opacity:0;
 }
 
 }
+/*==========================
+ AI CURSOR
+==========================*/
+
+.ai-cursor{
+
+position:fixed;
+
+width:22px;
+
+height:22px;
+
+border-radius:50%;
+
+background:radial-gradient(circle,#00ffff,#7b2cff);
+
+pointer-events:none;
+
+transform:translate(-50%,-50%);
+
+z-index:99999;
+
+box-shadow:
+
+0 0 20px #00ffff,
+
+0 0 50px #7b2cff;
+
+transition:
+
+width .25s,
+
+height .25s,
+
+background .25s;
+
+}
+
+.cursor-hover{
+
+width:45px;
+
+height:45px;
+
+background:radial-gradient(circle,#ffd700,#ff2ea6);
+
+box-shadow:
+
+0 0 35px #ffd700,
+
+0 0 70px #ff2ea6;
+
+}
