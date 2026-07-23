@@ -1,0 +1,12 @@
+# ==========================
+# SPM TOP AGENCY
+# Robots Configuration
+# ==========================
+
+User-agent: *
+
+Allow: /
+
+Disallow:
+
+Sitemap: https://YOUR_USERNAME.github.io/SPM-TOP-AGENCY/sitemap.xml
