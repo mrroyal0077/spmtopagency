@@ -64,3 +64,18 @@ assets/
  ├── icons/
  │
  └── fonts/
+.github/
+│
+├── workflows/
+│   └── deploy.yml
+│
+├── ISSUE_TEMPLATE/
+│   ├── bug_report.md
+│   └── feature_request.md
+│
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+│
+CHANGELOG.md
+README.md
+LICENSE
