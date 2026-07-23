@@ -2197,3 +2197,33 @@ opacity:0;
 }
 
 }
+/*=========================================
+PREMIUM SLIDER
+=========================================*/
+
+.banner-slider{
+
+position:relative;
+
+overflow:hidden;
+
+border-radius:25px;
+
+}
+
+.banner-slider img{
+
+width:100%;
+
+display:block;
+
+transition:opacity .5s ease,
+transform .8s ease;
+
+}
+
+.banner-slider:hover img{
+
+transform:scale(1.03);
+
+}
