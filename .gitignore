@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# Temp
+*.tmp
+*.temp
+
+# IDE
+.vscode/
+.idea/
+
+# Node (future use)
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Cache
+.cache/
+dist/
