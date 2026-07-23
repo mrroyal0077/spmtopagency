@@ -2227,3 +2227,33 @@ transform .8s ease;
 transform:scale(1.03);
 
 }
+.chat-button{
+
+position:fixed;
+bottom:90px;
+right:20px;
+
+background:#0d6efd;
+color:#fff;
+
+padding:14px 20px;
+
+border-radius:50px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+box-shadow:0 0 20px rgba(13,110,253,.5);
+
+transition:.3s;
+
+z-index:999;
+
+}
+
+.chat-button:hover{
+
+transform:scale(1.08);
+
+}
