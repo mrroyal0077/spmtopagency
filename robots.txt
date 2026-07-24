@@ -1,0 +1,18 @@
+# ==========================================
+# SPM AI
+# Powered by SPM TOP AGENCY
+# ==========================================
+
+User-agent: *
+
+Allow: /
+
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Optional
+Crawl-delay: 5
+
+Disallow: /admin/
+Disallow: /private/
+Disallow: /firebase/
+Disallow: /.git/
