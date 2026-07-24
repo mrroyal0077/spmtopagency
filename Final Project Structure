@@ -1,0 +1,33 @@
+SPM-AI/
+│
+├── index.html
+├── 404.html
+├── manifest.json
+├── robots.txt
+├── sitemap.xml
+├── service-worker.js
+│
+├── css/
+│   ├── style.css
+│   ├── responsive.css
+│   └── animations.css
+│
+├── js/
+│   ├── script.js
+│   ├── chatbot.js
+│   ├── calculator.js
+│   └── firebase.js
+│
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   ├── logo/
+│   └── videos/
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+│
+├── .gitignore
+├── README.md
+└── LICENSE
