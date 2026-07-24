@@ -1,0 +1,949 @@
+/* ==========================================
+ANIMATIONS.CSS
+Part 1
+========================================== */
+
+/* Fade In */
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Fade Up */
+
+@keyframes fadeUp{
+
+0%{
+opacity:0;
+transform:translateY(60px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Fade Down */
+
+@keyframes fadeDown{
+
+0%{
+opacity:0;
+transform:translateY(-50px);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* Fade Left */
+
+@keyframes fadeLeft{
+
+0%{
+opacity:0;
+transform:translateX(-60px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* Fade Right */
+
+@keyframes fadeRight{
+
+0%{
+opacity:0;
+transform:translateX(60px);
+}
+
+100%{
+opacity:1;
+transform:translateX(0);
+}
+
+}
+
+/* Zoom In */
+
+@keyframes zoomIn{
+
+0%{
+opacity:0;
+transform:scale(.8);
+}
+
+100%{
+opacity:1;
+transform:scale(1);
+}
+
+}
+
+/* Floating */
+
+@keyframes floating{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+}
+
+/* Pulse */
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.05);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* Glow */
+
+@keyframes glow{
+
+0%{
+
+box-shadow:0 0 10px rgba(59,130,246,.3);
+
+}
+
+50%{
+
+box-shadow:0 0 35px rgba(59,130,246,.6);
+
+}
+
+100%{
+
+box-shadow:0 0 10px rgba(59,130,246,.3);
+
+}
+
+}
+
+/* Rotate */
+
+@keyframes rotate360{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Classes */
+
+.fade-in{
+
+animation:fadeIn .8s ease forwards;
+
+}
+
+.fade-up{
+
+animation:fadeUp .8s ease forwards;
+
+}
+
+.fade-down{
+
+animation:fadeDown .8s ease forwards;
+
+}
+
+.fade-left{
+
+animation:fadeLeft .8s ease forwards;
+
+}
+
+.fade-right{
+
+animation:fadeRight .8s ease forwards;
+
+}
+
+.zoom-in{
+
+animation:zoomIn .7s ease forwards;
+
+}
+
+.floating{
+
+animation:floating 4s ease-in-out infinite;
+
+}
+
+.pulse{
+
+animation:pulse 2s infinite;
+
+}
+
+.glow{
+
+animation:glow 2.5s infinite;
+
+}
+
+.rotate{
+
+animation:rotate360 8s linear infinite;
+
+}
+/* ==========================================
+ANIMATIONS.CSS
+Part 2
+========================================== */
+
+/* ==========================================
+GLASS CARD HOVER
+========================================== */
+
+.glass,
+.dashboard-card,
+.coin-card,
+.vip-card,
+.service-card,
+.event-card,
+.contact-card{
+
+transition:
+transform .35s ease,
+box-shadow .35s ease,
+border-color .35s ease,
+background .35s ease;
+
+}
+
+.glass:hover,
+.dashboard-card:hover,
+.coin-card:hover,
+.vip-card:hover,
+.service-card:hover,
+.event-card:hover,
+.contact-card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.30);
+
+border-color:rgba(59,130,246,.35);
+
+background:
+rgba(255,255,255,.08);
+
+}
+
+/* ==========================================
+BUTTON HOVER
+========================================== */
+
+.btn,
+button{
+
+position:relative;
+
+overflow:hidden;
+
+transition:.35s ease;
+
+}
+
+.btn:hover,
+button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 15px 35px rgba(59,130,246,.30);
+
+}
+
+/* ==========================================
+RIPPLE EFFECT
+========================================== */
+
+.ripple{
+
+position:absolute;
+
+width:12px;
+
+height:12px;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.5);
+
+transform:translate(-50%,-50%) scale(0);
+
+animation:rippleEffect .6s linear;
+
+pointer-events:none;
+
+}
+
+@keyframes rippleEffect{
+
+to{
+
+transform:translate(-50%,-50%) scale(28);
+
+opacity:0;
+
+}
+
+}
+
+/* ==========================================
+GRADIENT TEXT
+========================================== */
+
+.gradient-text{
+
+background:
+linear-gradient(
+90deg,
+#3B82F6,
+#8B5CF6,
+#10B981,
+#3B82F6
+);
+
+background-size:300%;
+
+-webkit-background-clip:text;
+
+-webkit-text-fill-color:transparent;
+
+animation:gradientMove 6s linear infinite;
+
+}
+
+@keyframes gradientMove{
+
+0%{
+
+background-position:0%;
+
+}
+
+100%{
+
+background-position:300%;
+
+}
+
+}
+
+/* ==========================================
+LOADER
+========================================== */
+
+.loader-circle{
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+border:5px solid rgba(255,255,255,.12);
+
+border-top-color:#3B82F6;
+
+animation:rotate360 1s linear infinite;
+
+}
+
+/* ==========================================
+FLOATING ICONS
+========================================== */
+
+.float-slow{
+
+animation:floating 6s ease-in-out infinite;
+
+}
+
+.float-fast{
+
+animation:floating 3s ease-in-out infinite;
+
+}
+
+/* ==========================================
+IMAGE ZOOM
+========================================== */
+
+.gallery-item{
+
+overflow:hidden;
+
+}
+
+.gallery-item img{
+
+transition:transform .5s ease;
+
+}
+
+.gallery-item:hover img{
+
+transform:scale(1.08);
+
+}
+
+/* ==========================================
+SCROLL REVEAL
+========================================== */
+
+.reveal{
+
+opacity:0;
+
+transform:translateY(50px);
+
+transition:
+
+opacity .8s ease,
+
+transform .8s ease;
+
+}
+
+.reveal.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+/* ==========================================
+HERO BADGE
+========================================== */
+
+.hero-badge{
+
+animation:
+
+pulse 2.5s infinite,
+
+glow 3s infinite;
+
+}
+
+/* ==========================================
+AI ORB
+========================================== */
+
+.ai-orb{
+
+animation:
+
+floating 5s ease-in-out infinite,
+
+glow 4s infinite;
+
+}
+
+/* ==========================================
+TOAST
+========================================== */
+
+.toast{
+
+position:fixed;
+
+right:25px;
+
+top:25px;
+
+padding:16px 22px;
+
+border-radius:16px;
+
+background:#111827;
+
+color:#fff;
+
+opacity:0;
+
+transform:translateY(-20px);
+
+transition:.35s ease;
+
+z-index:99999;
+
+}
+
+.toast.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+.toast.success{
+
+border-left:5px solid #10B981;
+
+}
+
+.toast.error{
+
+border-left:5px solid #EF4444;
+
+}
+/* ==========================================
+ANIMATIONS.CSS
+Part 3 (Final)
+========================================== */
+
+/* ==========================================
+ANIMATED BACKGROUND
+========================================== */
+
+@keyframes backgroundMove{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+
+.animated-bg{
+
+background:linear-gradient(
+-45deg,
+#0B1220,
+#111827,
+#1E293B,
+#0B1220
+);
+
+background-size:400% 400%;
+
+animation:backgroundMove 18s ease infinite;
+
+}
+
+/* ==========================================
+SHIMMER EFFECT
+========================================== */
+
+.shimmer{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.shimmer::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-150%;
+
+width:70%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.18),
+
+transparent
+
+);
+
+transform:skewX(-25deg);
+
+animation:shimmerMove 2.5s infinite;
+
+}
+
+@keyframes shimmerMove{
+
+100%{
+
+left:180%;
+
+}
+
+}
+
+/* ==========================================
+MOUSE GLOW
+========================================== */
+
+.mouse-glow{
+
+position:fixed;
+
+width:250px;
+
+height:250px;
+
+border-radius:50%;
+
+pointer-events:none;
+
+background:radial-gradient(
+
+circle,
+
+rgba(59,130,246,.18),
+
+transparent 70%
+
+);
+
+filter:blur(20px);
+
+z-index:-1;
+
+transition:
+
+left .12s linear,
+
+top .12s linear;
+
+}
+
+/* ==========================================
+AI ORB
+========================================== */
+
+@keyframes orbPulse{
+
+0%,100%{
+
+transform:scale(1);
+
+opacity:.9;
+
+}
+
+50%{
+
+transform:scale(1.12);
+
+opacity:1;
+
+}
+
+}
+
+.ai-orb{
+
+animation:
+
+floating 6s ease-in-out infinite,
+
+orbPulse 3s ease-in-out infinite;
+
+}
+
+/* ==========================================
+BUTTON SHINE
+========================================== */
+
+.btn::after,
+
+button::after{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:60%;
+
+height:100%;
+
+background:linear-gradient(
+
+90deg,
+
+transparent,
+
+rgba(255,255,255,.35),
+
+transparent
+
+);
+
+transform:skewX(-20deg);
+
+transition:none;
+
+}
+
+.btn:hover::after,
+
+button:hover::after{
+
+animation:buttonShine .8s linear;
+
+}
+
+@keyframes buttonShine{
+
+100%{
+
+left:160%;
+
+}
+
+}
+
+/* ==========================================
+PAGE TRANSITION
+========================================== */
+
+body{
+
+animation:pageEnter .8s ease;
+
+}
+
+@keyframes pageEnter{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ==========================================
+FLOATING DOTS
+========================================== */
+
+@keyframes dotFloat{
+
+0%,100%{
+
+transform:translateY(0);
+
+opacity:.5;
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+opacity:1;
+
+}
+
+}
+
+.dot{
+
+width:8px;
+
+height:8px;
+
+border-radius:50%;
+
+background:#3B82F6;
+
+animation:dotFloat 3s ease-in-out infinite;
+
+}
+
+/* ==========================================
+SCROLL INDICATOR
+========================================== */
+
+.scroll-indicator{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+height:4px;
+
+width:0;
+
+background:linear-gradient(
+
+90deg,
+
+#3B82F6,
+
+#8B5CF6,
+
+#10B981
+
+);
+
+z-index:99999;
+
+transition:width .15s linear;
+
+}
+
+/* ==========================================
+CUSTOM SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#0B1220;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:linear-gradient(
+
+180deg,
+
+#3B82F6,
+
+#8B5CF6
+
+);
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#2563EB;
+
+}
+
+/* ==========================================
+SELECTION
+========================================== */
+
+::selection{
+
+background:#3B82F6;
+
+color:#fff;
+
+}
+
+/* ==========================================
+FINAL PERFORMANCE
+========================================== */
+
+.glass,
+.coin-card,
+.dashboard-card,
+.vip-card,
+.service-card,
+.event-card,
+.contact-card,
+.review-card{
+
+will-change:transform;
+
+transform:translateZ(0);
+
+backface-visibility:hidden;
+
+}
