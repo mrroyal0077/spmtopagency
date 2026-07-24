@@ -1,0 +1,599 @@
+/* ==========================================
+RESPONSIVE.CSS
+Part 1
+========================================== */
+
+/* Large Laptop */
+@media (max-width: 1200px){
+
+.container{
+width:92%;
+}
+
+.hero-grid{
+grid-template-columns:1fr;
+gap:50px;
+}
+
+.dashboard-grid,
+.service-grid,
+.recharge-grid,
+.vip-grid,
+.paid-grid,
+.event-grid,
+.contact-grid,
+.review-slider,
+.gallery-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* Tablet */
+@media (max-width: 992px){
+
+.section-title h2{
+font-size:38px;
+}
+
+.hero-title{
+font-size:48px;
+}
+
+.hero-buttons{
+flex-wrap:wrap;
+}
+
+.dashboard-grid,
+.service-grid,
+.recharge-grid,
+.vip-grid,
+.paid-grid,
+.event-grid,
+.contact-grid,
+.review-slider,
+.gallery-grid{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+.mobile-menu{
+display:flex;
+}
+
+.profile-card{
+flex-direction:column;
+text-align:center;
+}
+
+.login-form{
+flex-direction:column;
+}
+
+.chat-input{
+flex-direction:column;
+}
+
+.chat-input button{
+width:100%;
+}
+
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+body{
+font-size:15px;
+}
+
+.container{
+width:94%;
+}
+
+.section-title{
+margin-bottom:40px;
+}
+
+.section-title h2{
+font-size:30px;
+}
+
+.hero{
+padding:80px 0;
+}
+
+.hero-title{
+font-size:36px;
+line-height:1.3;
+}
+
+.hero-subtitle{
+font-size:16px;
+}
+
+.hero-buttons{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.btn,
+.btn-primary,
+.btn-glass{
+width:100%;
+justify-content:center;
+}
+
+.dashboard-card,
+.coin-card,
+.vip-card,
+.paid-card,
+.event-card,
+.contact-card,
+.review-card{
+padding:24px;
+}
+
+.timer{
+gap:15px;
+}
+
+.timer div{
+width:90px;
+padding:18px;
+}
+
+.timer h1{
+font-size:30px;
+}
+
+.form-box{
+padding:25px;
+}
+
+.form-box input,
+.form-box select,
+.form-box textarea,
+.form-box button{
+font-size:15px;
+}
+
+}
+/* ==========================================
+RESPONSIVE.CSS
+Part 2
+========================================== */
+
+/* Small Phones */
+@media (max-width:576px){
+
+.container{
+width:95%;
+padding:0 12px;
+}
+
+.topbar{
+display:none;
+}
+
+.logo{
+font-size:22px;
+}
+
+.hero{
+padding:70px 0 50px;
+}
+
+.hero-title{
+font-size:30px;
+}
+
+.hero-subtitle{
+font-size:15px;
+line-height:1.7;
+}
+
+.hero-features{
+display:grid;
+grid-template-columns:1fr;
+gap:12px;
+}
+
+.section-title h2{
+font-size:28px;
+}
+
+.section-title p{
+font-size:15px;
+}
+
+.coin-card h1{
+font-size:40px;
+}
+
+.dashboard-card h2{
+font-size:30px;
+}
+
+.profile-avatar{
+width:70px;
+height:70px;
+font-size:32px;
+}
+
+.login-card,
+.form-box,
+.assistant-box{
+padding:20px;
+}
+
+.chat-window{
+height:350px;
+}
+
+.chat-input{
+gap:10px;
+}
+
+.chat-input input,
+.chat-input button{
+height:52px;
+}
+
+.timer div{
+width:75px;
+padding:15px;
+}
+
+.timer h1{
+font-size:24px;
+}
+
+.timer span{
+font-size:13px;
+}
+
+.gallery-item{
+height:180px;
+}
+
+}
+
+/* Extra Small Phones */
+@media (max-width:400px){
+
+.hero-title{
+font-size:26px;
+}
+
+.section-title h2{
+font-size:24px;
+}
+
+.btn,
+.btn-primary,
+.btn-glass{
+height:50px;
+font-size:14px;
+}
+
+.coin-card,
+.vip-card,
+.event-card,
+.contact-card,
+.review-card{
+padding:18px;
+}
+
+}
+
+/* Safe Area (iPhone) */
+@supports (padding:max(0px)){
+
+body{
+padding-left:max(0px,env(safe-area-inset-left));
+padding-right:max(0px,env(safe-area-inset-right));
+padding-bottom:max(0px,env(safe-area-inset-bottom));
+}
+
+}
+
+/* Responsive Images */
+
+img{
+max-width:100%;
+height:auto;
+display:block;
+}
+
+/* Tables */
+
+table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+/* Floating Buttons */
+
+.floating-buttons{
+right:16px;
+bottom:90px;
+}
+
+.floating-buttons a,
+.floating-buttons button{
+width:52px;
+height:52px;
+font-size:20px;
+}
+
+/* Bottom Navigation */
+
+.mobile-nav{
+height:70px;
+padding:10px;
+}
+
+.mobile-nav a{
+font-size:11px;
+}
+
+.mobile-nav i{
+font-size:20px;
+}
+
+/* Better Scrolling */
+
+html{
+scroll-behavior:smooth;
+-webkit-text-size-adjust:100%;
+}
+
+/* Prevent Overflow */
+
+body{
+overflow-x:hidden;
+}
+
+*{
+max-width:100%;
+}
+/* ==========================================
+RESPONSIVE.CSS
+Part 3 (Final)
+========================================== */
+
+/* Landscape Phones */
+@media screen and (max-width:900px) and (orientation:landscape){
+
+.hero{
+min-height:auto;
+padding:60px 0;
+}
+
+.hero-grid{
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.chat-window{
+height:280px;
+}
+
+}
+
+/* Foldable Devices */
+@media (min-width:540px) and (max-width:720px){
+
+.hero-grid,
+.dashboard-grid,
+.service-grid,
+.recharge-grid,
+.vip-grid,
+.paid-grid,
+.contact-grid{
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+}
+
+}
+
+/* Large Desktop */
+@media (min-width:1440px){
+
+.container{
+max-width:1400px;
+margin:auto;
+}
+
+.hero-title{
+font-size:72px;
+}
+
+.section-title h2{
+font-size:56px;
+}
+
+.dashboard-grid,
+.service-grid,
+.recharge-grid,
+.vip-grid,
+.paid-grid,
+.contact-grid{
+gap:35px;
+}
+
+}
+
+/* 4K Screens */
+@media (min-width:1920px){
+
+.container{
+max-width:1700px;
+}
+
+body{
+font-size:18px;
+}
+
+.hero-title{
+font-size:86px;
+}
+
+.section-title h2{
+font-size:64px;
+}
+
+}
+
+/* Hover Effects */
+@media (hover:hover){
+
+.coin-card:hover,
+.vip-card:hover,
+.dashboard-card:hover,
+.event-card:hover,
+.service-card:hover{
+
+transform:translateY(-10px) scale(1.02);
+
+}
+
+.btn:hover,
+button:hover{
+
+filter:brightness(1.05);
+
+}
+
+}
+
+/* Touch Devices */
+@media (hover:none){
+
+button,
+.btn{
+
+-webkit-tap-highlight-color:transparent;
+
+}
+
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion:reduce){
+
+*{
+
+animation:none !important;
+
+transition:none !important;
+
+scroll-behavior:auto !important;
+
+}
+
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme:dark){
+
+body{
+
+background:#0B1220;
+
+color:#F8FAFC;
+
+}
+
+}
+
+/* Print */
+@media print{
+
+header,
+footer,
+.mobile-nav,
+.floating-buttons,
+.chat-window,
+button{
+
+display:none !important;
+
+}
+
+body{
+
+background:#fff;
+color:#000;
+
+}
+
+.container{
+
+width:100%;
+
+}
+
+}
+
+/* Ultra Small Devices */
+@media (max-width:320px){
+
+.hero-title{
+font-size:22px;
+}
+
+.section-title h2{
+font-size:20px;
+}
+
+.coin-card,
+.vip-card,
+.event-card,
+.dashboard-card{
+padding:15px;
+}
+
+.btn,
+button{
+font-size:13px;
+height:46px;
+}
+
+}
+
+/* Final Responsive Utilities */
+
+.hide-mobile{
+
+display:block;
+
+}
+
+.show-mobile{
+
+display:none;
+
+}
+
+@media (max-width:768px){
+
+.hide-mobile{
+
+display:none !important;
+
+}
+
+.show-mobile{
+
+display:block !important;
+
+}
+
+}
