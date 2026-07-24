@@ -1,94 +1,139 @@
-# spmtopagency
-Official SPM TOP AGENCY Website
-# 🚀 SPM TOP AGENCY
+# 🚀 SPM AI
 
-Official YOYO Coin Dealer
-
-![SPM Banner](assets/banner1.webp)
+Official Website for **SPM TOP AGENCY**
 
 ---
 
-## ✨ Features
+## 🌟 Features
 
-- 🪙 Fast Coin Recharge
-- 💎 VIP Upgrade
-- 👑 VIP New ID
+- 🤖 AI Assistant
+- 💰 Coin Recharge
+- 👑 VIP Upgrade
 - 💸 Paid Sending
-- 📱 WhatsApp Support
-- 🌐 Responsive Design
-- ⚡ AI Animations
-- 🎨 Multiple Themes
-- 📲 Progressive Web App
-- 🚀 GitHub Pages Ready
+- 🎉 Events
+- 👥 Join Agency
+- 📱 Responsive Design
+- 🌙 Glassmorphism UI
+- ⚡ PWA Support
+- ☁️ Firebase Integration
+- 📊 Coin Calculator
 
 ---
 
-## 📞 Contact
+## 📂 Project Structure
 
-### MR RISHI
-
-📱 +91 93296 87975
-
-### MR ABHI
-
-📱 +91 70700 28414
+```
+SPM-AI/
+│
+├── index.html
+├── 404.html
+├── manifest.json
+├── robots.txt
+├── sitemap.xml
+├── service-worker.js
+│
+├── css/
+│   ├── style.css
+│   ├── responsive.css
+│   └── animations.css
+│
+├── js/
+│   ├── script.js
+│   ├── chatbot.js
+│   ├── calculator.js
+│   └── firebase.js
+│
+├── assets/
+│   ├── logo/
+│   ├── icons/
+│   ├── images/
+│   └── videos/
+│
+└── README.md
+```
 
 ---
 
-## 📢 WhatsApp Channel
+## 📱 Official Information
+
+**Brand**
+SPM AI
+
+**Powered By**
+SPM TOP AGENCY
+
+**Agency Code**
+100857
+
+---
+
+## 👤 Official Contacts
+
+MR RISHI
+
++91 93296 87975
+
+MR ABHI
+
++91 70700 28414
+
+---
+
+## 🎮 Official YOYO
+
+YOYO ID
+
+50873317
+
+---
+
+## 📲 WhatsApp Channel
 
 https://whatsapp.com/channel/0029VbAyICF0rGiUGHjnkH34
 
 ---
 
-## 🎮 YOYO
+## 📥 Download YOYO
 
-YOYO ID
-
-**50873317**
-
-Name
-
-**SPM Coin Seller**
+https://play.google.com/store/apps/details?id=com.fun.share
 
 ---
 
-## 📦 Project Structure
+## ⚙️ Installation
 
-```text
+Clone Repository
+
+```bash
+git clone https://github.com/USERNAME/SPM-AI.git
+```
+
+Open Project
+
+```bash
+cd SPM-AI
+```
+
+Run
+
+```bash
 index.html
-style.css
-responsive.css
-animations.css
-theme.css
-
-script.js
-particles.js
-menu.js
-cursor.js
-calculator.js
-slider.js
-ai-assistant.js
-performance.js
-seo.js
-pwa.js
-
-assets/
 ```
 
 ---
 
-## 🚀 Deployment
+## 🔥 Built With
 
-1. Upload project to GitHub.
-2. Enable GitHub Pages.
-3. Wait a few minutes.
-4. Open your website.
+- HTML5
+- CSS3
+- JavaScript
+- Firebase
+- PWA
+- GitHub Pages
 
 ---
 
 ## 📄 License
 
-MIT License
+Copyright © SPM TOP AGENCY
 
-© SPM TOP AGENCY
+All Rights Reserved.
