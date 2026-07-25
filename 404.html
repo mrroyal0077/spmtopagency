@@ -5,13 +5,23 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>404 | SPM TOP AGENCY</title>
 
-<meta name="theme-color" content="#00d4ff">
+<meta name="theme-color"
+content="#070b15">
 
-<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -19,104 +29,104 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
 
-background:#05060f;
-color:#fff;
-
+background:#070b15;
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-height:100vh;
-
+min-height:100vh;
 overflow:hidden;
-
-background-image:
-radial-gradient(circle at top,#0f1b35,#05060f);
+color:white;
+text-align:center;
 
 }
 
-.box{
+body::before{
 
-text-align:center;
+content:"";
+position:absolute;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#FFD70033,transparent 70%);
+animation:rotateGlow 12s linear infinite;
 
+}
+
+@keyframes rotateGlow{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.card{
+
+position:relative;
+z-index:2;
 padding:45px;
-
-max-width:600px;
-
-width:92%;
-
+width:90%;
+max-width:550px;
 background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:24px;
-
-backdrop-filter:blur(12px);
-
-box-shadow:0 20px 60px rgba(0,212,255,.12);
+border:1px solid rgba(255,255,255,.1);
+border-radius:25px;
+backdrop-filter:blur(18px);
 
 }
 
 h1{
 
 font-size:110px;
-
-color:#00d4ff;
-
-margin-bottom:15px;
+color:#FFD700;
+margin-bottom:10px;
 
 }
 
 h2{
 
 font-size:32px;
-
 margin-bottom:15px;
 
 }
 
 p{
 
-color:#cbd5e1;
-
+color:#cccccc;
 line-height:1.8;
-
-margin-bottom:30px;
+margin-bottom:35px;
 
 }
 
-a{
+.btn{
 
 display:inline-block;
-
 padding:15px 35px;
-
-background:linear-gradient(135deg,#00d4ff,#6c63ff);
-
-color:#fff;
-
-text-decoration:none;
-
 border-radius:50px;
-
-font-weight:bold;
-
+background:#FFD700;
+color:#111;
+text-decoration:none;
+font-weight:700;
 transition:.3s;
 
 }
 
-a:hover{
+.btn:hover{
 
 transform:translateY(-4px);
 
-box-shadow:0 12px 35px rgba(0,212,255,.3);
+}
+
+.footer{
+
+margin-top:30px;
+font-size:14px;
+color:#888;
 
 }
 
@@ -126,19 +136,32 @@ box-shadow:0 12px 35px rgba(0,212,255,.3);
 
 <body>
 
-<div class="box">
+<div class="card">
 
 <h1>404</h1>
 
 <h2>Page Not Found</h2>
 
 <p>
-Sorry, the page you are looking for doesn't exist or has been moved.
+
+The page you're looking for doesn't exist or has been moved.
+
 </p>
 
-<a href="./index.html">
-🏠 Back to Home
+<a href="./index.html"
+class="btn">
+
+🏠 Back To Home
+
 </a>
+
+<div class="footer">
+
+<b>SPM TOP AGENCY</b><br>
+
+Powered By <span style="color:#FFD700;">SPM AI</span>
+
+</div>
 
 </div>
 
