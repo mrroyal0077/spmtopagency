@@ -1,9 +1,9 @@
-/* ==========================================
+/* ===========================
    SPM TOP AGENCY
-   Service Worker
-========================================== */
+   Powered By SPM AI
+=========================== */
 
-const CACHE_NAME = "spm-top-agency-v1.0.0";
+const CACHE_NAME = "spm-ai-v1.0.0";
 
 const FILES_TO_CACHE = [
   "./",
@@ -12,23 +12,20 @@ const FILES_TO_CACHE = [
   "./app.js",
   "./manifest.json",
   "./404.html",
-
   "./assets/logo.png",
   "./assets/favicon.png",
-
-  "./assets/icons/icon-72.png",
-  "./assets/icons/icon-96.png",
-  "./assets/icons/icon-128.png",
-  "./assets/icons/icon-144.png",
-  "./assets/icons/icon-152.png",
-  "./assets/icons/icon-192.png",
-  "./assets/icons/icon-384.png",
-  "./assets/icons/icon-512.png"
+  "./assets/coin.webp",
+  "./assets/icon-72.png",
+  "./assets/icon-96.png",
+  "./assets/icon-128.png",
+  "./assets/icon-144.png",
+  "./assets/icon-152.png",
+  "./assets/icon-192.png",
+  "./assets/icon-384.png",
+  "./assets/icon-512.png"
 ];
 
-/* ==========================
-   INSTALL
-========================== */
+/* Install */
 
 self.addEventListener("install", event => {
 
@@ -43,29 +40,29 @@ self.addEventListener("install", event => {
 
 });
 
-/* ==========================
-   ACTIVATE
-========================== */
+/* Activate */
 
 self.addEventListener("activate", event => {
 
   event.waitUntil(
 
-    caches.keys().then(keys => {
+    caches.keys().then(keys =>
 
-      return Promise.all(
+      Promise.all(
 
         keys.map(key => {
 
           if (key !== CACHE_NAME) {
+
             return caches.delete(key);
+
           }
 
         })
 
-      );
+      )
 
-    })
+    )
 
   );
 
@@ -73,9 +70,7 @@ self.addEventListener("activate", event => {
 
 });
 
-/* ==========================
-   FETCH
-========================== */
+/* Fetch */
 
 self.addEventListener("fetch", event => {
 
@@ -83,68 +78,40 @@ self.addEventListener("fetch", event => {
 
   event.respondWith(
 
-    caches.match(event.request)
+    caches.match(event.request).then(response => {
 
-      .then(response => {
+      if (response) {
 
-        if (response) {
-          return response;
-        }
+        return response;
 
-        return fetch(event.request)
+      }
 
-          .then(networkResponse => {
+      return fetch(event.request)
+        .then(networkResponse => {
 
-            if (
-              !networkResponse ||
-              networkResponse.status !== 200 ||
-              networkResponse.type !== "basic"
-            ) {
-              return networkResponse;
-            }
-
-            const responseClone = networkResponse.clone();
-
-            caches.open(CACHE_NAME)
-
-              .then(cache => {
-
-                cache.put(event.request, responseClone);
-
-              });
-
+          if (
+            !networkResponse ||
+            networkResponse.status !== 200 ||
+            networkResponse.type !== "basic"
+          ) {
             return networkResponse;
+          }
 
-          })
+          const responseClone = networkResponse.clone();
 
-          .catch(() => {
+          caches.open(CACHE_NAME).then(cache => {
 
-            if (event.request.mode === "navigate") {
-
-              return caches.match("./404.html");
-
-            }
+            cache.put(event.request, responseClone);
 
           });
 
-      })
+          return networkResponse;
+
+        })
+        .catch(() => caches.match("./404.html"));
+
+    })
 
   );
 
 });
-
-/* ==========================
-   MESSAGE
-========================== */
-
-self.addEventListener("message", event => {
-
-  if (event.data === "SKIP_WAITING") {
-
-    self.skipWaiting();
-
-  }
-
-});
-
-console.log("✅ Service Worker Loaded");
