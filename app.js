@@ -1,8 +1,3 @@
-/* ==========================================
-   SPM AI - App.js
-   Part 1
-========================================== */
-
 "use strict";
 
 /* ==========================================
@@ -11,53 +6,68 @@
 
 window.addEventListener("load", () => {
 
-    const loader = document.getElementById("loader");
-    const website = document.getElementById("website");
+const loader = document.getElementById("loader");
 
-    setTimeout(() => {
+if(loader){
 
-        if (loader) {
+loader.style.opacity = "0";
 
-            loader.style.display = "none";
+setTimeout(()=>{
 
-        }
+loader.style.display = "none";
 
-        if (website) {
+},500);
 
-            website.style.display = "block";
-
-        }
-
-    }, 1500);
+}
 
 });
+
+/* ==========================================
+   Mobile Menu
+========================================== */
+
+const menuToggle = document.getElementById("menuToggle");
+const navbar = document.getElementById("navbar");
+
+if(menuToggle && navbar){
+
+menuToggle.addEventListener("click",()=>{
+
+navbar.classList.toggle("active");
+
+});
+
+}
 
 /* ==========================================
    Smooth Scroll
 ========================================== */
 
-const navLinks = document.querySelectorAll('a[href^="#"]');
+document.querySelectorAll('a[href^="#"]').forEach(link=>{
 
-navLinks.forEach(link => {
+link.addEventListener("click",(e)=>{
 
-    link.addEventListener("click", function (e) {
+const target = document.querySelector(link.getAttribute("href"));
 
-        e.preventDefault();
+if(target){
 
-        const target = document.querySelector(this.getAttribute("href"));
+e.preventDefault();
 
-        if (target) {
+target.scrollIntoView({
 
-            target.scrollIntoView({
+behavior:"smooth"
 
-                behavior: "smooth",
-                block: "start"
+});
 
-            });
+if(navbar){
 
-        }
+navbar.classList.remove("active");
 
-    });
+}
+
+}
+
+});
 
 });
 
@@ -67,729 +77,438 @@ navLinks.forEach(link => {
 
 const header = document.querySelector("header");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    if (!header) return;
+if(window.scrollY > 80){
 
-    if (window.scrollY > 80) {
+header.classList.add("sticky");
 
-        header.classList.add("sticky");
+}else{
 
-    } else {
-
-        header.classList.remove("sticky");
-
-    }
-
-});
-
-/* ==========================================
-   Coin Calculator
-========================================== */
-
-const calculator = document.querySelector("#calculator");
-const amountInput = calculator?.querySelector('input[type="number"]');
-const coinInput = calculator?.querySelector('input[readonly]');
-const calculateButton = calculator?.querySelector("button");
-
-function calculateCoins() {
-
-    if (!amountInput || !coinInput) return;
-
-    const amount = Number(amountInput.value);
-
-    if (!amount || amount <= 0) {
-
-        coinInput.value = "";
-
-        return;
-
-    }
-
-    const coins = amount * 12.6;
-
-    coinInput.value = `${coins.toLocaleString()} Coins`;
+header.classList.remove("sticky");
 
 }
 
-calculateButton?.addEventListener("click", calculateCoins);
+});
 
 /* ==========================================
    Counter Animation
 ========================================== */
 
-function animateCounter(element, endValue) {
+const counters = document.querySelectorAll(".counter");
 
-    let current = 0;
+function runCounters(){
 
-    const speed = Math.max(10, Math.floor(endValue / 100));
+counters.forEach(counter=>{
 
-    const timer = setInterval(() => {
+const target = Number(counter.dataset.target);
 
-        current += speed;
+let value = 0;
 
-        if (current >= endValue) {
+const speed = Math.max(10, Math.floor(target / 100));
 
-            current = endValue;
+const update = ()=>{
 
-            clearInterval(timer);
+value += speed;
 
-        }
+if(value >= target){
 
-        element.textContent = current.toLocaleString();
+counter.innerText = target.toLocaleString();
 
-    }, 20);
+}else{
+
+counter.innerText = value.toLocaleString();
+
+requestAnimationFrame(update);
+
+}
+
+};
+
+update();
+
+});
+
+}
+
+let counterStarted = false;
+
+window.addEventListener("scroll",()=>{
+
+const stats = document.querySelector(".statistics");
+
+if(stats && !counterStarted){
+
+const top = stats.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+
+counterStarted = true;
+
+runCounters();
+
+}
+
+}
+
+});
+/* ==========================================
+   Coin Calculator
+========================================== */
+
+const calcBtn = document.getElementById("calculateBtn");
+const coinInput = document.getElementById("coinInput");
+const result = document.getElementById("calcResult");
+
+if(calcBtn){
+
+calcBtn.addEventListener("click",()=>{
+
+const amount = Number(coinInput.value);
+
+if(!amount || amount <= 0){
+
+result.innerHTML = "Please enter a valid amount.";
+
+return;
+
+}
+
+const coins = amount * 12.6;
+
+result.innerHTML =
+`${amount.toLocaleString()} = <strong>${coins.toLocaleString()} Coins</strong>`;
+
+});
 
 }
 
 /* ==========================================
-   Statistics
+   AI Assistant Demo
 ========================================== */
 
-const totalUsers = document.getElementById("totalUsers");
-const todayRecharge = document.getElementById("todayRecharge");
-const vipMembers = document.getElementById("vipMembers");
-const onlineUsers = document.getElementById("onlineUsers");
+const aiBtn = document.getElementById("askAI");
+const aiInput = document.getElementById("aiInput");
+const aiChat = document.getElementById("aiChat");
 
-if (totalUsers) animateCounter(totalUsers, 25840);
+if(aiBtn){
 
-if (todayRecharge) animateCounter(todayRecharge, 865);
+aiBtn.addEventListener("click",()=>{
 
-if (vipMembers) animateCounter(vipMembers, 3210);
+const question = aiInput.value.trim();
 
-if (onlineUsers) animateCounter(onlineUsers, 428);
+if(question===""){
 
-/* ==========================================
-   Visitor Counter
-========================================== */
+aiChat.innerHTML="Please enter your question.";
 
-const visitorCount = document.getElementById("visitorCount");
-
-if (visitorCount) {
-
-    animateCounter(visitorCount, 158942);
+return;
 
 }
-/* ==========================================
-   Mobile Navigation
-========================================== */
 
-const menuButton = document.getElementById("menuButton");
-const navigation = document.querySelector("nav ul");
+aiChat.innerHTML=
+`<b>You:</b> ${question}<br><br>
+<b>SPM AI:</b> Thanks for your question. Live AI integration will be connected soon.`;
 
-if (menuButton && navigation) {
+aiInput.value="";
 
-    menuButton.addEventListener("click", () => {
-
-        navigation.classList.toggle("active");
-
-    });
+});
 
 }
 
 /* ==========================================
-   Scroll Reveal Animation
+   Contact Form
 ========================================== */
 
-const revealItems = document.querySelectorAll(
+const contactForm = document.getElementById("contactForm");
 
-    "section, article, .about-card, .contact-card"
+if(contactForm){
 
-);
+contactForm.addEventListener("submit",(e)=>{
 
-function revealOnScroll() {
+e.preventDefault();
 
-    revealItems.forEach(item => {
+alert("Thank you! Your message has been submitted.");
 
-        const top = item.getBoundingClientRect().top;
+contactForm.reset();
 
-        const visible = window.innerHeight - 100;
-
-        if (top < visible) {
-
-            item.classList.add("show");
-
-        }
-
-    });
+});
 
 }
 
-window.addEventListener("scroll", revealOnScroll);
+/* ==========================================
+   Scroll To Top
+========================================== */
 
-revealOnScroll();
+const topBtn = document.createElement("button");
 
+topBtn.id="topBtn";
+
+topBtn.innerHTML="↑";
+
+document.body.appendChild(topBtn);
+
+Object.assign(topBtn.style,{
+
+position:"fixed",
+
+right:"20px",
+
+bottom:"20px",
+
+width:"50px",
+
+height:"50px",
+
+border:"none",
+
+borderRadius:"50%",
+
+fontSize:"20px",
+
+cursor:"pointer",
+
+background:"#00e5ff",
+
+color:"#000",
+
+display:"none",
+
+zIndex:"9999",
+
+boxShadow:"0 10px 25px rgba(0,229,255,.3)"
+
+});
+
+window.addEventListener("scroll",()=>{
+
+topBtn.style.display=window.scrollY>300?"block":"none";
+
+});
+
+topBtn.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
 /* ==========================================
    Active Navigation
 ========================================== */
 
 const sections = document.querySelectorAll("section");
-
-const menuLinks = document.querySelectorAll("nav ul li a");
+const navLinks = document.querySelectorAll("#navbar a");
 
 window.addEventListener("scroll", () => {
 
-    let current = "";
+let current = "";
 
-    sections.forEach(section => {
+sections.forEach((section) => {
 
-        const top = section.offsetTop - 120;
+const sectionTop = section.offsetTop - 120;
+const sectionHeight = section.offsetHeight;
 
-        const height = section.offsetHeight;
+if (window.scrollY >= sectionTop) {
 
-        if (window.scrollY >= top &&
-            window.scrollY < top + height) {
+current = section.getAttribute("id");
 
-            current = section.getAttribute("id");
+}
 
-        }
+});
 
-    });
+navLinks.forEach((link) => {
 
-    menuLinks.forEach(link => {
+link.classList.remove("active");
 
-        link.classList.remove("active");
+const href = link.getAttribute("href");
 
-        if (link.getAttribute("href") === "#" + current) {
+if (href === "#" + current) {
 
-            link.classList.add("active");
+link.classList.add("active");
 
-        }
+}
 
-    });
+});
 
 });
 
 /* ==========================================
-   Language Switch
+   Fade Up Animation
 ========================================== */
 
-const languageButtons = document.querySelectorAll(
+const fadeElements = document.querySelectorAll(".fade-up");
 
-    ".language-grid button"
+const observer = new IntersectionObserver((entries) => {
 
-);
+entries.forEach((entry) => {
 
-languageButtons.forEach(button => {
+if (entry.isIntersecting) {
 
-    button.addEventListener("click", () => {
+entry.target.classList.add("show");
 
-        languageButtons.forEach(item => {
+}
 
-            item.classList.remove("selected");
+});
 
-        });
+}, {
 
-        button.classList.add("selected");
+threshold: 0.2
 
-    });
+});
+
+fadeElements.forEach((item) => {
+
+observer.observe(item);
 
 });
 
 /* ==========================================
-   AI Chat Demo
-========================================== */
-
-const chatForm = document.getElementById("chatForm");
-
-const chatInput = document.getElementById("chatInput");
-
-const chatMessages = document.getElementById("chatMessages");
-
-if (chatForm && chatInput && chatMessages) {
-
-    chatForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const text = chatInput.value.trim();
-
-        if (!text) return;
-
-        const userMessage = document.createElement("div");
-
-        userMessage.className = "chat-message user";
-
-        userMessage.innerHTML = `
-
-<h4>You</h4>
-
-<p>${text}</p>
-
-`;
-
-        chatMessages.appendChild(userMessage);
-
-        chatInput.value = "";
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        setTimeout(() => {
-
-            const aiMessage = document.createElement("div");
-
-            aiMessage.className = "chat-message ai";
-
-            aiMessage.innerHTML = `
-
-<h4>SPM AI</h4>
-
-<p>
-
-Thank you for contacting SPM AI.
-
-Our support team will assist you shortly.
-
-</p>
-
-`;
-
-            chatMessages.appendChild(aiMessage);
-
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        }, 1000);
-
-    });
-
-}
-/* ==========================================
-   Countdown Timer
-========================================== */
-
-const countdownElement = document.getElementById("countdown");
-
-if (countdownElement) {
-
-    const targetDate = new Date("December 31, 2026 23:59:59").getTime();
-
-    function updateCountdown() {
-
-        const now = new Date().getTime();
-
-        const distance = targetDate - now;
-
-        if (distance <= 0) {
-
-            countdownElement.innerHTML = "Event Started";
-
-            return;
-
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdownElement.innerHTML =
-
-            `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-    }
-
-    updateCountdown();
-
-    setInterval(updateCountdown, 1000);
-
-}
-
-/* ==========================================
-   Live Clock
+   Live Date & Time
 ========================================== */
 
 const liveClock = document.getElementById("liveClock");
 
 function updateClock() {
 
-    if (!liveClock) return;
+if (!liveClock) return;
 
-    const now = new Date();
+const now = new Date();
 
-    liveClock.textContent = now.toLocaleTimeString();
+liveClock.innerHTML = now.toLocaleString();
 
 }
-
-updateClock();
 
 setInterval(updateClock, 1000);
 
-/* ==========================================
-   Theme Switch
-========================================== */
-
-const themeButton = document.getElementById("themeToggle");
-
-themeButton?.addEventListener("click", () => {
-
-    document.body.classList.toggle("light-theme");
-
-});
-
-/* ==========================================
-   Back To Top
-========================================== */
-
-const topButton = document.getElementById("backToTop");
-
-window.addEventListener("scroll", () => {
-
-    if (!topButton) return;
-
-    if (window.scrollY > 400) {
-
-        topButton.classList.add("show");
-
-    } else {
-
-        topButton.classList.remove("show");
-
-    }
-
-});
-
-topButton?.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-/* ==========================================
-   Toast Notification
-========================================== */
-
-function showToast(message) {
-
-    const toast = document.createElement("div");
-
-    toast.className = "toast";
-
-    toast.textContent = message;
-
-    document.body.appendChild(toast);
-
-    setTimeout(() => {
-
-        toast.classList.add("show");
-
-    }, 100);
-
-    setTimeout(() => {
-
-        toast.classList.remove("show");
-
-        setTimeout(() => {
-
-            toast.remove();
-
-        }, 400);
-
-    }, 3000);
-
-}
-
-/* Demo */
-
-setTimeout(() => {
-
-    showToast("Welcome to SPM AI");
-
-}, 2000);
-/* ==========================================
-   Particle Background
-========================================== */
-
-const particleContainer = document.getElementById("particles");
-
-if (particleContainer) {
-
-    for (let i = 0; i < 40; i++) {
-
-        const particle = document.createElement("span");
-
-        particle.className = "particle";
-
-        particle.style.left = Math.random() * 100 + "%";
-        particle.style.top = Math.random() * 100 + "%";
-
-        particle.style.animationDuration =
-            5 + Math.random() * 10 + "s";
-
-        particle.style.animationDelay =
-            Math.random() * 5 + "s";
-
-        particleContainer.appendChild(particle);
-
-    }
-
-}
-
-/* ==========================================
-   Mouse Glow Effect
-========================================== */
-
-const mouseGlow = document.getElementById("mouseGlow");
-
-document.addEventListener("mousemove", (event) => {
-
-    if (!mouseGlow) return;
-
-    mouseGlow.style.left = event.clientX + "px";
-    mouseGlow.style.top = event.clientY + "px";
-
-});
-
-/* ==========================================
-   Hero Parallax
-========================================== */
-
-const heroImage = document.querySelector(".hero-right img");
-
-window.addEventListener("scroll", () => {
-
-    if (!heroImage) return;
-
-    const offset = window.scrollY * 0.2;
-
-    heroImage.style.transform =
-        `translateY(${offset}px)`;
-
-});
-
-/* ==========================================
-   Auto Number Counter
-========================================== */
-
-const autoCounters = document.querySelectorAll("[data-counter]");
-
-autoCounters.forEach(counter => {
-
-    const target = Number(counter.dataset.counter);
-
-    let current = 0;
-
-    const increment = Math.max(1, Math.ceil(target / 100));
-
-    const timer = setInterval(() => {
-
-        current += increment;
-
-        if (current >= target) {
-
-            current = target;
-
-            clearInterval(timer);
-
-        }
-
-        counter.textContent = current.toLocaleString();
-
-    }, 20);
-
-});
-
-/* ==========================================
-   Online / Offline Detection
-========================================== */
-
-function updateConnectionStatus() {
-
-    if (navigator.onLine) {
-
-        showToast("Internet Connected");
-
-    } else {
-
-        showToast("Internet Disconnected");
-
-    }
-
-}
-
-window.addEventListener("online", updateConnectionStatus);
-
-window.addEventListener("offline", updateConnectionStatus);
+updateClock();
 
 /* ==========================================
    Current Year
 ========================================== */
 
-const copyrightYear = document.getElementById("copyrightYear");
+const currentYear = document.getElementById("currentYear");
 
-if (copyrightYear) {
+if (currentYear) {
 
-    copyrightYear.textContent =
-        new Date().getFullYear();
+currentYear.textContent = new Date().getFullYear();
 
 }
 
 /* ==========================================
-   Page Visibility
+   Console Welcome
 ========================================== */
 
-document.addEventListener("visibilitychange", () => {
+console.log("%cSPM AI Website Loaded Successfully 🚀",
+"color:#00e5ff;font-size:16px;font-weight:bold;");
+/* ==========================================
+   Copy To Clipboard
+========================================== */
 
-    if (document.hidden) {
+document.querySelectorAll("[data-copy]").forEach((button)=>{
 
-        console.log("User Left Website");
+button.addEventListener("click",async()=>{
 
-    } else {
+const text = button.dataset.copy;
 
-        console.log("User Returned");
+try{
 
-    }
+await navigator.clipboard.writeText(text);
+
+const oldText = button.innerHTML;
+
+button.innerHTML = "✓ Copied";
+
+setTimeout(()=>{
+
+button.innerHTML = oldText;
+
+},2000);
+
+}catch(error){
+
+console.error("Copy failed:",error);
+
+}
 
 });
-/* ==========================================
-   Contact Form Validation
-========================================== */
-
-const contactForm = document.getElementById("contactForm");
-
-if (contactForm) {
-
-    contactForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        const inputs = contactForm.querySelectorAll(
-
-            "input, textarea"
-
-        );
-
-        let valid = true;
-
-        inputs.forEach(input => {
-
-            if (input.value.trim() === "") {
-
-                valid = false;
-
-                input.focus();
-
-            }
-
-        });
-
-        if (!valid) {
-
-            showToast("Please fill all fields.");
-
-            return;
-
-        }
-
-        showToast("Message Sent Successfully.");
-
-        contactForm.reset();
-
-    });
-
-}
-
-/* ==========================================
-   Recharge Form Validation
-========================================== */
-
-const rechargeForm = document.getElementById("rechargeForm");
-
-if (rechargeForm) {
-
-    rechargeForm.addEventListener("submit", function (event) {
-
-        event.preventDefault();
-
-        showToast("Recharge request submitted.");
-
-        rechargeForm.reset();
-
-    });
-
-}
-
-/* ==========================================
-   Copy Text Helper
-========================================== */
-
-function copyText(text) {
-
-    navigator.clipboard.writeText(text)
-
-        .then(() => {
-
-            showToast("Copied Successfully");
-
-        })
-
-        .catch(() => {
-
-            showToast("Copy Failed");
-
-        });
-
-}
-
-/* ==========================================
-   WhatsApp Channel
-========================================== */
-
-const whatsappButton = document.getElementById("joinWhatsapp");
-
-whatsappButton?.addEventListener("click", () => {
-
-    window.open(
-
-        "https://whatsapp.com/channel/0029VbAyICF0rGiUGHjnkH34",
-
-        "_blank"
-
-    );
 
 });
 
 /* ==========================================
-   YOYO Download
+   Button Loading Effect
 ========================================== */
 
-const downloadButton = document.getElementById("downloadYoyo");
+document.querySelectorAll(".loading-btn").forEach((button)=>{
 
-downloadButton?.addEventListener("click", () => {
+button.addEventListener("click",()=>{
 
-    window.open(
+const originalText = button.innerHTML;
 
-        "https://play.google.com/store/apps/details?id=com.fun.share",
+button.disabled = true;
 
-        "_blank"
+button.innerHTML = "Please Wait...";
 
-    );
+setTimeout(()=>{
+
+button.disabled = false;
+
+button.innerHTML = originalText;
+
+},2000);
+
+});
 
 });
 
 /* ==========================================
-   Performance
+   Image Lazy Loading
 ========================================== */
 
-window.addEventListener("load", () => {
+document.querySelectorAll("img").forEach((img)=>{
 
-    if ("requestIdleCallback" in window) {
+if(!img.hasAttribute("loading")){
 
-        requestIdleCallback(() => {
+img.setAttribute("loading","lazy");
 
-            console.log("Background tasks completed.");
+}
 
-        });
+});
 
-    }
+/* ==========================================
+   Disable Right Click (Optional)
+========================================== */
+
+// document.addEventListener("contextmenu",(e)=>{
+
+// e.preventDefault();
+
+// });
+
+/* ==========================================
+   Disable Drag Images
+========================================== */
+
+document.querySelectorAll("img").forEach((img)=>{
+
+img.addEventListener("dragstart",(e)=>{
+
+e.preventDefault();
+
+});
+
+});
+
+/* ==========================================
+   App Initialization
+========================================== */
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+console.log("SPM AI initialized successfully.");
 
 });
 
@@ -797,24 +516,24 @@ window.addEventListener("load", () => {
    Global Error Handler
 ========================================== */
 
-window.addEventListener("error", (event) => {
+window.addEventListener("error",(event)=>{
 
-    console.error(
-
-        "Application Error:",
-
-        event.message
-
-    );
+console.error("JavaScript Error:",event.message);
 
 });
 
 /* ==========================================
-   Welcome
+   Unhandled Promise Rejection
 ========================================== */
 
-console.log(
+window.addEventListener("unhandledrejection",(event)=>{
 
-    "SPM AI Loaded Successfully"
+console.error("Unhandled Promise:",event.reason);
 
-);
+});
+
+/* ==========================================
+   End Of File
+========================================== */
+
+console.log("app.js loaded successfully ✅");
