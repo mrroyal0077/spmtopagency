@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPM TOP AGENCY | Powered By SPM AI</title>
+
+<meta name="description"
+content="Official Coin Seller, Paid Sending, VIP Upgrade, Agency Services & SPM AI">
+
+<meta name="theme-color"
+content="#0a0f1f">
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="bg-animation"></div>
+
+<header>
+
+<div class="logo">
+
+<h2>
+
+SPM <span>TOP AGENCY</span>
+
+</h2>
+
+<p>
+
+Powered By SPM AI
+
+</p>
+
+</div>
+
+<nav>
+
+<a href="#home">Home</a>
+
+<a href="#services">Services</a>
+
+<a href="#calculator">Calculator</a>
+
+<a href="#dealers">Dealers</a>
+
+<a href="#contact">Contact</a>
+
+</nav>
+
+</header>
+
+<section
+class="hero"
+id="home">
+
+<div class="hero-left">
+
+<div class="tag">
+
+🚀 INDIA'S SMART COIN PLATFORM
+
+</div>
+
+<h1>
+
+WELCOME TO
+
+<span>
+
+SPM TOP AGENCY
+
+</span>
+
+</h1>
+
+<p>
+
+Official Coin Seller,
+Paid Sending,
+VIP Upgrade,
+Agency Services,
+Events &
+AI Smart Support.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#calculator"
+class="btn">
+
+Recharge Now
+
+</a>
+
+<a
+href="#contact"
+class="btn2">
+
+Contact Dealer
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<div class="circle">
+
+<div class="coin">
+
+🪙
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ===========================
+     LIVE STATS
+=========================== -->
+
+<section class="stats">
+
+<div class="container">
+
+<div class="stat-box">
+<h2>25K+</h2>
+<p>Happy Customers</p>
+</div>
+
+<div class="stat-box">
+<h2>500M+</h2>
+<p>Coins Delivered</p>
+</div>
+
+<div class="stat-box">
+<h2>24×7</h2>
+<p>Support</p>
+</div>
+
+<div class="stat-box">
+<h2>100%</h2>
+<p>Trusted</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     SERVICES
+=========================== -->
+
+<section id="services" class="services">
+
+<div class="title">
+
+<h2>OUR PREMIUM SERVICES</h2>
+
+<p>
+
+Everything You Need In One Platform
+
+</p>
+
+</div>
+
+<div class="service-grid">
+
+<div class="card">
+
+<div class="icon">🤖</div>
+
+<h3>SPM AI Assistant</h3>
+
+<p>
+
+24×7 AI Smart Support
+For Every User.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🪙</div>
+
+<h3>Coin Recharge</h3>
+
+<p>
+
+Official Coin Recharge
+Fast & Secure.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">💸</div>
+
+<h3>Paid Sending</h3>
+
+<p>
+
+100,000 Coins = ₹6,000
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">👑</div>
+
+<h3>VIP Upgrade</h3>
+
+<p>
+
+Official VIP Upgrade
+Instant Service.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">🏆</div>
+
+<h3>Agency Join</h3>
+
+<p>
+
+Join SPM TOP AGENCY
+
+Agency Code : 100857
+
+</p>
+
+</div>
+
+<div class="card">
+
+<div class="icon">⚡</div>
+
+<h3>24×7 Service</h3>
+
+<p>
+
+Fast Delivery
+
+Trusted Support
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     RECHARGE CALCULATOR
+=========================== -->
+
+<section id="calculator" class="calculator">
+
+<div class="title">
+
+<h2>
+
+Recharge Calculator
+
+</h2>
+
+<p>
+
+₹100 = 1260 Coins
+
+</p>
+
+</div>
+
+<div class="calc-box">
+
+<input
+type="number"
+id="amount"
+placeholder="Enter Recharge Amount">
+
+<button
+onclick="calculateCoins()">
+
+Calculate Coins
+
+</button>
+
+<h3 id="coinResult">
+
+0 Coins
+
+</h3>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     PAID SENDING
+=========================== -->
+
+<section class="calculator">
+
+<div class="title">
+
+<h2>
+
+Paid Sending Calculator
+
+</h2>
+
+<p>
+
+100,000 Coins = ₹6,000
+
+</p>
+
+</div>
+
+<div class="calc-box">
+
+<input
+type="number"
+id="paidCoins"
+placeholder="Enter Coins">
+
+<button
+onclick="calculatePaid()">
+
+Calculate Amount
+
+</button>
+
+<h3 id="paidResult">
+
+₹0
+
+</h3>
+
+</div>
+
+</section>
+<!-- ===========================
+     OFFICIAL DEALERS
+=========================== -->
+
+<section id="dealers" class="dealers">
+
+<div class="title">
+
+<h2>OFFICIAL DEALERS</h2>
+
+<p>Trusted • Fast • Genuine</p>
+
+</div>
+
+<div class="dealer-grid">
+
+<div class="dealer-card">
+
+<div class="dealer-icon">👨‍💼</div>
+
+<h3>Official Dealer</h3>
+
+<p>24×7 Coin Recharge & Paid Sending</p>
+
+<a href="https://wa.me/919999999999" class="btn">
+WhatsApp
+</a>
+
+</div>
+
+<div class="dealer-card">
+
+<div class="dealer-icon">👑</div>
+
+<h3>VIP Support</h3>
+
+<p>Official VIP Upgrade & Agency Help</p>
+
+<a href="https://t.me/" class="btn">
+Telegram
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     SPM AI ASSISTANT
+=========================== -->
+
+<section class="ai-section">
+
+<div class="title">
+
+<h2>SPM AI ASSISTANT</h2>
+
+<p>Your Smart Recharge Assistant</p>
+
+</div>
+
+<div class="ai-box">
+
+<input
+type="text"
+id="userInput"
+placeholder="Ask SPM AI...">
+
+<button onclick="sendMessage()">
+
+Send
+
+</button>
+
+<div id="chatMessages">
+
+<p>
+
+🤖 Hello! Welcome to SPM TOP AGENCY.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     WHY CHOOSE US
+=========================== -->
+
+<section class="features">
+
+<div class="title">
+
+<h2>WHY CHOOSE US</h2>
+
+</div>
+
+<div class="feature-grid">
+
+<div class="feature">
+
+⚡ Fast Delivery
+
+</div>
+
+<div class="feature">
+
+🔒 Secure Payment
+
+</div>
+
+<div class="feature">
+
+💯 Trusted Service
+
+</div>
+
+<div class="feature">
+
+📞 24×7 Support
+
+</div>
+
+<div class="feature">
+
+🤖 AI Powered
+
+</div>
+
+<div class="feature">
+
+🌍 Worldwide
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+     CONTACT
+=========================== -->
+
+<section id="contact" class="contact">
+
+<div class="title">
+
+<h2>CONTACT US</h2>
+
+</div>
+
+<div class="contact-buttons">
+
+<a href="https://wa.me/919999999999" class="contact-btn">
+
+💬 WhatsApp
+
+</a>
+
+<a href="mailto:spmtopagency@gmail.com" class="contact-btn">
+
+📧 Email
+
+</a>
+
+<a href="https://t.me/" class="contact-btn">
+
+📢 Telegram
+
+</a>
+
+</div>
+
+</section>
+
+<!-- Floating WhatsApp -->
+
+<a
+href="https://wa.me/919999999999"
+class="floating-btn">
+
+💬
+
+</a>
+
+<!-- Footer -->
+
+<footer>
+
+<h2>
+
+SPM TOP AGENCY
+
+</h2>
+
+<p>
+
+Powered By <span>SPM AI</span>
+
+</p>
+
+<p>
+
+Agency Code : 100857
+
+</p>
+
+<p>
+
+© 2026 All Rights Reserved.
+
+</p>
+
+</footer>
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
