@@ -1,0 +1,102 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+match /databases/{database}/documents {
+
+/* ===========================
+   AUTHENTICATED USERS
+=========================== */
+
+match /users/{userId} {
+
+allow read, update:
+
+if request.auth != null
+
+&& request.auth.uid == userId;
+
+allow create:
+
+if request.auth != null;
+
+}
+
+/* ===========================
+   PAYMENTS
+=========================== */
+
+match /payments/{paymentId} {
+
+allow create:
+
+if request.auth != null;
+
+allow read:
+
+if request.auth != null
+
+&& request.auth.uid == resource.data.userId;
+
+allow update:
+
+if false;
+
+}
+
+/* ===========================
+   ORDERS
+=========================== */
+
+match /orders/{orderId} {
+
+allow create:
+
+if request.auth != null;
+
+allow read:
+
+if request.auth != null
+
+&& request.auth.uid == resource.data.uid;
+
+allow update:
+
+if false;
+
+}
+
+/* ===========================
+   NOTIFICATIONS
+=========================== */
+
+match /notifications/{id} {
+
+allow read:
+
+if request.auth != null
+
+&& request.auth.uid == resource.data.uid;
+
+}
+
+/* ===========================
+   ADMIN
+=========================== */
+
+match /admins/{id} {
+
+allow read:
+
+if request.auth != null
+
+&& request.auth.uid == id;
+
+allow write:
+
+if false;
+
+}
+
+}
+}
