@@ -1,71 +1,23 @@
 {
   "name": "SPM TOP AGENCY",
-  "short_name": "SPM AI",
-  "description": "SPM TOP AGENCY - Powered By SPM AI",
+  "short_name": "SPM",
+  "description": "Official Coin Seller | Powered By SPM AI",
   "start_url": "./",
-  "scope": "./",
   "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#0a0f1f",
   "orientation": "portrait",
-  "background_color": "#070b15",
-  "theme_color": "#FFD700",
   "lang": "en",
-  "dir": "ltr",
-
   "icons": [
     {
-      "src": "assets/icon-72.png",
-      "sizes": "72x72",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-96.png",
-      "sizes": "96x96",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-128.png",
-      "sizes": "128x128",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-144.png",
-      "sizes": "144x144",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-152.png",
-      "sizes": "152x152",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "assets/icon-384.png",
-      "sizes": "384x384",
-      "type": "image/png"
-    },
-    {
-      "src": "assets/icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
-  ],
-
-  "categories": [
-    "business",
-    "finance",
-    "utilities"
-  ],
-
-  "screenshots": [
-    {
-      "src": "assets/screenshot1.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "narrow"
     }
   ]
 }
