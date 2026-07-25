@@ -1,14 +1,5 @@
-# ==========================================
-# SPM TOP AGENCY
-# Powered By SPM AI
-# ==========================================
-
 User-agent: *
 
 Allow: /
-
-Disallow: /private/
-Disallow: /temp/
-Disallow: /admin/
 
 Sitemap: https://mrroyal0077.github.io/spmtopagency/sitemap.xml
