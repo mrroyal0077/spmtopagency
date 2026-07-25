@@ -1,47 +1,60 @@
-# SPM TOP AGENCY
+# 🚀 SPM TOP AGENCY
 
-A modern AI-powered website for SPM TOP AGENCY.
+Official Coin Seller & Agency Platform
 
-## Features
+**Powered by SPM AI**
 
-- Modern Responsive Design
-- Fast Loading
-- Mobile Friendly
-- SEO Optimized
-- Contact Section
-- Services Section
-- PWA Support
+---
 
-## Tech Stack
+## ✨ Features
 
-- HTML5
-- CSS3
-- JavaScript
-- Firebase
+- 🪙 Coin Recharge Calculator
+- 💸 Paid Sending Calculator
+- 🤖 SPM AI Assistant
+- 👑 VIP Upgrade
+- 🏆 Official Dealers
+- 📱 PWA Support
+- ⚡ Fast Loading
+- 🌐 Responsive Design
+- 🔒 Secure & Modern UI
 
-## Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/spmtopagency.git
-   ```
+## 📊 Coin Rate
 
-2. Open the project folder.
+| Amount | Coins |
+|--------:|------:|
+| ₹100 | 1,260 |
+| ₹200 | 2,520 |
+| ₹500 | 6,300 |
+| ₹1,000 | 12,600 |
 
-3. Run the project locally or deploy with Firebase Hosting.
+---
 
-## Deployment
+## 💰 Paid Sending
 
-Deploy using Firebase Hosting:
+**100,000 Coins = ₹6,000**
 
-```bash
-firebase deploy
-```
+---
 
-## Author
+## 🏢 Agency
 
-**SPM TOP AGENCY**
+**Agency Name:** SPM TOP AGENCY
 
-## License
+**Agency Code:** 100857
 
-MIT License
+---
+
+## 🌐 Live Website
+
+https://mrroyal0077.github.io/spmtopagency/
+
+---
+
+## 👨‍💻 Developed By
+
+**SPM AI**
+
+Powered by SPM TOP AGENCY
+
+© 2026 All Rights Reserved.
