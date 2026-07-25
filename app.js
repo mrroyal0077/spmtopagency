@@ -875,3 +875,24 @@ if (year) {
 year.textContent = new Date().getFullYear();
 
 }
+if ("serviceWorker" in navigator) {
+
+window.addEventListener("load", () => {
+
+navigator.serviceWorker.register("./service-worker.js")
+
+.then(() => {
+
+console.log("SPM AI Service Worker Registered");
+
+})
+
+.catch((error) => {
+
+console.error(error);
+
+});
+
+});
+
+}
