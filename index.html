@@ -10,42 +10,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 2050 RGB AUTO-CHANGING NEON GLASSMORPHISM THEME --- */
+        /* --- 2050 ULTRA MODERN AI THEME --- */
         :root {
             --bg-dark: #030308;
-            --card-bg: rgba(15, 15, 28, 0.75);
+            --card-bg: rgba(15, 15, 28, 0.85);
             --gold: #ffd700;
-            --gold-glow: rgba(255, 215, 0, 0.4);
-            --border-color: rgba(255, 255, 255, 0.15);
+            --cyan: #00f3ff;
+            --pink: #ff0055;
+            --border-color: rgba(0, 243, 255, 0.3);
             --text-main: #ffffff;
             --text-sub: #b0b5d0;
         }
 
-        /* Continuous Dynamic RGB Color Changing Border & Glow Effect */
-        @keyframes rgbGlow {
-            0% { --rgb-color: #ff0055; --rgb-glow: rgba(ff, 0, 85, 0.5); }
-            25% { --rgb-color: #00f3ff; --rgb-glow: rgba(0, 243, 255, 0.5); }
-            50% { --rgb-color: #ffd700; --rgb-glow: rgba(255, 215, 0, 0.5); }
-            75% { --rgb-color: #00ff66; --rgb-glow: rgba(0, 255, 102, 0.5); }
-            100% { --rgb-color: #bf00ff; --rgb-glow: rgba(191, 0, 255, 0.5); }
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
+        
         body { 
             background-color: var(--bg-dark); 
             color: var(--text-main); 
             overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 85, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.12) 0%, transparent 40%);
+        }
+
+        /* Continuous Dynamic Glow */
+        @keyframes neonPulse {
+            0% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(0, 243, 255, 0.3); }
         }
 
         /* --- STICKY NEON HEADER --- */
         header {
             position: sticky; top: 0; z-index: 1000;
-            background: rgba(3, 3, 8, 0.85); backdrop-filter: blur(15px);
-            border-bottom: 2px solid #00f3ff;
-            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            background: rgba(3, 3, 8, 0.95); backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--cyan);
+            animation: neonPulse 3s infinite;
             display: flex; justify-content: space-between; align-items: center;
             padding: 12px 5%;
         }
@@ -55,18 +55,20 @@
             font-family: 'Orbitron', sans-serif; font-size: 1.8rem; font-weight: 900; 
             background: linear-gradient(45deg, #ffd700, #00f3ff, #ff0055);
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
         .agency-badge { 
             background: linear-gradient(45deg, var(--gold), #ff8800); color: #000; 
             padding: 3px 10px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; font-family: 'Orbitron'; 
         }
 
-        /* Language Switcher */
+        .nav-menu { display: flex; gap: 15px; align-items: center; }
+        .nav-link { color: #fff; text-decoration: none; font-family: 'Orbitron'; font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
+        .nav-link:hover { color: var(--cyan); }
+
         .lang-selector {
-            background: rgba(0, 243, 255, 0.1); border: 1px solid #00f3ff;
-            color: #00f3ff; padding: 6px 14px; border-radius: 20px; font-weight: 700; cursor: pointer;
-            outline: none; font-family: 'Orbitron';
+            background: rgba(0, 243, 255, 0.1); border: 1px solid var(--cyan);
+            color: var(--cyan); padding: 5px 10px; border-radius: 15px; font-weight: 700; cursor: pointer;
+            outline: none; font-family: 'Orbitron'; font-size: 0.8rem;
         }
         .lang-selector option { background: #0b0c10; color: #fff; }
 
@@ -80,32 +82,36 @@
         .tagline { color: #00f3ff; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; }
         
         .ai-ticker {
-            background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.3);
-            color: var(--gold); padding: 8px 15px; border-radius: 20px; display: inline-block;
-            margin-top: 15px; font-size: 0.95rem; font-family: 'Orbitron';
+            background: rgba(255, 215, 0, 0.1); border: 1px solid rgba(255, 215, 0, 0.4);
+            color: var(--gold); padding: 8px 18px; border-radius: 20px; display: inline-block;
+            margin-top: 15px; font-size: 0.95rem; font-family: 'Orbitron'; box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
         }
 
-        /* --- CONTAINER & CARDS --- */
+        /* --- LAYOUT CONTAINER --- */
         .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        
         .section-title { 
             font-family: 'Orbitron', sans-serif; font-size: 1.8rem; color: var(--gold); 
-            margin: 40px 0 20px; text-align: center; text-transform: uppercase; 
-            letter-spacing: 1.5px;
+            margin: 50px 0 25px; text-align: center; text-transform: uppercase; 
+            letter-spacing: 1.5px; position: relative;
+        }
+        .section-title::after {
+            content: ''; display: block; width: 80px; height: 3px; 
+            background: linear-gradient(90deg, var(--gold), var(--cyan)); margin: 8px auto 0; border-radius: 2px;
         }
 
         /* --- SMART AI CALCULATOR --- */
         .calc-box {
-            background: var(--card-bg); border: 2px solid #00f3ff;
-            border-radius: 20px; padding: 25px; box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
-            max-width: 550px; margin: 0 auto 30px; text-align: center; backdrop-filter: blur(12px);
+            background: var(--card-bg); border: 2px solid var(--cyan);
+            border-radius: 20px; padding: 30px; box-shadow: 0 0 25px rgba(0, 243, 255, 0.25);
+            max-width: 600px; margin: 0 auto 30px; text-align: center; backdrop-filter: blur(12px);
         }
         .calc-input {
             width: 100%; padding: 14px; margin: 15px 0; background: rgba(0, 0, 0, 0.7);
             border: 1px solid var(--border-color); border-radius: 10px; color: #fff;
-            font-size: 1.4rem; font-family: 'Orbitron'; text-align: center; outline: none;
-            transition: 0.3s;
+            font-size: 1.4rem; font-family: 'Orbitron'; text-align: center; outline: none; transition: 0.3s;
         }
-        .calc-input:focus { border-color: #00f3ff; box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
+        .calc-input:focus { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 243, 255, 0.4); }
         .calc-result { font-size: 1.8rem; color: var(--gold); font-weight: bold; margin: 15px 0; font-family: 'Orbitron'; }
 
         /* --- PRICE CHARTER GRID --- */
@@ -116,7 +122,7 @@
             transition: 0.3s ease; backdrop-filter: blur(10px);
         }
         .price-card:hover { 
-            transform: translateY(-8px); border-color: #ffd700; 
+            transform: translateY(-8px); border-color: var(--gold); 
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.35); 
         }
         .price-card .amount { font-family: 'Orbitron'; font-size: 1.8rem; color: #fff; }
@@ -125,43 +131,48 @@
         /* --- BUTTONS --- */
         .btn-buy {
             display: inline-block; width: 100%; padding: 12px; border: none;
-            background: linear-gradient(45deg, #ffd700, #ff8800); color: #000;
+            background: linear-gradient(45deg, var(--gold), #ff8800); color: #000;
             font-family: 'Orbitron'; font-weight: 800; border-radius: 8px; cursor: pointer;
-            text-decoration: none; text-transform: uppercase; transition: 0.3s;
+            text-decoration: none; text-transform: uppercase; transition: 0.3s; text-align: center;
         }
         .btn-buy:hover { box-shadow: 0 0 20px rgba(255, 215, 0, 0.6); opacity: 0.95; }
 
         /* --- VIP & PAID SENDING SECTION --- */
         .vip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .vip-card {
-            background: linear-gradient(135deg, rgba(255, 0, 85, 0.1), rgba(15, 15, 28, 0.8));
-            border: 1px solid #ff0055; border-radius: 16px; padding: 25px; text-align: center;
-            box-shadow: 0 0 15px rgba(ff, 0, 85, 0.2);
+            background: linear-gradient(135deg, rgba(255, 0, 85, 0.12), rgba(15, 15, 28, 0.85));
+            border: 1px solid var(--pink); border-radius: 16px; padding: 25px; text-align: center;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.2); backdrop-filter: blur(10px);
         }
-        .vip-card h3 { font-family: 'Orbitron'; color: #ff0055; font-size: 1.5rem; margin-bottom: 10px; }
-        .vip-card p { color: var(--text-sub); margin-bottom: 15px; }
+        .vip-card h3 { font-family: 'Orbitron'; color: var(--pink); font-size: 1.5rem; margin-bottom: 10px; }
+        .vip-card p { color: var(--text-sub); margin-bottom: 15px; font-size: 0.95rem; line-height: 1.5; }
 
         /* --- CONTACT CARDS --- */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
         .contact-card { 
-            background: var(--card-bg); border: 1px solid #00f3ff; padding: 22px; 
-            border-radius: 16px; text-align: center; box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+            background: var(--card-bg); border: 1px solid var(--cyan); padding: 22px; 
+            border-radius: 16px; text-align: center; box-shadow: 0 0 15px rgba(0, 243, 255, 0.15); backdrop-filter: blur(10px);
         }
-        .contact-card h3 { color: #00f3ff; margin-bottom: 8px; font-family: 'Orbitron'; font-size: 1.4rem; }
+        .contact-card h3 { color: var(--cyan); margin-bottom: 8px; font-family: 'Orbitron'; font-size: 1.4rem; }
         
         .social-btn {
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 14px; margin-top: 12px; border-radius: 10px; text-decoration: none;
+            padding: 12px; margin-top: 12px; border-radius: 10px; text-decoration: none;
             font-weight: bold; font-family: 'Orbitron'; transition: 0.3s;
         }
         .wa-btn { background: #25d366; color: #fff; }
         .wa-btn:hover { box-shadow: 0 0 15px rgba(37, 211, 102, 0.5); }
-        .wa-channel-btn { background: linear-gradient(45deg, #128c7e, #075e54); color: #fff; width: 100%; }
+        .wa-channel-btn { background: linear-gradient(45deg, #128c7e, #075e54); color: #fff; width: 100%; padding: 15px; }
+
+        /* --- FAQ SECTION --- */
+        .faq-box { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; margin-bottom: 12px; padding: 15px 20px; cursor: pointer; }
+        .faq-question { font-family: 'Orbitron'; color: var(--cyan); font-size: 1.1rem; display: flex; justify-content: space-between; }
+        .faq-answer { color: var(--text-sub); margin-top: 10px; display: none; font-size: 0.95rem; line-height: 1.5; }
 
         /* --- AI ASSISTANT FLOATING BUTTON & MODAL --- */
         .ai-fab {
             position: fixed; bottom: 25px; right: 25px;
-            background: linear-gradient(45deg, #00f3ff, #bf00ff);
+            background: linear-gradient(45deg, var(--cyan), #bf00ff);
             width: 60px; height: 60px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
             color: #fff; font-size: 1.8rem; cursor: pointer;
@@ -171,22 +182,20 @@
 
         .ai-modal {
             display: none; position: fixed; bottom: 95px; right: 25px; width: 330px;
-            background: rgba(10, 10, 20, 0.95); border: 2px solid #00f3ff;
+            background: rgba(10, 10, 20, 0.95); border: 2px solid var(--cyan);
             border-radius: 16px; padding: 20px; box-shadow: 0 0 25px rgba(0, 243, 255, 0.4);
             z-index: 1001; backdrop-filter: blur(15px);
         }
-        .ai-modal h4 { color: #00f3ff; font-family: 'Orbitron'; margin-bottom: 10px; display: flex; justify-content: space-between; }
-        .ai-close { cursor: pointer; color: #ff0055; }
-        .ai-body { max-height: 200px; overflow-y: auto; color: #ccc; font-size: 0.9rem; margin-bottom: 10px; }
+        .ai-modal h4 { color: var(--cyan); font-family: 'Orbitron'; margin-bottom: 10px; display: flex; justify-content: space-between; }
+        .ai-close { cursor: pointer; color: var(--pink); }
+        .ai-body { max-height: 220px; overflow-y: auto; color: #ccc; font-size: 0.9rem; margin-bottom: 10px; }
 
-        /* Footer */
         footer { margin-top: 60px; padding: 25px; text-align: center; border-top: 1px solid var(--border-color); color: #777; font-size: 0.9rem; }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* Mobile View Simple Clean Layout */
             .hero h1 { font-size: 2rem; }
             .tagline { font-size: 0.95rem; }
-            .calc-input { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -198,6 +207,15 @@
             <span class="logo-text">SPM AI</span>
             <span class="agency-badge">CODE 100857</span>
         </div>
+        
+        <div class="nav-menu">
+            <a href="#calculator" class="nav-link">Calculator</a>
+            <a href="#charter" class="nav-link">Coins</a>
+            <a href="#vip" class="nav-link">VIP</a>
+            <a href="#agency" class="nav-link">Agency</a>
+            <a href="#faq" class="nav-link">FAQ</a>
+        </div>
+
         <select class="lang-selector" id="langSelect" onchange="changeLanguage()">
             <option value="en">🇮🇳 English</option>
             <option value="hi">🇮🇳 हिन्दी</option>
@@ -215,41 +233,57 @@
 
     <div class="container">
         
-        <!-- Live AI Coin Calculator -->
+        <!-- Smart AI Coin Calculator -->
+        <div id="calculator"></div>
         <h2 class="section-title" id="calcTitle">🤖 Smart AI Coin Calculator</h2>
         <div class="calc-box">
             <label for="rupeeInput" style="color: var(--text-sub); font-size: 1.1rem;" id="calcLabel">Amount Enter Karein (₹ INR):</label>
             <input type="number" id="rupeeInput" class="calc-input" placeholder="e.g. 1000" oninput="calculateCoins()">
             <div class="calc-result" id="calcResult">0 Coins</div>
-            <a id="calcBuyBtn" href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20mujhe%20coins%20buy%20karne%20hain" class="btn-buy" target="_blank" id="calcBtnText">Order Via WhatsApp</a>
+            <a id="calcBuyBtn" href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20mujhe%20coins%20buy%20karne%20hain" class="btn-buy" target="_blank">Order Via WhatsApp</a>
         </div>
 
         <!-- Official Coin Rates Charter -->
+        <div id="charter"></div>
         <h2 class="section-title" id="charterTitle">🪙 Official Coin Charter</h2>
-        <div class="price-grid" id="priceGrid">
-            <!-- Price cards populated by JavaScript -->
-        </div>
+        <div class="price-grid" id="priceGrid"></div>
 
-        <!-- VIP Upgrade & Paid Sending -->
+        <!-- VIP & Paid Sending Services -->
+        <div id="vip"></div>
         <h2 class="section-title" id="vipTitle">👑 VIP & Paid Sending Services</h2>
         <div class="vip-grid">
             <div class="vip-card">
                 <h3>VIP Upgrade</h3>
                 <p>YoYo VIP Level fast boost aur official perks ke liye request submit karein.</p>
-                <a href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20mujhe%20YoYo%20VIP%20Upgrade%20chahiye." class="btn-buy" style="background: linear-gradient(45deg, #ff0055, #bf00ff); color: #fff;" target="_blank">Upgrade VIP</a>
+                <a href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20mujhe%20YoYo%20VIP%20Upgrade%20chahiye." class="btn-buy" style="background: linear-gradient(45deg, var(--pink), #bf00ff); color: #fff;" target="_blank">Upgrade VIP</a>
             </div>
             <div class="vip-card">
                 <h3>Paid Sending</h3>
                 <p>Daily / Weekly Event Paid Sending aur Top Target Boost ke liye contact karein.</p>
-                <a href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20Paid%20Sending%20details%20chahiye." class="btn-buy" style="background: linear-gradient(45deg, #ff0055, #bf00ff); color: #fff;" target="_blank">Apply Paid Sending</a>
+                <a href="https://wa.me/919329687975?text=Hi%20Mr%20Rishi,%20Paid%20Sending%20details%20chahiye." class="btn-buy" style="background: linear-gradient(45deg, var(--pink), #bf00ff); color: #fff;" target="_blank">Apply Paid Sending</a>
             </div>
         </div>
 
         <!-- Join Agency Section -->
+        <div id="agency"></div>
         <h2 class="section-title" id="agencyTitle">🏢 Join SPM TOP AGENCY</h2>
-        <div class="calc-box" style="border-color: #ffd700; max-width: 800px;">
-            <p style="color: #ccc; margin-bottom: 15px; font-size: 1.1rem;">Official Hosting, High Targets, 24/7 Support, aur Time-to-Time Payout. Host banne ke liye direct contact karein!</p>
+        <div class="calc-box" style="border-color: var(--gold); max-width: 800px;">
+            <p style="color: #ccc; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.6;">
+                Official Hosting, Best Targets, 24/7 Support, aur Time-to-Time Payout. Host banne ke liye direct Mr. Abhi se contact karein!
+            </p>
             <a href="https://wa.me/917070028414?text=Hi%20Mr%20Abhi,%20mujhe%20SPM%20Agency%20me%20Host%20join%20karna%20hai." class="btn-buy" target="_blank">Join As Host (Mr. Abhi)</a>
+        </div>
+
+        <!-- Frequently Asked Questions -->
+        <div id="faq"></div>
+        <h2 class="section-title">❓ Frequently Asked Questions</h2>
+        <div class="faq-box" onclick="toggleFaq('f1')">
+            <div class="faq-question">Coins kitne time me milte hain? <span>+</span></div>
+            <div class="faq-answer" id="f1">Payment verify hone ke 1 se 5 minute ke andar coins aapki YoYo ID par transfer ho jaate hain.</div>
+        </div>
+        <div class="faq-box" onclick="toggleFaq('f2')">
+            <div class="faq-question">Agency Join karne ka kya charge hai? <span>+</span></div>
+            <div class="faq-answer" id="f2">SPM TOP AGENCY join karna 100% Free hai. Koi bhi extra fee nahi li jaati.</div>
         </div>
 
         <!-- Official Support & Contacts -->
@@ -271,7 +305,7 @@
             </div>
         </div>
 
-        <!-- Official Channel -->
+        <!-- WhatsApp Channel -->
         <div style="margin-top: 30px;">
             <a href="https://whatsapp.com/channel/0029VbAyICF0rGiUGHjnkH34" class="social-btn wa-channel-btn" target="_blank">
                 <i class="fas fa-bullhorn"></i> Join Official WhatsApp Channel
@@ -280,16 +314,16 @@
 
     </div>
 
-    <!-- AI Assistant Floating Button -->
-    <div class="ai-fab" onclick="toggleAI()"><i class="fas fa-headset"></i></div>
+    <!-- Floating AI Assistant Button -->
+    <div class="ai-fab" onclick="toggleAI()"><i class="fas fa-robot"></i></div>
 
-    <!-- AI Assistant Modal -->
+    <!-- Floating AI Assistant Modal -->
     <div class="ai-modal" id="aiModal">
         <h4><span>🤖 SPM AI Assistant</span> <span class="ai-close" onclick="toggleAI()">&times;</span></h4>
-        <div class="ai-body" id="aiBody">
-            <p>Welcome to <strong>SPM AI 2050</strong>! Main aapki kya madad kar sakta hoon?</p>
+        <div class="ai-body">
+            <p>Welcome to <strong>SPM AI 2050</strong>!</p>
             <br>
-            <p>• Coins Buy karne ke liye Calculator check karein.<br>• Host banne ke liye Mr. Abhi ko message karein.</p>
+            <p>• Coins buy karne ke liye Calculator scroll karein.<br>• Host banne ke liye Mr. Abhi se contact karein.<br>• Coin Selling ke liye Mr. Rishi se baat karein.</p>
         </div>
     </div>
 
@@ -298,13 +332,11 @@
         © SPM TOP AGENCY (Code: 100857). Powered by SPM AI 2050. All Rights Reserved.
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Engine -->
     <script>
-        // Official Rates: 100 RS = 1260 Coins (1 RS = 12.6 Coins)
         const RATE_PER_RUPEE = 12.6;
         const priceList = [100, 200, 500, 1000, 2000, 5000, 10000, 20000];
 
-        // Language Dictionary
         const translations = {
             en: {
                 tagline: "Official YoYo Dealer • Fast • 100% Secure",
@@ -348,7 +380,6 @@
             }
         };
 
-        // Render Price Cards
         function renderPriceCharter() {
             const grid = document.getElementById('priceGrid');
             grid.innerHTML = '';
@@ -366,7 +397,6 @@
             });
         }
 
-        // Calculator Logic
         function calculateCoins() {
             const input = document.getElementById('rupeeInput').value;
             const resultEl = document.getElementById('calcResult');
@@ -381,7 +411,6 @@
             }
         }
 
-        // Language Switch Logic
         function changeLanguage() {
             const selected = document.getElementById('langSelect').value;
             const t = translations[selected] || translations.en;
@@ -396,13 +425,17 @@
             document.getElementById('contactTitle').innerText = t.contactTitle;
         }
 
-        // Toggle AI Assistant Window
         function toggleAI() {
             const modal = document.getElementById('aiModal');
             modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
         }
 
-        // Init
+        function toggleFaq(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Initialize Page
         renderPriceCharter();
     </script>
 </body>
