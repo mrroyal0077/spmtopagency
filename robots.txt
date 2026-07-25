@@ -1,0 +1,18 @@
+# ==========================================================
+# SPM AI
+# Powered by SPM TOP AGENCY
+# robots.txt
+# ==========================================================
+
+User-agent: *
+
+# Allow all pages
+Allow: /
+
+# Block system/cache folders (if they exist)
+Disallow: /cache/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://YOUR_GITHUB_USERNAME.github.io/SPM-AI/sitemap.xml
