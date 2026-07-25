@@ -1,83 +1,231 @@
-/* ==========================================
-   SPM AI - Authentication
-========================================== */
-
-import { auth, db } from "./firebase.js";
-
-import {
-
-GoogleAuthProvider,
-signInWithPopup,
-signOut,
-onAuthStateChanged
-
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-
-import {
-
-doc,
-setDoc,
-serverTimestamp
-
-} from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+"use strict";
 
 /* ==========================================
-   Google Provider
+   Register User
 ========================================== */
 
-const provider = new GoogleAuthProvider();
+async function registerUser(email, password){
+
+try{
+
+const userCredential = await auth.createUserWithEmailAndPassword(
+
+email,
+
+password
+
+);
+
+console.log("User Registered:", userCredential.user.uid);
+
+alert("Registration Successful!");
+
+return userCredential.user;
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+return null;
+
+}
+
+}
 
 /* ==========================================
-   Google Login
+   Login User
 ========================================== */
 
-export async function login() {
+async function loginUser(email, password){
 
-    try {
+try{
 
-        const result = await signInWithPopup(auth, provider);
+const userCredential = await auth.signInWithEmailAndPassword(
 
-        const user = result.user;
+email,
 
-        await setDoc(
+password
 
-            doc(db, "users", user.uid),
+);
 
-            {
+console.log("Login Successful:", userCredential.user.uid);
 
-                uid: user.uid,
+alert("Welcome Back!");
 
-                name: user.displayName || "",
+return userCredential.user;
 
-                email: user.email || "",
+}catch(error){
 
-                photo: user.photoURL || "",
+console.error(error);
 
-                provider: "google",
+alert(error.message);
 
-                createdAt: serverTimestamp(),
+return null;
 
-                role: "user"
+}
 
-            },
+}
 
-            {
+/* ==========================================
+   Login Form
+========================================== */
 
-                merge: true
+const loginForm = document.getElementById("loginForm");
 
-            }
+if(loginForm){
 
-        );
+loginForm.addEventListener("submit", async(e)=>{
 
-        console.log("Login Success");
+e.preventDefault();
 
-    }
+const email = loginForm.email.value.trim();
 
-    catch (error) {
+const password = loginForm.password.value;
 
-        console.error(error);
+await loginUser(email,password);
 
-    }
+});
+
+}
+
+/* ==========================================
+   Register Form
+========================================== */
+
+const registerForm = document.getElementById("registerForm");
+
+if(registerForm){
+
+registerForm.addEventListener("submit", async(e)=>{
+
+e.preventDefault();
+
+const email = registerForm.email.value.trim();
+
+const password = registerForm.password.value;
+
+await registerUser(email,password);
+
+});
+
+}
+
+/* ==========================================
+   Export Functions
+========================================== */
+
+window.loginUser = loginUser;
+
+window.registerUser = registerUser;
+/* ==========================================
+   Google Sign-In
+========================================== */
+
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+async function googleLogin(){
+
+try{
+
+const result = await auth.signInWithPopup(googleProvider);
+
+console.log("Google Login:", result.user.uid);
+
+alert("Google Sign-In Successful!");
+
+return result.user;
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+return null;
+
+}
+
+}
+
+const googleLoginBtn = document.getElementById("googleLogin");
+
+if(googleLoginBtn){
+
+googleLoginBtn.addEventListener("click",googleLogin);
+
+}
+
+/* ==========================================
+   Password Reset
+========================================== */
+
+async function resetPassword(email){
+
+try{
+
+await auth.sendPasswordResetEmail(email);
+
+alert("Password reset email sent.");
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
+
+}
+
+const resetBtn = document.getElementById("resetPassword");
+
+if(resetBtn){
+
+resetBtn.addEventListener("click",()=>{
+
+const email = prompt("Enter your email address:");
+
+if(email){
+
+resetPassword(email.trim());
+
+}
+
+});
+
+}
+
+/* ==========================================
+   Email Verification
+========================================== */
+
+async function sendEmailVerification(){
+
+const user = auth.currentUser;
+
+if(!user){
+
+alert("Please login first.");
+
+return;
+
+}
+
+try{
+
+await user.sendEmailVerification();
+
+alert("Verification email sent.");
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
 
 }
 
@@ -85,108 +233,388 @@ export async function login() {
    Logout
 ========================================== */
 
-export async function logout() {
+const logoutBtn = document.getElementById("logoutBtn");
 
-    try {
+if(logoutBtn){
 
-        await signOut(auth);
+logoutBtn.addEventListener("click",async()=>{
 
-        console.log("Logout Success");
+try{
 
-    }
+await auth.signOut();
 
-    catch (error) {
+alert("Logged out successfully.");
 
-        console.error(error);
+}catch(error){
 
-    }
+console.error(error);
+
+alert(error.message);
+
+}
+
+});
 
 }
 
 /* ==========================================
-   Current User
+   Export Functions
 ========================================== */
 
-export function currentUser(callback) {
+window.googleLogin = googleLogin;
 
-    onAuthStateChanged(auth, (user) => {
+window.resetPassword = resetPassword;
 
-        callback(user);
+window.sendEmailVerification = sendEmailVerification;
+/* ==========================================
+   Update User Profile
+========================================== */
 
-    });
+async function updateUserProfile(name, photoURL = ""){
+
+const user = auth.currentUser;
+
+if(!user){
+
+alert("Please login first.");
+
+return;
+
+}
+
+try{
+
+await user.updateProfile({
+
+displayName: name,
+
+photoURL: photoURL
+
+});
+
+alert("Profile updated successfully.");
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
 
 }
 
 /* ==========================================
-   Update UI
+   Change Password
 ========================================== */
 
-currentUser((user) => {
+async function changePassword(newPassword){
 
-    const loginButton = document.getElementById("loginButton");
+const user = auth.currentUser;
 
-    const logoutButton = document.getElementById("logoutButton");
+if(!user){
 
-    const userName = document.getElementById("userName");
+alert("Please login first.");
 
-    const userPhoto = document.getElementById("userPhoto");
+return;
 
-    if (!loginButton || !logoutButton) return;
+}
 
-    if (user) {
+try{
 
-        loginButton.style.display = "none";
+await user.updatePassword(newPassword);
 
-        logoutButton.style.display = "inline-block";
+alert("Password changed successfully.");
 
-        if (userName) {
+}catch(error){
 
-            userName.textContent =
+console.error(error);
 
-                user.displayName;
+alert(error.message);
 
-        }
+}
 
-        if (userPhoto) {
+}
 
-            userPhoto.src =
+/* ==========================================
+   Delete Account
+========================================== */
 
-                user.photoURL;
+async function deleteAccount(){
 
-        }
+const user = auth.currentUser;
 
-    }
+if(!user){
 
-    else {
+alert("Please login first.");
 
-        loginButton.style.display = "inline-block";
+return;
 
-        logoutButton.style.display = "none";
+}
 
-    }
+const confirmDelete = confirm(
+
+"Are you sure you want to permanently delete your account?"
+
+);
+
+if(!confirmDelete){
+
+return;
+
+}
+
+try{
+
+await user.delete();
+
+alert("Account deleted successfully.");
+
+}catch(error){
+
+console.error(error);
+
+alert(error.message);
+
+}
+
+}
+
+/* ==========================================
+   Authentication UI
+========================================== */
+
+auth.onAuthStateChanged((user)=>{
+
+const guestArea = document.getElementById("guestArea");
+
+const userArea = document.getElementById("userArea");
+
+const profileName = document.getElementById("profileName");
+
+if(user){
+
+if(guestArea){
+
+guestArea.style.display="none";
+
+}
+
+if(userArea){
+
+userArea.style.display="block";
+
+}
+
+if(profileName){
+
+profileName.textContent=
+
+user.displayName ||
+
+user.email ||
+
+"SPM User";
+
+}
+
+}else{
+
+if(guestArea){
+
+guestArea.style.display="block";
+
+}
+
+if(userArea){
+
+userArea.style.display="none";
+
+}
+
+}
 
 });
 
 /* ==========================================
-   Button Events
+   Export Functions
 ========================================== */
 
-const loginButton = document.getElementById("loginButton");
+window.updateUserProfile = updateUserProfile;
 
-const logoutButton = document.getElementById("logoutButton");
+window.changePassword = changePassword;
 
-loginButton?.addEventListener(
+window.deleteAccount = deleteAccount;
+/* ==========================================
+   Re-authenticate User
+========================================== */
 
-    "click",
+async function reauthenticateUser(password){
 
-    login
+const user = auth.currentUser;
+
+if(!user){
+
+throw new Error("No user is logged in.");
+
+}
+
+const credential = firebase.auth.EmailAuthProvider.credential(
+
+user.email,
+
+password
 
 );
 
-logoutButton?.addEventListener(
+return user.reauthenticateWithCredential(credential);
 
-    "click",
+}
 
-    logout
+/* ==========================================
+   Reload Current User
+========================================== */
 
-);
+async function reloadCurrentUser(){
+
+try{
+
+const user = auth.currentUser;
+
+if(user){
+
+await user.reload();
+
+console.log("User data refreshed.");
+
+}
+
+}catch(error){
+
+console.error(error);
+
+}
+
+}
+
+/* ==========================================
+   Check Email Verification
+========================================== */
+
+function isEmailVerified(){
+
+const user = auth.currentUser;
+
+return user ? user.emailVerified : false;
+
+}
+
+/* ==========================================
+   Get Current User Info
+========================================== */
+
+function getUserInfo(){
+
+const user = auth.currentUser;
+
+if(!user){
+
+return null;
+
+}
+
+return{
+
+uid:user.uid,
+
+name:user.displayName,
+
+email:user.email,
+
+photo:user.photoURL,
+
+verified:user.emailVerified
+
+};
+
+}
+
+/* ==========================================
+   Authentication Error Messages
+========================================== */
+
+function getAuthError(error){
+
+switch(error.code){
+
+case "auth/user-not-found":
+
+return "User not found.";
+
+case "auth/wrong-password":
+
+return "Incorrect password.";
+
+case "auth/email-already-in-use":
+
+return "Email is already registered.";
+
+case "auth/weak-password":
+
+return "Password is too weak.";
+
+case "auth/invalid-email":
+
+return "Invalid email address.";
+
+case "auth/network-request-failed":
+
+return "Network connection error.";
+
+default:
+
+return error.message;
+
+}
+
+}
+
+/* ==========================================
+   Auth Ready
+========================================== */
+
+let authReady = false;
+
+auth.onAuthStateChanged(()=>{
+
+authReady = true;
+
+});
+
+function isAuthReady(){
+
+return authReady;
+
+}
+
+/* ==========================================
+   Export Helpers
+========================================== */
+
+window.reauthenticateUser = reauthenticateUser;
+
+window.reloadCurrentUser = reloadCurrentUser;
+
+window.isEmailVerified = isEmailVerified;
+
+window.getUserInfo = getUserInfo;
+
+window.getAuthError = getAuthError;
+
+window.isAuthReady = isAuthReady;
+
+/* ==========================================
+   End Of File
+========================================== */
+
+console.log("auth.js loaded successfully ✅");
