@@ -6,13 +6,10 @@
 
 User-agent: *
 
-# Allow all pages
 Allow: /
 
-# Block system/cache folders (if they exist)
 Disallow: /cache/
 Disallow: /.git/
 Disallow: /node_modules/
 
-# Sitemap
-Sitemap: https://YOUR_GITHUB_USERNAME.github.io/SPM-AI/sitemap.xml
+Sitemap: https://mrroyal0077.github.io/spmtopagency/sitemap.xml
