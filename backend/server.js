@@ -1,24 +1,22 @@
 const express = require("express");
 const crypto = require("crypto");
 
+const {
+  createOrder,
+  getOrders,
+  findOrder,
+  updateOrderStatus
+} = require("./database");
+
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT =
+  process.env.PORT || 3000;
 
 app.use(express.json());
 
-/*
-  SPM TOP AGENCY Backend
-  Agency Code: 100857
 
-  IMPORTANT:
-  Real admin authentication,
-  database credentials and API keys
-  must be stored in environment variables.
-*/
-
-
-// ================= HEALTH CHECK =================
+// ================= HEALTH =================
 
 app.get("/api/health", (req, res) => {
 
@@ -34,15 +32,19 @@ app.get("/api/health", (req, res) => {
 
 // ================= ORDER ID =================
 
-function generateOrderId(prefix = "SPM") {
+function generateOrderId(prefix){
 
-  const date = new Date()
-    .toISOString()
-    .slice(0, 10)
-    .replace(/-/g, "");
+  const date =
+    new Date()
+      .toISOString()
+      .slice(0,10)
+      .replace(/-/g,"");
 
   const random =
-    crypto.randomBytes(3).toString("hex").toUpperCase();
+    crypto
+      .randomBytes(3)
+      .toString("hex")
+      .toUpperCase();
 
   return `${prefix}-${date}-${random}`;
 
@@ -51,196 +53,350 @@ function generateOrderId(prefix = "SPM") {
 
 // ================= COIN ORDER =================
 
-app.post("/api/orders/coins", (req, res) => {
+app.post(
+  "/api/orders/coins",
+  (req, res) => {
 
-  const {
-    packageName,
-    price,
-    yoyoId,
-    name,
-    whatsapp,
-    note
-  } = req.body;
+    const {
+      packageName,
+      price,
+      yoyoId,
+      name,
+      whatsapp,
+      note
+    } = req.body;
 
 
-  if (
-    !packageName ||
-    !price ||
-    !yoyoId ||
-    !name ||
-    !whatsapp
-  ) {
+    if(
+      !packageName ||
+      !price ||
+      !yoyoId ||
+      !name ||
+      !whatsapp
+    ){
 
-    return res.status(400).json({
-      success: false,
-      message: "Required order details are missing."
+      return res.status(400).json({
+
+        success:false,
+
+        message:
+          "Required order details are missing."
+
+      });
+
+    }
+
+
+    const order = createOrder({
+
+      orderId:
+        generateOrderId("SPM"),
+
+      type:
+        "Coin Recharge",
+
+      packageName,
+
+      price,
+
+      yoyoId,
+
+      name,
+
+      whatsapp,
+
+      note:
+        note || "",
+
+      status:
+        "pending"
+
+    });
+
+
+    res.status(201).json({
+
+      success:true,
+
+      message:
+        "Coin order received.",
+
+      order
+
     });
 
   }
-
-
-  const order = {
-
-    orderId: generateOrderId("SPM"),
-
-    type: "Coin Recharge",
-
-    packageName,
-
-    price,
-
-    yoyoId,
-
-    name,
-
-    whatsapp,
-
-    note: note || "",
-
-    status: "pending",
-
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  /*
-    NEXT STEP:
-    Save this order to the database.
-  */
-
-
-  res.status(201).json({
-
-    success: true,
-
-    message: "Coin order received.",
-
-    order
-
-  });
-
-});
+);
 
 
 // ================= PAID SENDING =================
 
-app.post("/api/orders/paid-sending", (req, res) => {
+app.post(
+  "/api/orders/paid-sending",
+  (req, res) => {
 
-  const {
-    packageName,
-    price,
-    senderYoyo,
-    receiverYoyo,
-    name,
-    whatsapp,
-    note
-  } = req.body;
+    const {
+      packageName,
+      price,
+      senderYoyo,
+      receiverYoyo,
+      name,
+      whatsapp,
+      note
+    } = req.body;
 
 
-  if (
-    !packageName ||
-    !price ||
-    !senderYoyo ||
-    !receiverYoyo ||
-    !name ||
-    !whatsapp
-  ) {
+    if(
+      !packageName ||
+      !price ||
+      !senderYoyo ||
+      !receiverYoyo ||
+      !name ||
+      !whatsapp
+    ){
 
-    return res.status(400).json({
+      return res.status(400).json({
 
-      success: false,
+        success:false,
+
+        message:
+          "Required order details are missing."
+
+      });
+
+    }
+
+
+    const order = createOrder({
+
+      orderId:
+        generateOrderId("SPM-PS"),
+
+      type:
+        "Paid Sending",
+
+      packageName,
+
+      price,
+
+      senderYoyo,
+
+      receiverYoyo,
+
+      name,
+
+      whatsapp,
+
+      note:
+        note || "",
+
+      status:
+        "pending"
+
+    });
+
+
+    res.status(201).json({
+
+      success:true,
 
       message:
-        "Required order details are missing."
+        "Paid Sending order received.",
+
+      order
 
     });
 
   }
+);
 
 
-  const order = {
+// ================= FIND ORDER =================
 
-    orderId:
-      generateOrderId("SPM-PS"),
+app.get(
+  "/api/orders/:orderId",
+  (req, res) => {
 
-    type:
-      "Paid Sending",
+    const order =
+      findOrder(
+        req.params.orderId
+      );
 
-    packageName,
 
-    price,
+    if(!order){
 
-    senderYoyo,
+      return res.status(404).json({
 
-    receiverYoyo,
+        success:false,
 
-    name,
+        message:
+          "Order not found."
 
-    whatsapp,
+      });
 
-    note: note || "",
+    }
 
-    status:
+
+    res.json({
+
+      success:true,
+
+      order
+
+    });
+
+  }
+);
+
+
+// ================= ADMIN ORDERS =================
+//
+// Authentication will be required here
+// before production use.
+
+app.get(
+  "/api/admin/orders",
+  (req, res) => {
+
+    res.json({
+
+      success:true,
+
+      orders:
+        getOrders()
+
+    });
+
+  }
+);
+
+
+// ================= UPDATE ORDER =================
+
+app.patch(
+  "/api/admin/orders/:orderId",
+  (req, res) => {
+
+    const {
+      status
+    } = req.body;
+
+
+    const allowedStatuses = [
+
       "pending",
+      "processing",
+      "completed",
+      "cancelled"
 
-    createdAt:
-      new Date().toISOString()
-
-  };
-
-
-  /*
-    NEXT STEP:
-    Save this order to the database.
-  */
+    ];
 
 
-  res.status(201).json({
+    if(
+      !allowedStatuses.includes(status)
+    ){
 
-    success: true,
+      return res.status(400).json({
 
-    message:
-      "Paid Sending order received.",
+        success:false,
 
-    order
+        message:
+          "Invalid order status."
 
-  });
+      });
 
-});
-
-
-// ================= ADMIN API PLACEHOLDER =================
-
-app.get("/api/admin/stats", (req, res) => {
-
-  /*
-    Authentication will be added before
-    exposing real admin statistics.
-
-    NEVER expose this endpoint publicly
-    without authentication.
-  */
-
-  res.status(401).json({
-
-    success: false,
-
-    message:
-      "Admin authentication required."
-
-  });
-
-});
+    }
 
 
-// ================= START SERVER =================
+    const order =
+      updateOrderStatus(
+        req.params.orderId,
+        status
+      );
 
-app.listen(PORT, () => {
 
-  console.log(
-    `SPM API running on port ${PORT}`
-  );
+    if(!order){
 
-});
+      return res.status(404).json({
+
+        success:false,
+
+        message:
+          "Order not found."
+
+      });
+
+    }
+
+
+    res.json({
+
+      success:true,
+
+      order
+
+    });
+
+  }
+);
+
+
+// ================= ADMIN STATS =================
+
+app.get(
+  "/api/admin/stats",
+  (req, res) => {
+
+    const orders =
+      getOrders();
+
+
+    const coinOrders =
+      orders.filter(
+        order =>
+          order.type ===
+          "Coin Recharge"
+      ).length;
+
+
+    const paidOrders =
+      orders.filter(
+        order =>
+          order.type ===
+          "Paid Sending"
+      ).length;
+
+
+    res.json({
+
+      success:true,
+
+      stats:{
+
+        totalOrders:
+          orders.length,
+
+        coinOrders,
+
+        paidOrders
+
+      }
+
+    });
+
+  }
+);
+
+
+// ================= START =================
+
+app.listen(
+  PORT,
+  () => {
+
+    console.log(
+      `SPM TOP AGENCY API running on port ${PORT}`
+    );
+
+  }
+);
