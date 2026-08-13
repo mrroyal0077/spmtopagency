@@ -222,14 +222,45 @@
 
     function demoLogin(event) {
 
-      event.preventDefault();
+  event.preventDefault();
 
-      const error = document.getElementById("error");
+  const adminId =
+    document.getElementById("adminId").value.trim();
 
-      error.textContent =
-        "Backend authentication is not connected yet.";
+  const password =
+    document.getElementById("adminPassword").value.trim();
 
-      error.style.display = "block";
+  const error =
+    document.getElementById("error");
+
+
+  if (!adminId || !password) {
+
+    error.textContent =
+      "Please enter Admin ID and Password.";
+
+    error.style.display = "block";
+
+    return;
+  }
+
+
+  /*
+    DEMO ONLY
+
+    This is NOT real security.
+    Real authentication will be moved
+    to the backend/database.
+  */
+
+  sessionStorage.setItem(
+    "spm_admin_demo",
+    "true"
+  );
+
+
+  window.location.href =
+    "dashboard.html";
     }
 
   </script>
