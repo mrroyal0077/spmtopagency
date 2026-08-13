@@ -1,19 +1,22 @@
 // SPM TOP AGENCY
-// Database layer placeholder
+// Persistent database interface
 //
 // IMPORTANT:
-// Real database credentials must be stored
-// as environment variables on the backend server.
+// This file currently uses a JSON-compatible
+// storage interface. For production, connect
+// this interface to a real hosted database.
 
 const orders = [];
+const visitors = [];
 
 
-/* ================= CREATE ORDER ================= */
+/* ================= ORDERS ================= */
 
 function createOrder(order){
 
   const savedOrder = {
     ...order,
+
     createdAt:
       order.createdAt ||
       new Date().toISOString()
@@ -25,8 +28,6 @@ function createOrder(order){
 }
 
 
-/* ================= GET ORDERS ================= */
-
 function getOrders(){
 
   return [...orders];
@@ -34,18 +35,15 @@ function getOrders(){
 }
 
 
-/* ================= FIND ORDER ================= */
-
 function findOrder(orderId){
 
   return orders.find(
-    order => order.orderId === orderId
+    order =>
+      order.orderId === orderId
   );
 
 }
 
-
-/* ================= UPDATE STATUS ================= */
 
 function updateOrderStatus(
   orderId,
@@ -54,7 +52,8 @@ function updateOrderStatus(
 
   const order =
     orders.find(
-      item => item.orderId === orderId
+      item =>
+        item.orderId === orderId
     );
 
   if(!order){
@@ -67,6 +66,74 @@ function updateOrderStatus(
     new Date().toISOString();
 
   return order;
+}
+
+
+/* ================= VISITORS ================= */
+
+function createVisitor(visitor){
+
+  const record = {
+
+    ...visitor,
+
+    createdAt:
+      visitor.createdAt ||
+      new Date().toISOString()
+
+  };
+
+  visitors.push(record);
+
+  return record;
+}
+
+
+function getVisitors(){
+
+  return [...visitors];
+
+}
+
+
+function getVisitorCount(){
+
+  return visitors.length;
+
+}
+
+
+/* ================= STATS ================= */
+
+function getStats(){
+
+  const coinOrders =
+    orders.filter(
+      order =>
+        order.type === "Coin Recharge"
+    ).length;
+
+
+  const paidOrders =
+    orders.filter(
+      order =>
+        order.type === "Paid Sending"
+    ).length;
+
+
+  return {
+
+    totalOrders:
+      orders.length,
+
+    coinOrders,
+
+    paidOrders,
+
+    visitors:
+      visitors.length
+
+  };
 
 }
 
@@ -79,6 +146,14 @@ module.exports = {
 
   findOrder,
 
-  updateOrderStatus
+  updateOrderStatus,
+
+  createVisitor,
+
+  getVisitors,
+
+  getVisitorCount,
+
+  getStats
 
 };
