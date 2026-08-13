@@ -1,657 +1,1071 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SPM TOP AGENCY | Official Website</title>
-  <meta name="description" content="SPM TOP AGENCY - Fast Coin Recharge, Paid Sending and 24/7 Support. Agency Code 100857.">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #070711;
-      --card: rgba(255,255,255,0.07);
-      --border: rgba(255,255,255,0.12);
-      --text: #ffffff;
-      --muted: #a8a8bd;
-      --purple: #8b5cf6;
-      --blue: #06b6d4;
-      --pink: #ec4899;
-      --gold: #fbbf24;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(139,92,246,.25), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(6,182,212,.20), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(236,72,153,.15), transparent 35%),
-        var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
-    }
-
-    /* NAVBAR */
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(18px);
-      background: rgba(7,7,17,.78);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .navbar {
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 21px;
-      font-weight: 900;
-      letter-spacing: .5px;
-      background: linear-gradient(90deg, #fff, var(--gold), var(--pink), var(--blue));
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #ddd;
-      font-size: 14px;
-      transition: .25s;
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-
-    .nav-btn {
-      padding: 10px 17px;
-      border-radius: 30px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      font-weight: 700;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 650px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      position: relative;
-    }
-
-    .hero-content {
-      width: 100%;
-      padding: 80px 0;
-    }
-
-    .badge {
-      display: inline-flex;
-      padding: 8px 15px;
-      border: 1px solid rgba(139,92,246,.45);
-      background: rgba(139,92,246,.12);
-      border-radius: 50px;
-      color: #d8c8ff;
-      font-size: 13px;
-      margin-bottom: 24px;
-    }
-
-    .hero h1 {
-      font-size: clamp(44px, 8vw, 82px);
-      line-height: .95;
-      font-weight: 950;
-      margin-bottom: 25px;
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #c084fc,
-        #22d3ee,
-        #f472b6,
-        #fbbf24
-      );
-      -webkit-background-clip: text;
-      color: transparent;
-      background-size: 300% auto;
-      animation: gradientMove 6s linear infinite;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% center; }
-      50% { background-position: 100% center; }
-      100% { background-position: 0% center; }
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .agency-code {
-      margin: 25px auto;
-      display: inline-block;
-      padding: 10px 20px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-      color: #fff;
-    }
-
-    .hero-buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 13px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      border: 0;
-      cursor: pointer;
-      padding: 14px 23px;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 800;
-      color: white;
-      transition: transform .2s, box-shadow .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(100deg, var(--purple), var(--pink));
-      box-shadow: 0 10px 35px rgba(139,92,246,.25);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-    }
-
-    /* STATS */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: -25px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .stat-card {
-      padding: 25px;
-      text-align: center;
-      border-radius: 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-    }
-
-    .stat-card strong {
-      display: block;
-      font-size: 27px;
-      margin-bottom: 7px;
-    }
-
-    .stat-card span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* SECTIONS */
-
-    section {
-      padding: 90px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .section-title h2 {
-      font-size: clamp(30px, 5vw, 46px);
-      margin-bottom: 10px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-    }
-
-    /* FEATURE CARDS */
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-
-    .feature {
-      padding: 25px;
-      border-radius: 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      transition: .25s;
-    }
-
-    .feature:hover {
-      transform: translateY(-5px);
-      border-color: rgba(139,92,246,.5);
-    }
-
-    .feature-icon {
-      font-size: 32px;
-      margin-bottom: 15px;
-    }
-
-    .feature h3 {
-      margin-bottom: 9px;
-    }
-
-    .feature p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* SERVICE CARDS */
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service {
-      padding: 30px;
-      border-radius: 24px;
-      background: linear-gradient(
-        145deg,
-        rgba(139,92,246,.12),
-        rgba(6,182,212,.07)
-      );
-      border: 1px solid var(--border);
-    }
-
-    .service h3 {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .service p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    .service a {
-      display: inline-block;
-      padding: 10px 15px;
-      border-radius: 10px;
-      background: rgba(255,255,255,.08);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 35px 0;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* AI CHAT */
-
-    .ai-chat {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.2);
-      background: linear-gradient(135deg, var(--purple), var(--pink), var(--blue));
-      color: white;
-      font-size: 27px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 10px 40px rgba(139,92,246,.35);
-      z-index: 999;
-      cursor: pointer;
-      animation: pulse 2.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%,100% { box-shadow: 0 10px 40px rgba(139,92,246,.35); }
-      50% { box-shadow: 0 10px 55px rgba(236,72,153,.55); }
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      .nav-links {
-        display: none;
-      }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .services {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        min-height: 580px;
-      }
-
-      .hero-content {
-        padding: 55px 0;
-      }
-
-      .hero h1 {
-        font-size: 48px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 65px 0;
-      }
-
-      .ai-chat {
-        width: 56px;
-        height: 56px;
-        right: 15px;
-        bottom: 15px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPM TOP AGENCY | Agency 100857</title>
+<meta name="description" content="SPM TOP AGENCY - Coin Recharge, Paid Sending, Events and 24/7 AI Support.">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#05050b;
+  --card:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.12);
+  --white:#fff;
+  --muted:#a7a7ba;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --blue:#3b82f6;
+  --gold:#fbbf24;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--white);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(139,92,246,.22),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 28%),
+    radial-gradient(circle at 50% 80%,rgba(236,72,153,.12),transparent 32%),
+    var(--bg);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1150px,92%);
+  margin:auto;
+}
+
+/* ================= NAVBAR ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,11,.78);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.5px;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--gold),
+    var(--pink),
+    var(--cyan)
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.nav-links a{
+  padding:10px 13px;
+  border-radius:10px;
+  color:#d5d5df;
+  font-size:13px;
+  transition:.2s;
+}
+
+.nav-links a:hover{
+  background:rgba(255,255,255,.07);
+  color:#fff;
+}
+
+.ai-nav{
+  background:linear-gradient(
+    100deg,
+    var(--purple),
+    var(--pink)
+  ) !important;
+  color:#fff !important;
+  font-weight:800;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.menu-btn{
+  display:none;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.07);
+  color:#fff;
+  border-radius:11px;
+  padding:9px 12px;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.mobile-menu{
+  display:none;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  min-height:720px;
+  display:flex;
+  align-items:center;
+  text-align:center;
+  position:relative;
+}
+
+.hero-content{
+  padding:80px 0;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:9px 16px;
+  border-radius:50px;
+  background:rgba(139,92,246,.10);
+  border:1px solid rgba(139,92,246,.38);
+  color:#d9caff;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:25px;
+}
+
+.hero h1{
+  font-size:clamp(48px,9vw,100px);
+  line-height:.88;
+  font-weight:950;
+  letter-spacing:-4px;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    #c084fc,
+    #22d3ee,
+    #f472b6,
+    #fbbf24
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+  background-size:300%;
+  animation:gradientMove 7s linear infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+.hero-sub{
+  max-width:700px;
+  margin:28px auto 0;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.7;
+}
+
+.agency-code{
+  display:inline-block;
+  margin-top:22px;
+  padding:11px 18px;
+  border-radius:12px;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--border);
+  font-size:14px;
+}
+
+.agency-code strong{
+  color:var(--gold);
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:30px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:155px;
+  padding:14px 20px;
+  border-radius:13px;
+  font-size:14px;
+  font-weight:800;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary{
+  background:linear-gradient(
+    100deg,
+    var(--purple),
+    var(--pink)
+  );
+  box-shadow:0 12px 35px rgba(139,92,246,.22);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+}
+
+/* ================= STATS ================= */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:-35px;
+  position:relative;
+  z-index:2;
+}
+
+.stat{
+  padding:23px;
+  text-align:center;
+  border-radius:19px;
+  background:var(--card);
+  border:1px solid var(--border);
+  backdrop-filter:blur(15px);
+}
+
+.stat strong{
+  display:block;
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+  padding:100px 0;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title h2{
+  font-size:clamp(31px,5vw,48px);
+  margin-bottom:10px;
+}
+
+.section-title p{
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* ================= SERVICES ================= */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service{
+  position:relative;
+  overflow:hidden;
+  padding:30px;
+  min-height:250px;
+  border-radius:25px;
+  background:var(--card);
+  border:1px solid var(--border);
+  transition:.25s;
+}
+
+.service:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.25);
+}
+
+.service::after{
+  content:"";
+  position:absolute;
+  width:150px;
+  height:150px;
+  right:-70px;
+  top:-70px;
+  background:var(--purple);
+  filter:blur(65px);
+  opacity:.22;
+}
+
+.service-icon{
+  font-size:40px;
+  margin-bottom:18px;
+}
+
+.service h3{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.service p{
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.7;
+  margin-bottom:20px;
+}
+
+.service-link{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:10px;
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--border);
+  font-size:12px;
+  font-weight:800;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.feature{
+  padding:24px;
+  border-radius:20px;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--border);
+}
+
+.feature-icon{
+  font-size:29px;
+  margin-bottom:14px;
+}
+
+.feature h3{
+  margin-bottom:8px;
+  font-size:17px;
+}
+
+.feature p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+}
+
+/* ================= SECURITY ================= */
+
+.security-box{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.security-card{
+  padding:30px;
+  border-radius:24px;
+  background:linear-gradient(
+    145deg,
+    rgba(139,92,246,.10),
+    rgba(6,182,212,.06)
+  );
+  border:1px solid var(--border);
+}
+
+.security-card h3{
+  margin-bottom:12px;
+}
+
+.security-card p{
+  color:var(--muted);
+  line-height:1.7;
+  font-size:14px;
+}
+
+.security-list{
+  margin-top:18px;
+  display:grid;
+  gap:10px;
+}
+
+.security-list div{
+  color:#ddd;
+  font-size:13px;
+}
+
+/* ================= SUPPORT ================= */
+
+.support{
+  text-align:center;
+  padding:70px 25px;
+  border-radius:28px;
+  background:
+    linear-gradient(
+      120deg,
+      rgba(139,92,246,.12),
+      rgba(236,72,153,.08),
+      rgba(6,182,212,.08)
+    );
+  border:1px solid var(--border);
+}
+
+.support h2{
+  font-size:clamp(30px,5vw,45px);
+  margin-bottom:12px;
+}
+
+.support p{
+  color:var(--muted);
+  margin-bottom:25px;
+  line-height:1.6;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.float-ai,
+.float-whatsapp{
+  position:fixed;
+  bottom:20px;
+  width:58px;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  z-index:900;
+  font-size:25px;
+  box-shadow:0 10px 35px rgba(0,0,0,.4);
+}
+
+.float-ai{
+  right:20px;
+  background:linear-gradient(
+    135deg,
+    var(--purple),
+    var(--pink),
+    var(--cyan)
+  );
+  animation:pulseAI 2.5s infinite;
+}
+
+@keyframes pulseAI{
+  0%,100%{
+    box-shadow:0 10px 35px rgba(139,92,246,.3);
+  }
+  50%{
+    box-shadow:0 10px 55px rgba(236,72,153,.55);
+  }
+}
+
+.float-whatsapp{
+  left:20px;
+  background:#25D366;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  padding:38px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+}
+
+.footer-logo{
+  font-size:17px;
+  font-weight:900;
+  margin-bottom:8px;
+  color:#fff;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .menu-btn{
+    display:block;
+  }
+
+  .mobile-menu{
+    position:absolute;
+    top:68px;
+    right:4%;
+    width:230px;
+    padding:9px;
+    border-radius:17px;
+    background:rgba(13,13,27,.97);
+    border:1px solid var(--border);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+
+  .mobile-menu.open{
+    display:grid;
+  }
+
+  .mobile-menu a{
+    padding:13px;
+    border-radius:10px;
+    color:#ddd;
+    font-size:13px;
+  }
+
+  .mobile-menu a:hover{
+    background:rgba(255,255,255,.07);
+  }
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+
+  .hero{
+    min-height:650px;
+  }
+
+  .hero-content{
+    padding:60px 0;
+  }
+
+  .hero h1{
+    font-size:53px;
+    letter-spacing:-2px;
+  }
+
+  .hero-sub{
+    font-size:15px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .security-box{
+    grid-template-columns:1fr;
+  }
+
+  section{
+    padding:70px 0;
+  }
+
+  .float-ai,
+  .float-whatsapp{
+    width:53px;
+    height:53px;
+    bottom:15px;
+  }
+
+  .float-ai{
+    right:15px;
+  }
+
+  .float-whatsapp{
+    left:15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header>
-    <div class="container navbar">
+<!-- ================= HEADER ================= -->
 
-      <a href="#" class="logo">
-        SPM TOP AGENCY
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      SPM TOP AGENCY
+    </a>
+
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="coins.html">💰 Coins</a>
+      <a href="paid-sending.html">💸 Paid Sending</a>
+      <a href="events.html">🎁 Events</a>
+      <a href="ai-chat.html" class="ai-nav">🤖 SPM AI</a>
+    </nav>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+      ☰
+    </button>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html">🏠 Home</a>
+      <a href="coins.html">💰 Coin Recharge</a>
+      <a href="paid-sending.html">💸 Paid Sending</a>
+      <a href="events.html">🎁 Events</a>
+      <a href="ai-chat.html">🤖 SPM AI</a>
+      <a href="#support">📞 Support</a>
+    </div>
+
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main>
+
+<section class="hero" id="home">
+
+  <div class="container hero-content">
+
+    <div class="badge">
+      ⚡ 24/7 FAST SERVICE
+    </div>
+
+    <h1>
+      SPM TOP<br>
+      AGENCY
+    </h1>
+
+    <p class="hero-sub">
+      A futuristic agency platform for fast Coin Recharge,
+      Paid Sending, Events and smart 24/7 support.
+    </p>
+
+    <div class="agency-code">
+      Agency Code:
+      <strong>100857</strong>
+    </div>
+
+    <div class="hero-buttons">
+
+      <a href="coins.html" class="btn btn-primary">
+        💰 Coin Recharge
       </a>
 
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#features">Features</a>
-        <a href="#contact" class="nav-btn">Support</a>
-      </nav>
+      <a href="paid-sending.html" class="btn btn-secondary">
+        💸 Paid Sending
+      </a>
 
     </div>
-  </header>
+
+  </div>
+
+</section>
 
 
-  <!-- HERO -->
-  <main id="home">
+<!-- ================= STATS ================= -->
 
-    <section class="hero">
-      <div class="container hero-content">
+<div class="container stats">
 
-        <div class="badge">
-          ⚡ 24/7 FAST SERVICE
+  <div class="stat">
+    <strong>24/7</strong>
+    <span>Fast Service</span>
+  </div>
+
+  <div class="stat">
+    <strong>🤖 AI</strong>
+    <span>Smart Support</span>
+  </div>
+
+  <div class="stat">
+    <strong>100857</strong>
+    <span>Agency Code</span>
+  </div>
+
+  <div class="stat">
+    <strong>⚡ Fast</strong>
+    <span>Future Ready</span>
+  </div>
+
+</div>
+
+
+<!-- ================= SERVICES ================= -->
+
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-title">
+
+      <h2>SPM Services</h2>
+
+      <p>
+        Everything in one premium platform.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+      <div class="service">
+
+        <div class="service-icon">
+          💰
         </div>
 
-        <h1>
-          SPM TOP<br>
-          AGENCY
-        </h1>
+        <h3>Coin Recharge</h3>
 
         <p>
-          Your futuristic agency platform for fast Coin Recharge,
-          Paid Sending, Events and 24/7 smart support.
+          Choose your required coin package and
+          submit your recharge order quickly.
         </p>
 
-        <div class="agency-code">
-          Agency Code: <strong>100857</strong>
+        <a href="coins.html" class="service-link">
+          View Coin Packages →
+        </a>
+
+      </div>
+
+
+      <div class="service">
+
+        <div class="service-icon">
+          💸
         </div>
 
-        <div class="hero-buttons">
-          <a href="#services" class="btn btn-primary">
-            Explore Services
-          </a>
+        <h3>Paid Sending</h3>
 
-          <a href="#contact" class="btn btn-secondary">
-            Contact Support
-          </a>
+        <p>
+          Dedicated Paid Sending service with
+          simple and transparent rates.
+        </p>
+
+        <a href="paid-sending.html" class="service-link">
+          View Paid Sending →
+        </a>
+
+      </div>
+
+
+      <div class="service">
+
+        <div class="service-icon">
+          🎁
         </div>
 
-      </div>
-    </section>
+        <h3>Events</h3>
 
+        <p>
+          Check Daily Recharge Events, special
+          campaigns and latest agency updates.
+        </p>
 
-    <!-- STATS -->
-    <div class="container stats">
+        <a href="events.html" class="service-link">
+          View Events →
+        </a>
 
-      <div class="stat-card">
-        <strong>24/7</strong>
-        <span>Fast Service</span>
-      </div>
-
-      <div class="stat-card">
-        <strong>AI</strong>
-        <span>Smart Support</span>
-      </div>
-
-      <div class="stat-card">
-        <strong>100857</strong>
-        <span>Agency Code</span>
       </div>
 
     </div>
 
+  </div>
 
-    <!-- SERVICES -->
-    <section id="services">
-
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Our Services</h2>
-          <p>Everything you need in one futuristic platform.</p>
-        </div>
-
-        <div class="services">
-
-          <div class="service">
-            <h3>💰 Coin Recharge</h3>
-            <p>
-              Fast coin recharge packages with simple
-              and easy ordering.
-            </p>
-            <a href="#">View Packages →</a>
-          </div>
-
-          <div class="service">
-            <h3>💸 Paid Sending</h3>
-            <p>
-              Paid Sending service with dedicated rates
-              and order tracking.
-            </p>
-            <a href="paid-sending.html">View Paid Sending →</a>
-          </div>
-
-          <div class="service">
-            <h3>🎁 Events</h3>
-            <p>
-              Check latest recharge events, offers
-              and special agency updates.
-            </p>
-            <a href="coins.html">View Packages →</a>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
+</section>
 
 
-    <!-- FEATURES -->
-    <section id="features">
+<!-- ================= FEATURES ================= -->
 
-      <div class="container">
+<section>
 
-        <div class="section-title">
-          <h2>Why SPM?</h2>
-          <p>Built for speed, security and future growth.</p>
-        </div>
+  <div class="container">
 
-        <div class="features">
+    <div class="section-title">
 
-          <div class="feature">
-            <div class="feature-icon">⚡</div>
-            <h3>Super Fast</h3>
-            <p>
-              Optimized lightweight design for fast
-              loading on mobile and desktop.
-            </p>
-          </div>
+      <h2>Built Different</h2>
 
-          <div class="feature">
-            <div class="feature-icon">🤖</div>
-            <h3>SPM AI</h3>
-            <p>
-              24/7 AI support system will help visitors
-              with services and orders.
-            </p>
-          </div>
+      <p>
+        Designed for speed, security and future growth.
+      </p>
 
-          <div class="feature">
-            <div class="feature-icon">🛡️</div>
-            <h3>Security</h3>
-            <p>
-              Future security layer with visitor,
-              bot and VPN protection.
-            </p>
-          </div>
-
-          <div class="feature">
-            <div class="feature-icon">📊</div>
-            <h3>Smart Admin</h3>
-            <p>
-              Powerful dashboard for orders, visitors,
-              events and website management.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-    <section id="contact">
-
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Need Help?</h2>
-          <p>
-            SPM AI Chat and direct support will be available 24/7.
-          </p>
-        </div>
-
-        <div style="text-align:center;">
-          <a href="#" class="btn btn-primary">
-            💬 Contact SPM Support
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      © 2026 SPM TOP AGENCY • Agency Code 100857
     </div>
-  </footer>
 
 
-  <!-- AI CHAT BUTTON -->
-  <button class="ai-chat" onclick="openAIChat()" aria-label="Open SPM AI">
-    🤖
-  </button>
+    <div class="features">
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          ⚡
+        </div>
+
+        <h3>Super Fast</h3>
+
+        <p>
+          Lightweight frontend designed for
+          fast loading on mobile and desktop.
+        </p>
+
+      </div>
 
 
-  <script>
-    function openAIChat() {
-      alert(
-        "SPM AI Chatbot\n\n" +
-        "24/7 automatic support will be connected in the next part."
-      );
-    }
-  </script>
+      <div class="feature">
+
+        <div class="feature-icon">
+          🤖
+        </div>
+
+        <h3>SPM AI</h3>
+
+        <p>
+          24/7 smart assistant for Coins,
+          Paid Sending, Events and support.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          🛡️
+        </div>
+
+        <h3>Security</h3>
+
+        <p>
+          Future-ready visitor, bot,
+          VPN and security systems.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="feature-icon">
+          📊
+        </div>
+
+        <h3>Smart Admin</h3>
+
+        <p>
+          Powerful dashboard for orders,
+          visitors, events and management.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SECURITY ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="security-box">
+
+      <div class="security-card">
+
+        <h3>
+          🛡️ Visitor Protection
+        </h3>
+
+        <p>
+          Future security system designed to
+          identify suspicious traffic and protect
+          the platform.
+        </p>
+
+        <div class="security-list">
+
+          <div>✓ VPN Detection</div>
+          <div>✓ Proxy Detection</div>
+          <div>✓ Bot Protection</div>
+          <div>✓ Visitor Analytics</div>
+
+        </div>
+
+      </div>
+
+
+      <div class="security-card">
+
+        <h3>
+          📊 Smart Analytics
+        </h3>
+
+        <p>
+          Admin dashboard will provide useful
+          visitor and order information.
+        </p>
+
+        <div class="security-list">
+
+          <div>✓ Visitor Time</div>
+          <div>✓ Device & Browser</div>
+          <div>✓ Approx. Location</div>
+          <div>✓ Order Statistics</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= SUPPORT ================= -->
+
+<section id="support">
+
+  <div class="container">
+
+    <div class="support">
+
+      <h2>
+        Need Help?
+      </h2>
+
+      <p>
+        Chat with SPM AI 24/7 or contact
+        SPM TOP AGENCY support directly.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="ai-chat.html" class="btn btn-primary">
+          🤖 Chat with SPM AI
+        </a>
+
+        <a
+          href="https://wa.me/919329687975"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-secondary"
+        >
+          💬 WhatsApp Support
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FLOATING BUTTONS ================= -->
+
+<a
+  href="ai-chat.html"
+  class="float-ai"
+  aria-label="Open SPM AI"
+>
+  🤖
+</a>
+
+
+<a
+  href="https://wa.me/919329687975"
+  target="_blank"
+  rel="noopener"
+  class="float-whatsapp"
+  aria-label="WhatsApp Support"
+>
+  💬
+</a>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-logo">
+      SPM TOP AGENCY
+    </div>
+
+    <div>
+      Agency Code: 100857
+    </div>
+
+    <br>
+
+    <div>
+      © 2026 SPM TOP AGENCY • All Rights Reserved
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+  const menu =
+    document.getElementById("mobileMenu");
+
+  menu.classList.toggle("open");
+
+}
+
+</script>
 
 </body>
 </html>
