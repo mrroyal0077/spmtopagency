@@ -8,6 +8,11 @@ const {
   updateOrderStatus
 } = require("./database");
 
+const {
+  verifyAdminCredentials,
+  requireAdmin
+} = require("./auth");
+
 const app = express();
 
 const PORT =
@@ -51,6 +56,90 @@ function generateOrderId(prefix){
 }
 
 
+// ================= ADMIN LOGIN =================
+
+app.post(
+  "/api/admin/login",
+  (req, res) => {
+
+    const {
+      username,
+      password
+    } = req.body;
+
+
+    if(
+      !username ||
+      !password
+    ){
+
+      return res.status(400).json({
+
+        success:false,
+
+        message:
+          "Username and password are required."
+
+      });
+
+    }
+
+
+    const valid =
+      verifyAdminCredentials(
+        username,
+        password
+      );
+
+
+    if(!valid){
+
+      return res.status(401).json({
+
+        success:false,
+
+        message:
+          "Invalid admin credentials."
+
+      });
+
+    }
+
+
+    const sessionToken =
+      process.env.ADMIN_SESSION_TOKEN;
+
+
+    if(!sessionToken){
+
+      return res.status(500).json({
+
+        success:false,
+
+        message:
+          "Admin session is not configured."
+
+      });
+
+    }
+
+
+    res.json({
+
+      success:true,
+
+      message:
+        "Admin login successful.",
+
+      token:
+        sessionToken
+
+    });
+
+  }
+);
+
+
 // ================= COIN ORDER =================
 
 app.post(
@@ -87,31 +176,32 @@ app.post(
     }
 
 
-    const order = createOrder({
+    const order =
+      createOrder({
 
-      orderId:
-        generateOrderId("SPM"),
+        orderId:
+          generateOrderId("SPM"),
 
-      type:
-        "Coin Recharge",
+        type:
+          "Coin Recharge",
 
-      packageName,
+        packageName,
 
-      price,
+        price,
 
-      yoyoId,
+        yoyoId,
 
-      name,
+        name,
 
-      whatsapp,
+        whatsapp,
 
-      note:
-        note || "",
+        note:
+          note || "",
 
-      status:
-        "pending"
+        status:
+          "pending"
 
-    });
+      });
 
 
     res.status(201).json({
@@ -167,33 +257,34 @@ app.post(
     }
 
 
-    const order = createOrder({
+    const order =
+      createOrder({
 
-      orderId:
-        generateOrderId("SPM-PS"),
+        orderId:
+          generateOrderId("SPM-PS"),
 
-      type:
-        "Paid Sending",
+        type:
+          "Paid Sending",
 
-      packageName,
+        packageName,
 
-      price,
+        price,
 
-      senderYoyo,
+        senderYoyo,
 
-      receiverYoyo,
+        receiverYoyo,
 
-      name,
+        name,
 
-      whatsapp,
+        whatsapp,
 
-      note:
-        note || "",
+        note:
+          note || "",
 
-      status:
-        "pending"
+        status:
+          "pending"
 
-    });
+      });
 
 
     res.status(201).json({
@@ -250,12 +341,10 @@ app.get(
 
 
 // ================= ADMIN ORDERS =================
-//
-// Authentication will be required here
-// before production use.
 
 app.get(
   "/api/admin/orders",
+  requireAdmin,
   (req, res) => {
 
     res.json({
@@ -275,6 +364,7 @@ app.get(
 
 app.patch(
   "/api/admin/orders/:orderId",
+  requireAdmin,
   (req, res) => {
 
     const {
@@ -345,6 +435,7 @@ app.patch(
 
 app.get(
   "/api/admin/stats",
+  requireAdmin,
   (req, res) => {
 
     const orders =
@@ -388,7 +479,7 @@ app.get(
 );
 
 
-// ================= START =================
+// ================= START SERVER =================
 
 app.listen(
   PORT,
