@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SPM TOP AGENCY | Agency 100857</title>
-<meta name="description" content="SPM TOP AGENCY - Coin Recharge, Paid Sending, Events and 24/7 AI Support.">
+
+<meta name="description"
+content="SPM TOP AGENCY - Coin Recharge, Paid Sending, Events and 24/7 AI Support.">
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -18,7 +21,6 @@
   --bg:#05050b;
   --card:rgba(255,255,255,.065);
   --border:rgba(255,255,255,.12);
-  --white:#fff;
   --muted:#a7a7ba;
   --purple:#8b5cf6;
   --pink:#ec4899;
@@ -33,12 +35,23 @@ html{
 
 body{
   font-family:Arial,Helvetica,sans-serif;
-  color:var(--white);
+  color:#fff;
+
   background:
-    radial-gradient(circle at 10% 10%,rgba(139,92,246,.22),transparent 28%),
-    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 28%),
-    radial-gradient(circle at 50% 80%,rgba(236,72,153,.12),transparent 32%),
+    radial-gradient(circle at 10% 10%,
+      rgba(139,92,246,.22),
+      transparent 28%),
+
+    radial-gradient(circle at 90% 15%,
+      rgba(6,182,212,.18),
+      transparent 28%),
+
+    radial-gradient(circle at 50% 80%,
+      rgba(236,72,153,.12),
+      transparent 32%),
+
     var(--bg);
+
   min-height:100vh;
   overflow-x:hidden;
 }
@@ -48,24 +61,33 @@ a{
   color:inherit;
 }
 
+button{
+  font-family:inherit;
+}
+
 .container{
   width:min(1150px,92%);
   margin:auto;
 }
+
 
 /* ================= NAVBAR ================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(5,5,11,.78);
+  z-index:5000;
+
+  background:rgba(5,5,11,.95);
+
   backdrop-filter:blur(20px);
+
   border-bottom:1px solid var(--border);
 }
 
 .nav{
   min-height:72px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -74,71 +96,168 @@ header{
 .logo{
   font-size:20px;
   font-weight:900;
-  letter-spacing:.5px;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    var(--gold),
-    var(--pink),
-    var(--cyan)
-  );
+  letter-spacing:.4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      var(--gold),
+      var(--pink),
+      var(--cyan)
+    );
+
   -webkit-background-clip:text;
+  background-clip:text;
+
   color:transparent;
 }
+
+
+/* DESKTOP MENU */
 
 .nav-links{
   display:flex;
   align-items:center;
-  gap:7px;
+  gap:5px;
 }
 
 .nav-links a{
-  padding:10px 13px;
+  padding:10px 12px;
+
   border-radius:10px;
+
   color:#d5d5df;
+
   font-size:13px;
+
   transition:.2s;
 }
 
 .nav-links a:hover{
-  background:rgba(255,255,255,.07);
+  background:rgba(255,255,255,.08);
   color:#fff;
 }
 
 .ai-nav{
-  background:linear-gradient(
-    100deg,
-    var(--purple),
-    var(--pink)
-  ) !important;
+  background:
+    linear-gradient(
+      100deg,
+      var(--purple),
+      var(--pink)
+    ) !important;
+
   color:#fff !important;
   font-weight:800;
 }
 
-/* ================= MOBILE MENU ================= */
+
+/* MOBILE MENU BUTTON */
 
 .menu-btn{
   display:none;
-  border:1px solid var(--border);
+
+  width:52px;
+  height:48px;
+
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(255,255,255,.16);
+
+  border-radius:14px;
+
   background:rgba(255,255,255,.07);
+
   color:#fff;
-  border-radius:11px;
-  padding:9px 12px;
-  font-size:20px;
+
+  font-size:25px;
+
   cursor:pointer;
+
+  position:relative;
+  z-index:10001;
 }
+
+.menu-btn:active{
+  transform:scale(.96);
+}
+
+
+/* MOBILE MENU */
 
 .mobile-menu{
   display:none;
+
+  position:absolute;
+
+  top:78px;
+  right:3%;
+
+  width:min(330px,94vw);
+
+  padding:10px;
+
+  border-radius:22px;
+
+  background:#0b0b16;
+
+  border:1px solid rgba(255,255,255,.20);
+
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.85);
+
+  z-index:10000;
 }
+
+.mobile-menu.open{
+  display:grid;
+}
+
+.mobile-menu a{
+  display:block;
+
+  padding:16px;
+
+  border-radius:13px;
+
+  color:#fff;
+
+  font-size:16px;
+  font-weight:600;
+
+  background:transparent;
+
+  transition:.2s;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:active{
+  background:rgba(255,255,255,.10);
+}
+
+.mobile-menu .mobile-ai{
+  margin-top:4px;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(139,92,246,.85),
+      rgba(236,72,153,.80)
+    );
+}
+
 
 /* ================= HERO ================= */
 
 .hero{
-  min-height:720px;
+  min-height:700px;
+
   display:flex;
   align-items:center;
+
   text-align:center;
+
   position:relative;
 }
 
@@ -148,58 +267,96 @@ header{
 
 .badge{
   display:inline-flex;
+
   align-items:center;
-  gap:7px;
+  justify-content:center;
+
   padding:9px 16px;
+
   border-radius:50px;
-  background:rgba(139,92,246,.10);
+
+  background:rgba(139,92,246,.11);
+
   border:1px solid rgba(139,92,246,.38);
-  color:#d9caff;
+
+  color:#ded2ff;
+
   font-size:12px;
   font-weight:700;
+
   margin-bottom:25px;
 }
 
 .hero h1{
   font-size:clamp(48px,9vw,100px);
+
   line-height:.88;
+
   font-weight:950;
+
   letter-spacing:-4px;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #c084fc,
-    #22d3ee,
-    #f472b6,
-    #fbbf24
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #c084fc,
+      #22d3ee,
+      #f472b6,
+      #fbbf24
+    );
+
   -webkit-background-clip:text;
+  background-clip:text;
+
   color:transparent;
+
   background-size:300%;
+
   animation:gradientMove 7s linear infinite;
 }
 
 @keyframes gradientMove{
-  0%{background-position:0%}
-  50%{background-position:100%}
-  100%{background-position:0%}
+
+  0%{
+    background-position:0%;
+  }
+
+  50%{
+    background-position:100%;
+  }
+
+  100%{
+    background-position:0%;
+  }
+
 }
 
 .hero-sub{
   max-width:700px;
+
   margin:28px auto 0;
+
   color:var(--muted);
+
   font-size:17px;
+
   line-height:1.7;
 }
 
 .agency-code{
   display:inline-block;
+
   margin-top:22px;
+
   padding:11px 18px;
+
   border-radius:12px;
+
   background:rgba(255,255,255,.055);
+
   border:1px solid var(--border);
+
   font-size:14px;
 }
 
@@ -209,21 +366,31 @@ header{
 
 .hero-buttons{
   display:flex;
+
   justify-content:center;
+
   flex-wrap:wrap;
+
   gap:12px;
+
   margin-top:30px;
 }
 
 .btn{
   display:inline-flex;
+
   align-items:center;
   justify-content:center;
+
   min-width:155px;
+
   padding:14px 20px;
+
   border-radius:13px;
+
   font-size:14px;
   font-weight:800;
+
   transition:.2s;
 }
 
@@ -232,49 +399,69 @@ header{
 }
 
 .btn-primary{
-  background:linear-gradient(
-    100deg,
-    var(--purple),
-    var(--pink)
-  );
-  box-shadow:0 12px 35px rgba(139,92,246,.22);
+  background:
+    linear-gradient(
+      100deg,
+      var(--purple),
+      var(--pink)
+    );
+
+  box-shadow:
+    0 12px 35px rgba(139,92,246,.22);
 }
 
 .btn-secondary{
   background:rgba(255,255,255,.06);
+
   border:1px solid var(--border);
 }
+
 
 /* ================= STATS ================= */
 
 .stats{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:14px;
+
   margin-top:-35px;
+
   position:relative;
+
   z-index:2;
 }
 
 .stat{
   padding:23px;
+
   text-align:center;
+
   border-radius:19px;
+
   background:var(--card);
+
   border:1px solid var(--border);
+
   backdrop-filter:blur(15px);
 }
 
 .stat strong{
   display:block;
+
   font-size:25px;
+
   margin-bottom:7px;
 }
 
 .stat span{
   color:var(--muted);
+
   font-size:12px;
 }
+
 
 /* ================= SECTIONS ================= */
 
@@ -284,159 +471,238 @@ section{
 
 .section-title{
   text-align:center;
+
   margin-bottom:45px;
 }
 
 .section-title h2{
   font-size:clamp(31px,5vw,48px);
+
   margin-bottom:10px;
 }
 
 .section-title p{
   color:var(--muted);
+
   font-size:14px;
 }
+
 
 /* ================= SERVICES ================= */
 
 .services{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(3,1fr);
+
   gap:18px;
 }
 
 .service{
   position:relative;
+
   overflow:hidden;
+
   padding:30px;
+
   min-height:250px;
+
   border-radius:25px;
+
   background:var(--card);
+
   border:1px solid var(--border);
+
   transition:.25s;
 }
 
 .service:hover{
   transform:translateY(-6px);
-  border-color:rgba(255,255,255,.25);
+
+  border-color:
+    rgba(255,255,255,.25);
 }
 
 .service::after{
   content:"";
+
   position:absolute;
+
   width:150px;
   height:150px;
+
   right:-70px;
   top:-70px;
+
   background:var(--purple);
+
   filter:blur(65px);
+
   opacity:.22;
 }
 
 .service-icon{
   font-size:40px;
+
   margin-bottom:18px;
 }
 
 .service h3{
   font-size:22px;
+
   margin-bottom:10px;
 }
 
 .service p{
   color:var(--muted);
+
   font-size:14px;
+
   line-height:1.7;
+
   margin-bottom:20px;
 }
 
 .service-link{
   display:inline-block;
+
   padding:10px 14px;
+
   border-radius:10px;
+
   background:rgba(255,255,255,.07);
+
   border:1px solid var(--border);
+
   font-size:12px;
+
   font-weight:800;
 }
-
+   
 /* ================= FEATURES ================= */
 
 .features{
   display:grid;
-  grid-template-columns:repeat(4,1fr);
+
+  grid-template-columns:
+    repeat(4,1fr);
+
   gap:15px;
 }
 
 .feature{
   padding:24px;
+
   border-radius:20px;
+
   background:rgba(255,255,255,.045);
+
   border:1px solid var(--border);
+
+  transition:.25s;
+}
+
+.feature:hover{
+  transform:translateY(-5px);
+
+  background:rgba(255,255,255,.07);
 }
 
 .feature-icon{
   font-size:29px;
+
   margin-bottom:14px;
 }
 
 .feature h3{
   margin-bottom:8px;
+
   font-size:17px;
 }
 
 .feature p{
   color:var(--muted);
+
   font-size:13px;
+
   line-height:1.6;
 }
+
 
 /* ================= SECURITY ================= */
 
 .security-box{
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
+
   gap:20px;
 }
 
 .security-card{
   padding:30px;
+
   border-radius:24px;
-  background:linear-gradient(
-    145deg,
-    rgba(139,92,246,.10),
-    rgba(6,182,212,.06)
-  );
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139,92,246,.10),
+      rgba(6,182,212,.06)
+    );
+
   border:1px solid var(--border);
+
+  transition:.25s;
+}
+
+.security-card:hover{
+  transform:translateY(-4px);
+
+  border-color:
+    rgba(255,255,255,.22);
 }
 
 .security-card h3{
   margin-bottom:12px;
+
+  font-size:19px;
 }
 
 .security-card p{
   color:var(--muted);
+
   line-height:1.7;
+
   font-size:14px;
 }
 
 .security-list{
   margin-top:18px;
+
   display:grid;
+
   gap:10px;
 }
 
 .security-list div{
   color:#ddd;
+
   font-size:13px;
 }
+
 
 /* ================= SUPPORT ================= */
 
 .support{
   text-align:center;
+
   padding:70px 25px;
+
   border-radius:28px;
+
   background:
     linear-gradient(
       120deg,
@@ -444,80 +710,119 @@ section{
       rgba(236,72,153,.08),
       rgba(6,182,212,.08)
     );
+
   border:1px solid var(--border);
 }
 
 .support h2{
   font-size:clamp(30px,5vw,45px);
+
   margin-bottom:12px;
 }
 
 .support p{
   color:var(--muted);
+
   margin-bottom:25px;
+
   line-height:1.6;
 }
+
 
 /* ================= FLOATING BUTTONS ================= */
 
 .float-ai,
 .float-whatsapp{
   position:fixed;
+
   bottom:20px;
+
   width:58px;
   height:58px;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   border-radius:50%;
-  z-index:900;
+
+  z-index:4000;
+
   font-size:25px;
-  box-shadow:0 10px 35px rgba(0,0,0,.4);
+
+  box-shadow:
+    0 10px 35px rgba(0,0,0,.4);
+
+  transition:.2s;
+}
+
+.float-ai:hover,
+.float-whatsapp:hover{
+  transform:scale(1.08);
 }
 
 .float-ai{
   right:20px;
-  background:linear-gradient(
-    135deg,
-    var(--purple),
-    var(--pink),
-    var(--cyan)
-  );
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--pink),
+      var(--cyan)
+    );
+
   animation:pulseAI 2.5s infinite;
 }
 
 @keyframes pulseAI{
+
   0%,100%{
-    box-shadow:0 10px 35px rgba(139,92,246,.3);
+    box-shadow:
+      0 10px 35px rgba(139,92,246,.3);
   }
+
   50%{
-    box-shadow:0 10px 55px rgba(236,72,153,.55);
+    box-shadow:
+      0 10px 55px rgba(236,72,153,.55);
   }
+
 }
 
 .float-whatsapp{
   left:20px;
+
   background:#25D366;
 }
+
 
 /* ================= FOOTER ================= */
 
 footer{
   padding:38px 0;
+
   border-top:1px solid var(--border);
+
   color:var(--muted);
+
   text-align:center;
+
   font-size:12px;
 }
 
 .footer-logo{
   font-size:17px;
+
   font-weight:900;
+
   margin-bottom:8px;
+
   color:#fff;
 }
 
-/* ================= RESPONSIVE ================= */
+
+/* ================= TABLET ================= */
 
 @media(max-width:900px){
 
@@ -526,50 +831,68 @@ footer{
   }
 
   .menu-btn{
-    display:block;
-  }
-
-  .mobile-menu{
-    position:absolute;
-    top:68px;
-    right:4%;
-    width:230px;
-    padding:9px;
-    border-radius:17px;
-    background:rgba(13,13,27,.97);
-    border:1px solid var(--border);
-    box-shadow:0 20px 60px rgba(0,0,0,.5);
-  }
-
-  .mobile-menu.open{
-    display:grid;
-  }
-
-  .mobile-menu a{
-    padding:13px;
-    border-radius:10px;
-    color:#ddd;
-    font-size:13px;
-  }
-
-  .mobile-menu a:hover{
-    background:rgba(255,255,255,.07);
+    display:flex;
   }
 
   .stats{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .features{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
   .services{
     grid-template-columns:1fr;
   }
+
 }
 
+
+/* ================= MOBILE ================= */
+
 @media(max-width:600px){
+
+  header{
+    z-index:5000;
+  }
+
+  .nav{
+    min-height:68px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .mobile-menu{
+    top:76px;
+
+    right:3%;
+
+    width:94%;
+
+    max-height:
+      calc(100vh - 95px);
+
+    overflow-y:auto;
+
+    background:#0b0b16;
+
+    opacity:1;
+
+    backdrop-filter:none;
+
+    z-index:10000;
+  }
+
+  .mobile-menu a{
+    padding:16px;
+
+    font-size:16px;
+  }
 
   .hero{
     min-height:650px;
@@ -581,33 +904,68 @@ footer{
 
   .hero h1{
     font-size:53px;
+
     letter-spacing:-2px;
   }
 
   .hero-sub{
     font-size:15px;
+
+    padding:0 8px;
+  }
+
+  .hero-buttons{
+    gap:10px;
+  }
+
+  .btn{
+    min-width:140px;
+
+    padding:14px 16px;
   }
 
   .stats{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+      1fr 1fr;
+
+    gap:10px;
+
+    margin-top:-25px;
   }
 
-  .features{
-    grid-template-columns:1fr;
+  .stat{
+    padding:20px 10px;
   }
 
-  .security-box{
-    grid-template-columns:1fr;
+  .stat strong{
+    font-size:22px;
   }
 
   section{
     padding:70px 0;
   }
 
+  .security-box{
+    grid-template-columns:1fr;
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .service{
+    padding:26px;
+  }
+
+  .security-card{
+    padding:25px;
+  }
+
   .float-ai,
   .float-whatsapp{
     width:53px;
     height:53px;
+
     bottom:15px;
   }
 
@@ -618,51 +976,157 @@ footer{
   .float-whatsapp{
     left:15px;
   }
+
 }
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:380px){
+
+  .logo{
+    font-size:17px;
+  }
+
+  .menu-btn{
+    width:48px;
+    height:45px;
+  }
+
+  .hero h1{
+    font-size:47px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .hero-buttons{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= HEADER ================= -->
 
 <header>
+
   <div class="container nav">
 
-    <a href="index.html" class="logo">
+    <a
+      href="index.html"
+      class="logo"
+    >
       SPM TOP AGENCY
     </a>
 
+
+    <!-- DESKTOP NAV -->
+
     <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="coins.html">💰 Coins</a>
-      <a href="paid-sending.html">💸 Paid Sending</a>
-      <a href="events.html">🎁 Events</a>
-      <a href="ai-chat.html" class="ai-nav">🤖 SPM AI</a>
+
+      <a href="#home">
+        Home
+      </a>
+
+      <a href="coins.html">
+        💰 Coins
+      </a>
+
+      <a href="paid-sending.html">
+        💸 Paid Sending
+      </a>
+
+      <a href="events.html">
+        🎁 Events
+      </a>
+
+      <a
+        href="ai-chat.html"
+        class="ai-nav"
+      >
+        🤖 SPM AI
+      </a>
+
     </nav>
 
-    <button class="menu-btn" onclick="toggleMenu()">
+
+    <!-- MOBILE BUTTON -->
+
+    <button
+      class="menu-btn"
+      id="menuButton"
+      onclick="toggleMenu()"
+      aria-label="Open Menu"
+      aria-expanded="false"
+    >
       ☰
     </button>
 
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="index.html">🏠 Home</a>
-      <a href="coins.html">💰 Coin Recharge</a>
-      <a href="paid-sending.html">💸 Paid Sending</a>
-      <a href="events.html">🎁 Events</a>
-      <a href="ai-chat.html">🤖 SPM AI</a>
-      <a href="#support">📞 Support</a>
+
+    <!-- MOBILE MENU -->
+
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+    >
+
+      <a href="#home">
+        🏠 Home
+      </a>
+
+      <a href="coins.html">
+        💰 Coin Recharge
+      </a>
+
+      <a href="paid-sending.html">
+        💸 Paid Sending
+      </a>
+
+      <a href="events.html">
+        🎁 Events
+      </a>
+
+      <a
+        href="ai-chat.html"
+        class="mobile-ai"
+      >
+        🤖 SPM AI
+      </a>
+
+      <a href="#support">
+        📞 Support
+      </a>
+
     </div>
 
   </div>
+
 </header>
 
 
-<!-- ================= HERO ================= -->
+<!-- ================= MAIN ================= -->
 
 <main>
 
-<section class="hero" id="home">
+
+<!-- HERO -->
+
+<section
+  class="hero"
+  id="home"
+>
 
   <div class="container hero-content">
 
@@ -670,28 +1134,40 @@ footer{
       ⚡ 24/7 FAST SERVICE
     </div>
 
+
     <h1>
       SPM TOP<br>
       AGENCY
     </h1>
 
+
     <p class="hero-sub">
-      A futuristic agency platform for fast Coin Recharge,
-      Paid Sending, Events and smart 24/7 support.
+      A futuristic agency platform for fast
+      Coin Recharge, Paid Sending, Events
+      and smart 24/7 support.
     </p>
+
 
     <div class="agency-code">
       Agency Code:
       <strong>100857</strong>
     </div>
 
+
     <div class="hero-buttons">
 
-      <a href="coins.html" class="btn btn-primary">
+      <a
+        href="coins.html"
+        class="btn btn-primary"
+      >
         💰 Coin Recharge
       </a>
 
-      <a href="paid-sending.html" class="btn btn-secondary">
+
+      <a
+        href="paid-sending.html"
+        class="btn btn-secondary"
+      >
         💸 Paid Sending
       </a>
 
@@ -702,42 +1178,75 @@ footer{
 </section>
 
 
-<!-- ================= STATS ================= -->
+<!-- STATS -->
 
 <div class="container stats">
 
   <div class="stat">
-    <strong>24/7</strong>
-    <span>Fast Service</span>
+
+    <strong>
+      24/7
+    </strong>
+
+    <span>
+      Fast Service
+    </span>
+
   </div>
 
-  <div class="stat">
-    <strong>🤖 AI</strong>
-    <span>Smart Support</span>
-  </div>
 
   <div class="stat">
-    <strong>100857</strong>
-    <span>Agency Code</span>
+
+    <strong>
+      🤖 AI
+    </strong>
+
+    <span>
+      Smart Support
+    </span>
+
   </div>
 
+
   <div class="stat">
-    <strong>⚡ Fast</strong>
-    <span>Future Ready</span>
+
+    <strong>
+      100857
+    </strong>
+
+    <span>
+      Agency Code
+    </span>
+
+  </div>
+
+
+  <div class="stat">
+
+    <strong>
+      ⚡ Fast
+    </strong>
+
+    <span>
+      Future Ready
+    </span>
+
   </div>
 
 </div>
 
 
-<!-- ================= SERVICES ================= -->
+<!-- SERVICES -->
 
-<section id="services">
+<section>
 
   <div class="container">
 
     <div class="section-title">
 
-      <h2>SPM Services</h2>
+      <h2>
+        SPM Services
+      </h2>
 
       <p>
         Everything in one premium platform.
@@ -748,20 +1257,26 @@ footer{
 
     <div class="services">
 
+
       <div class="service">
 
         <div class="service-icon">
           💰
         </div>
 
-        <h3>Coin Recharge</h3>
+        <h3>
+          Coin Recharge
+        </h3>
 
         <p>
-          Choose your required coin package and
-          submit your recharge order quickly.
+          Choose your required coin package
+          and submit your recharge order quickly.
         </p>
 
-        <a href="coins.html" class="service-link">
+        <a
+          href="coins.html"
+          class="service-link"
+        >
           View Coin Packages →
         </a>
 
@@ -774,14 +1289,19 @@ footer{
           💸
         </div>
 
-        <h3>Paid Sending</h3>
+        <h3>
+          Paid Sending
+        </h3>
 
         <p>
-          Dedicated Paid Sending service with
-          simple and transparent rates.
+          Dedicated Paid Sending service
+          with simple and transparent rates.
         </p>
 
-        <a href="paid-sending.html" class="service-link">
+        <a
+          href="paid-sending.html"
+          class="service-link"
+        >
           View Paid Sending →
         </a>
 
@@ -794,18 +1314,24 @@ footer{
           🎁
         </div>
 
-        <h3>Events</h3>
+        <h3>
+          Events
+        </h3>
 
         <p>
-          Check Daily Recharge Events, special
-          campaigns and latest agency updates.
+          Check Daily Recharge Events,
+          special campaigns and latest updates.
         </p>
 
-        <a href="events.html" class="service-link">
+        <a
+          href="events.html"
+          class="service-link"
+        >
           View Events →
         </a>
 
       </div>
+
 
     </div>
 
@@ -814,7 +1340,7 @@ footer{
 </section>
 
 
-<!-- ================= FEATURES ================= -->
+<!-- FEATURES -->
 
 <section>
 
@@ -822,7 +1348,9 @@ footer{
 
     <div class="section-title">
 
-      <h2>Built Different</h2>
+      <h2>
+        Built Different
+      </h2>
 
       <p>
         Designed for speed, security and future growth.
@@ -833,13 +1361,16 @@ footer{
 
     <div class="features">
 
+
       <div class="feature">
 
         <div class="feature-icon">
           ⚡
         </div>
 
-        <h3>Super Fast</h3>
+        <h3>
+          Super Fast
+        </h3>
 
         <p>
           Lightweight frontend designed for
@@ -855,7 +1386,9 @@ footer{
           🤖
         </div>
 
-        <h3>SPM AI</h3>
+        <h3>
+          SPM AI
+        </h3>
 
         <p>
           24/7 smart assistant for Coins,
@@ -871,7 +1404,9 @@ footer{
           🛡️
         </div>
 
-        <h3>Security</h3>
+        <h3>
+          Security
+        </h3>
 
         <p>
           Future-ready visitor, bot,
@@ -887,7 +1422,9 @@ footer{
           📊
         </div>
 
-        <h3>Smart Admin</h3>
+        <h3>
+          Smart Admin
+        </h3>
 
         <p>
           Powerful dashboard for orders,
@@ -896,13 +1433,12 @@ footer{
 
       </div>
 
+
     </div>
 
   </div>
 
 </section>
-
-
 <!-- ================= SECURITY ================= -->
 
 <section>
@@ -925,10 +1461,21 @@ footer{
 
         <div class="security-list">
 
-          <div>✓ VPN Detection</div>
-          <div>✓ Proxy Detection</div>
-          <div>✓ Bot Protection</div>
-          <div>✓ Visitor Analytics</div>
+          <div>
+            ✓ VPN Detection
+          </div>
+
+          <div>
+            ✓ Proxy Detection
+          </div>
+
+          <div>
+            ✓ Bot Protection
+          </div>
+
+          <div>
+            ✓ Visitor Analytics
+          </div>
 
         </div>
 
@@ -948,10 +1495,21 @@ footer{
 
         <div class="security-list">
 
-          <div>✓ Visitor Time</div>
-          <div>✓ Device & Browser</div>
-          <div>✓ Approx. Location</div>
-          <div>✓ Order Statistics</div>
+          <div>
+            ✓ Visitor Time
+          </div>
+
+          <div>
+            ✓ Device & Browser
+          </div>
+
+          <div>
+            ✓ Approx. Location
+          </div>
+
+          <div>
+            ✓ Order Statistics
+          </div>
 
         </div>
 
@@ -983,7 +1541,10 @@ footer{
 
       <div class="hero-buttons">
 
-        <a href="ai-chat.html" class="btn btn-primary">
+        <a
+          href="ai-chat.html"
+          class="btn btn-primary"
+        >
           🤖 Chat with SPM AI
         </a>
 
@@ -1003,6 +1564,7 @@ footer{
   </div>
 
 </section>
+
 
 </main>
 
@@ -1054,16 +1616,115 @@ footer{
 </footer>
 
 
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
+
+const menu =
+  document.getElementById("mobileMenu");
+
+const menuButton =
+  document.getElementById("menuButton");
+
+
+/* OPEN / CLOSE MOBILE MENU */
 
 function toggleMenu(){
 
-  const menu =
-    document.getElementById("mobileMenu");
+  const isOpen =
+    menu.classList.toggle("open");
 
-  menu.classList.toggle("open");
+  menuButton.setAttribute(
+    "aria-expanded",
+    isOpen ? "true" : "false"
+  );
+
+  menuButton.innerHTML =
+    isOpen ? "✕" : "☰";
 
 }
+
+
+/* CLOSE MENU AFTER LINK CLICK */
+
+document
+  .querySelectorAll(".mobile-menu a")
+  .forEach(function(link){
+
+    link.addEventListener(
+      "click",
+      function(){
+
+        menu.classList.remove("open");
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+        menuButton.innerHTML = "☰";
+
+      }
+    );
+
+  });
+
+
+/* CLOSE WHEN CLICKING OUTSIDE */
+
+document.addEventListener(
+  "click",
+  function(event){
+
+    const clickedInsideMenu =
+      menu.contains(event.target);
+
+    const clickedButton =
+      menuButton.contains(event.target);
+
+
+    if(
+      menu.classList.contains("open") &&
+      !clickedInsideMenu &&
+      !clickedButton
+    ){
+
+      menu.classList.remove("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.innerHTML = "☰";
+
+    }
+
+  }
+);
+
+
+/* CLOSE WITH ESCAPE */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Escape"){
+
+      menu.classList.remove("open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuButton.innerHTML = "☰";
+
+    }
+
+  }
+);
 
 </script>
 
