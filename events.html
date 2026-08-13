@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Events | SPM TOP AGENCY</title>
-<meta name="description" content="SPM TOP AGENCY Events and special campaigns.">
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+  Events | SPM TOP AGENCY
+</title>
+
+<meta
+  name="description"
+  content="SPM TOP AGENCY latest events and agency updates."
+>
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -24,17 +36,42 @@
   --cyan:#06b6d4;
   --gold:#fbbf24;
   --green:#22c55e;
+  --orange:#f97316;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   min-height:100vh;
+
   font-family:Arial,Helvetica,sans-serif;
+
   color:#fff;
+
   background:
-    radial-gradient(circle at 10% 10%,rgba(139,92,246,.22),transparent 28%),
-    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 28%),
-    radial-gradient(circle at 50% 90%,rgba(236,72,153,.12),transparent 32%),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(139,92,246,.22),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 90% 15%,
+      rgba(6,182,212,.18),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(236,72,153,.12),
+      transparent 32%
+    ),
+
     var(--bg);
+
+  overflow-x:hidden;
 }
 
 a{
@@ -42,104 +79,159 @@ a{
   text-decoration:none;
 }
 
+button{
+  font-family:inherit;
+}
+
 .container{
   width:min(1100px,92%);
   margin:auto;
 }
 
-/* NAV */
+
+/* ================= NAV ================= */
 
 header{
   position:sticky;
   top:0;
-  z-index:1000;
-  background:rgba(5,5,11,.80);
+  z-index:5000;
+
+  background:rgba(5,5,11,.95);
+
   backdrop-filter:blur(20px);
+
   border-bottom:1px solid var(--border);
 }
 
 .nav{
   min-height:72px;
+
   display:flex;
+
   align-items:center;
+
   justify-content:space-between;
 }
 
 .logo{
   font-size:20px;
+
   font-weight:900;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    var(--gold),
-    var(--pink),
-    var(--cyan)
-  );
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      var(--gold),
+      var(--pink),
+      var(--cyan)
+    );
+
   -webkit-background-clip:text;
+  background-clip:text;
+
   color:transparent;
 }
 
 .back{
   padding:10px 15px;
+
   border-radius:11px;
+
   border:1px solid var(--border);
+
   background:rgba(255,255,255,.06);
+
   font-size:13px;
 }
 
-/* HERO */
+
+/* ================= HERO ================= */
 
 .hero{
   text-align:center;
-  padding:80px 0 50px;
+
+  padding:80px 0 55px;
 }
 
 .badge{
   display:inline-block;
+
   padding:9px 16px;
+
   border-radius:50px;
-  background:rgba(236,72,153,.10);
-  border:1px solid rgba(236,72,153,.35);
-  color:#ffc5e4;
+
+  background:rgba(251,191,36,.10);
+
+  border:1px solid rgba(251,191,36,.30);
+
+  color:#fde68a;
+
   font-size:12px;
+
   font-weight:700;
+
   margin-bottom:20px;
 }
 
-h1{
-  font-size:clamp(45px,7vw,75px);
-  letter-spacing:-2px;
-  background:linear-gradient(
-    90deg,
-    #fff,
-    #c084fc,
-    #22d3ee,
-    #f472b6,
-    #fbbf24
-  );
+.hero h1{
+  font-size:clamp(45px,8vw,78px);
+
+  letter-spacing:-3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      #c084fc,
+      #22d3ee,
+      #f472b6,
+      #fbbf24
+    );
+
   -webkit-background-clip:text;
+  background-clip:text;
+
   color:transparent;
+
   background-size:300%;
-  animation:gradient 7s linear infinite;
+
+  animation:gradientMove 7s linear infinite;
 }
 
-@keyframes gradient{
-  0%{background-position:0%}
-  50%{background-position:100%}
-  100%{background-position:0%}
+@keyframes gradientMove{
+
+  0%{
+    background-position:0%;
+  }
+
+  50%{
+    background-position:100%;
+  }
+
+  100%{
+    background-position:0%;
+  }
+
 }
 
 .hero p{
-  max-width:650px;
+  max-width:680px;
+
   margin:18px auto 0;
+
   color:var(--muted);
+
   font-size:15px;
+
   line-height:1.7;
 }
 
 .agency{
   margin-top:18px;
+
   color:#ddd;
+
   font-size:13px;
 }
 
@@ -147,207 +239,358 @@ h1{
   color:var(--gold);
 }
 
-/* EVENTS */
+
+/* ================= EVENT ================= */
 
 .events{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
-  padding-bottom:80px;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:20px;
+
+  padding-bottom:70px;
 }
 
-.event{
+.event-card{
   position:relative;
+
   overflow:hidden;
+
   padding:32px;
-  min-height:300px;
+
   border-radius:27px;
+
   background:var(--card);
+
   border:1px solid var(--border);
+
   transition:.25s;
 }
 
-.event:hover{
+.event-card:hover{
   transform:translateY(-6px);
-  border-color:rgba(255,255,255,.26);
+
+  border-color:
+    rgba(255,255,255,.25);
 }
 
-.event::before{
+.event-card::after{
   content:"";
+
   position:absolute;
-  width:190px;
-  height:190px;
-  right:-80px;
-  top:-80px;
+
+  width:220px;
+  height:220px;
+
+  right:-100px;
+  top:-100px;
+
   background:var(--purple);
-  filter:blur(65px);
-  opacity:.23;
+
+  filter:blur(70px);
+
+  opacity:.20;
+}
+
+.event-top{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:20px;
 }
 
 .event-icon{
   font-size:45px;
-  margin-bottom:17px;
 }
 
 .status{
-  display:inline-block;
-  padding:6px 11px;
-  border-radius:30px;
-  font-size:10px;
-  font-weight:900;
-  margin-bottom:14px;
-}
+  padding:7px 11px;
 
-.active{
+  border-radius:50px;
+
   color:#86efac;
+
   background:rgba(34,197,94,.10);
-  border:1px solid rgba(34,197,94,.25);
+
+  border:1px solid rgba(34,197,94,.22);
+
+  font-size:10px;
+
+  font-weight:900;
 }
 
-.special{
-  color:#fde68a;
-  background:rgba(251,191,36,.10);
-  border:1px solid rgba(251,191,36,.25);
+.event-card h2{
+  font-size:24px;
+
+  margin-bottom:11px;
 }
 
-.soon{
-  color:#93c5fd;
-  background:rgba(59,130,246,.10);
-  border:1px solid rgba(59,130,246,.25);
-}
-
-.event h2{
-  font-size:25px;
-  margin-bottom:12px;
-}
-
-.event p{
+.event-card p{
   color:var(--muted);
+
   font-size:14px;
+
   line-height:1.7;
+
   margin-bottom:22px;
 }
 
-.event-btn{
-  display:inline-block;
-  padding:12px 16px;
-  border-radius:12px;
-  background:linear-gradient(
-    100deg,
-    var(--purple),
-    var(--pink)
-  );
-  font-size:12px;
-  font-weight:800;
+.event-details{
+  display:grid;
+
+  gap:10px;
+
+  margin-bottom:22px;
 }
 
-/* NOTICE */
+.event-details div{
+  padding:11px 13px;
 
-.notice{
-  margin-bottom:70px;
-  padding:27px;
-  text-align:center;
-  border-radius:22px;
+  border-radius:11px;
+
   background:rgba(255,255,255,.045);
+
+  border:1px solid rgba(255,255,255,.07);
+
+  color:#ddd;
+
+  font-size:12px;
+}
+
+.event-btn{
+  display:inline-flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:13px 17px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      100deg,
+      var(--purple),
+      var(--pink)
+    );
+
+  font-size:12px;
+
+  font-weight:900;
+}
+
+
+/* ================= FEATURED ================= */
+
+.featured{
+  margin-bottom:70px;
+
+  padding:35px;
+
+  border-radius:27px;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(139,92,246,.13),
+      rgba(236,72,153,.09),
+      rgba(6,182,212,.08)
+    );
+
+  border:1px solid var(--border);
+
+  text-align:center;
+}
+
+.featured-icon{
+  font-size:48px;
+
+  margin-bottom:15px;
+}
+
+.featured h2{
+  font-size:30px;
+
+  margin-bottom:10px;
+}
+
+.featured p{
+  max-width:650px;
+
+  margin:auto;
+
+  color:var(--muted);
+
+  font-size:14px;
+
+  line-height:1.7;
+}
+
+
+/* ================= UPDATES ================= */
+
+.updates{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:15px;
+
+  padding-bottom:80px;
+}
+
+.update{
+  padding:23px;
+
+  border-radius:19px;
+
+  background:rgba(255,255,255,.045);
+
   border:1px solid var(--border);
 }
 
-.notice h3{
-  margin-bottom:9px;
+.update-icon{
+  font-size:28px;
+
+  margin-bottom:13px;
 }
 
-.notice p{
+.update h3{
+  font-size:16px;
+
+  margin-bottom:8px;
+}
+
+.update p{
   color:var(--muted);
-  font-size:13px;
+
+  font-size:12px;
+
   line-height:1.6;
 }
+   
+/* ================= SUPPORT ================= */
 
-/* AI */
+.support{
+  margin-bottom:80px;
 
-.ai{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:56px;
-  height:56px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  background:linear-gradient(
-    135deg,
-    var(--purple),
-    var(--pink),
-    var(--cyan)
-  );
-  font-size:24px;
-  z-index:1000;
-  box-shadow:0 10px 40px rgba(139,92,246,.35);
-}
+  padding:35px 25px;
 
-footer{
-  border-top:1px solid var(--border);
-  padding:35px 0;
+  border-radius:27px;
+
   text-align:center;
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(139,92,246,.12),
+      rgba(236,72,153,.08),
+      rgba(6,182,212,.08)
+    );
+
+  border:1px solid var(--border);
+}
+
+.support h2{
+  font-size:30px;
+
+  margin-bottom:10px;
+}
+
+.support p{
+  max-width:650px;
+
+  margin:0 auto 22px;
+
   color:var(--muted);
-  font-size:12px;
+
+  font-size:14px;
+
+  line-height:1.7;
 }
 
-/* MOBILE */
+.support-buttons{
+  display:flex;
 
-@media(max-width:650px){
+  justify-content:center;
 
-  .events{
-    grid-template-columns:1fr;
-  }
+  flex-wrap:wrap;
 
-  .hero{
-    padding-top:55px;
-  }
-
-  .event{
-    padding:27px;
-  }
+  gap:10px;
 }
+
+.support-btn{
+  display:inline-flex;
+
+  align
+  /* ================= MAIN ================= */
+
 </style>
 </head>
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
+
   <div class="container nav">
 
-    <a href="index.html" class="logo">
+    <a
+      href="index.html"
+      class="logo"
+    >
       SPM TOP AGENCY
     </a>
 
-    <a href="index.html" class="back">
+    <a
+      href="index.html"
+      class="back"
+    >
       ← Home
     </a>
 
   </div>
+
 </header>
 
 
 <main>
+
+
+<!-- ================= HERO ================= -->
 
 <section class="hero">
 
   <div class="container">
 
     <div class="badge">
-      🎁 SPM SPECIAL EVENTS
+      🎁 LATEST AGENCY EVENTS
     </div>
 
-    <h1>EVENTS</h1>
+    <h1>
+      SPM EVENTS
+    </h1>
 
     <p>
-      Stay updated with SPM TOP AGENCY recharge
-      events, special campaigns and future offers.
+      Stay updated with the latest SPM TOP AGENCY
+      recharge events, special campaigns and
+      agency announcements.
     </p>
 
     <div class="agency">
-      Agency Code: <strong>100857</strong>
+      Agency Code:
+      <strong>100857</strong>
     </div>
 
   </div>
@@ -355,18 +598,14 @@ footer{
 </section>
 
 
-<section class="container events">
+<!-- ================= FEATURED EVENT ================= -->
 
-  <!-- DAILY RECHARGE -->
+<section class="container">
 
-  <article class="event">
+  <div class="featured">
 
-    <div class="event-icon">
+    <div class="featured-icon">
       🔥
-    </div>
-
-    <div class="status active">
-      ACTIVE
     </div>
 
     <h2>
@@ -374,148 +613,360 @@ footer{
     </h2>
 
     <p>
-      Daily recharge campaigns and special offers
-      can be displayed here. Check the latest
-      available information before placing an order.
+      Check the latest Daily Recharge Event
+      and participate according to the current
+      agency event rules and targets.
     </p>
 
-    <a href="coins.html" class="event-btn">
-      Recharge Now →
-    </a>
-
-  </article>
-
-
-  <!-- 200% EVENT -->
-
-  <article class="event">
-
-    <div class="event-icon">
-      🚀
-    </div>
-
-    <div class="status special">
-      SPECIAL EVENT
-    </div>
-
-    <h2>
-      200% Coins Level Up Event
-    </h2>
-
-    <p>
-      Special level-up event information can be
-      displayed here. Event availability and
-      conditions may change.
-    </p>
-
-    <a href="coins.html" class="event-btn">
-      View Recharge →
-    </a>
-
-  </article>
-
-
-  <!-- FUTURE EVENT -->
-
-  <article class="event">
-
-    <div class="event-icon">
-      👑
-    </div>
-
-    <div class="status soon">
-      COMING SOON
-    </div>
-
-    <h2>
-      New Special Event
-    </h2>
-
-    <p>
-      Future SPM TOP AGENCY campaigns and special
-      events will be added to this section.
-    </p>
-
-    <a href="ai-chat.html" class="event-btn">
-      Ask SPM AI →
-    </a>
-
-  </article>
-
-
-  <!-- AGENCY UPDATE -->
-
-  <article class="event">
-
-    <div class="event-icon">
-      🎯
-    </div>
-
-    <div class="status soon">
-      FUTURE UPDATE
-    </div>
-
-    <h2>
-      Agency Campaigns
-    </h2>
-
-    <p>
-      New targets, recharge campaigns and agency
-      announcements can be displayed here later.
-    </p>
-
-    <a href="index.html#support" class="event-btn">
-      Contact Support →
-    </a>
-
-  </article>
+  </div>
 
 </section>
 
+
+<!-- ================= EVENTS ================= -->
+
+<section class="container events">
+
+
+  <!-- EVENT 1 -->
+
+  <div class="event-card">
+
+    <div class="event-top">
+
+      <div class="event-icon">
+        💰
+      </div>
+
+      <div class="status">
+        ACTIVE
+      </div>
+
+    </div>
+
+
+    <h2>
+      Daily Recharge
+    </h2>
+
+    <p>
+      Recharge your account and check the
+      current daily event requirements.
+    </p>
+
+
+    <div class="event-details">
+
+      <div>
+        ⚡ Service:
+        <strong>
+          Coin Recharge
+        </strong>
+      </div>
+
+      <div>
+        🕐 Timing:
+        <strong>
+          Daily
+        </strong>
+      </div>
+
+      <div>
+        🏢 Agency:
+        <strong>
+          100857
+        </strong>
+      </div>
+
+    </div>
+
+
+    <a
+      href="coins.html"
+      class="event-btn"
+    >
+      💰 Recharge Now →
+    </a>
+
+  </div>
+
+
+  <!-- EVENT 2 -->
+
+  <div class="event-card">
+
+    <div class="event-top">
+
+      <div class="event-icon">
+        🚀
+      </div>
+
+      <div class="status">
+        ACTIVE
+      </div>
+
+    </div>
+
+
+    <h2>
+      Paid Sending
+    </h2>
+
+    <p>
+      Check the available Paid Sending packages
+      and place your order quickly.
+    </p>
+
+
+    <div class="event-details">
+
+      <div>
+        💸 10K Coins:
+        <strong>
+          ₹600
+        </strong>
+      </div>
+
+      <div>
+        💰 100K Coins:
+        <strong>
+          ₹6,000
+        </strong>
+      </div>
+
+      <div>
+        ⚡ Service:
+        <strong>
+          Fast
+        </strong>
+      </div>
+
+    </div>
+
+
+    <a
+      href="paid-sending.html"
+      class="event-btn"
+    >
+      💸 Paid Sending →
+    </a>
+
+  </div>
+
+
+  <!-- EVENT 3 -->
+
+  <div class="event-card">
+
+    <div class="event-top">
+
+      <div class="event-icon">
+        🤖
+      </div>
+
+      <div class="status">
+        ONLINE
+      </div>
+
+    </div>
+
+
+    <h2>
+      SPM AI Support
+    </h2>
+
+    <p>
+      Get automatic answers about Coin Recharge,
+      Paid Sending, Events and basic support.
+    </p>
+
+
+    <div class="event-details">
+
+      <div>
+        🤖 AI:
+        <strong>
+          24/7
+        </strong>
+      </div>
+
+      <div>
+        ⚡ Reply:
+        <strong>
+          Automatic
+        </strong>
+      </div>
+
+      <div>
+        💬 Support:
+        <strong>
+          SPM AI
+        </strong>
+      </div>
+
+    </div>
+
+
+    <a
+      href="ai-chat.html"
+      class="event-btn"
+    >
+      🤖 Chat with SPM AI →
+    </a>
+
+  </div>
+
+
+  <!-- EVENT 4 -->
+
+  <div class="event-card">
+
+    <div class="event-top">
+
+      <div class="event-icon">
+        📢
+      </div>
+
+      <div class="status">
+        UPDATE
+      </div>
+
+    </div>
+
+
+    <h2>
+      Agency Updates
+    </h2>
+
+    <p>
+      New events, service updates and important
+      agency announcements will be displayed here.
+    </p>
+
+
+    <div class="event-details">
+
+      <div>
+        🏢 Agency Code:
+        <strong>
+          100857
+        </strong>
+      </div>
+
+      <div>
+        ⚡ Service:
+        <strong>
+          24/7
+        </strong>
+      </div>
+
+      <div>
+        🔔 Updates:
+        <strong>
+          Regular
+        </strong>
+      </div>
+
+    </div>
+
+
+    <a
+      href="ai-chat.html"
+      class="event-btn"
+    >
+      🤖 Ask SPM AI →
+    </a>
+
+  </div>
+
+
+</section>
+
+
+<!-- ================= UPDATES ================= -->
 
 <section class="container">
 
-  <div class="notice">
+  <div class="section-title"
+       style="
+         text-align:center;
+         margin-bottom:30px;
+       ">
 
-    <h3>
-      📢 SPM TOP AGENCY
-    </h3>
+    <h2>
+      Latest Updates
+    </h2>
 
-    <p>
-      Event details can be updated from the future
-      Admin Dashboard. Always confirm the latest
-      event conditions before ordering.
+    <p
+      style="
+        color:var(--muted);
+        font-size:14px;
+        margin-top:8px;
+      "
+    >
+      Important information for SPM users.
     </p>
 
   </div>
 
-</section>
 
-</main>
-
-
-<a
-  href="ai-chat.html"
-  class="ai"
-  aria-label="SPM AI"
->
-  🤖
-</a>
+  <div class="updates">
 
 
-<footer>
+    <div class="update">
 
-  <div class="container">
+      <div class="update-icon">
+        ⚡
+      </div>
 
-    <strong>SPM TOP AGENCY</strong><br><br>
+      <h3>
+        Fast Service
+      </h3>
 
-    Agency Code: 100857<br>
+      <p>
+        SPM TOP AGENCY is designed for
+        quick and simple order submission.
+      </p>
 
-    © 2026 SPM TOP AGENCY
+    </div>
+
+
+    <div class="update">
+
+      <div class="update-icon">
+        🛡️
+      </div>
+
+      <h3>
+        Security
+      </h3>
+
+      <p>
+        Future security features will help
+        protect the website and its users.
+      </p>
+
+    </div>
+
+
+    <div class="update">
+
+      <div class="update-icon">
+        🤖
+      </div>
+
+      <h3>
+        AI Support
+      </h3>
+
+      <p>
+        SPM AI is available for automatic
+        answers and basic support.
+      </p>
+
+    </div>
+
 
   </div>
 
-</footer>
-
-</body>
-</html>
+</section>
