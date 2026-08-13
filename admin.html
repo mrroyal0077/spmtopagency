@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Login | SPM TOP AGENCY</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+      color: white;
+
+      background:
+        radial-gradient(circle at 15% 15%, rgba(139,92,246,.30), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(6,182,212,.22), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.20), transparent 35%),
+        #070711;
+    }
+
+    .login-card {
+      width: min(430px, 100%);
+      padding: 35px;
+      border-radius: 28px;
+
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.13);
+      backdrop-filter: blur(20px);
+
+      box-shadow: 0 30px 100px rgba(0,0,0,.55);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 900;
+      margin-bottom: 10px;
+
+      background: linear-gradient(
+        90deg,
+        #fff,
+        #fbbf24,
+        #ec4899,
+        #06b6d4
+      );
+
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a8a8bd;
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+
+    .security {
+      text-align: center;
+      margin-bottom: 25px;
+      padding: 10px;
+      border-radius: 12px;
+
+      background: rgba(34,197,94,.08);
+      border: 1px solid rgba(34,197,94,.2);
+
+      color: #86efac;
+      font-size: 12px;
+    }
+
+    label {
+      display: block;
+      color: #ddd;
+      font-size: 13px;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 17px;
+
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.12);
+
+      background: rgba(255,255,255,.06);
+      color: white;
+
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #8b5cf6;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 14px;
+
+      border: 0;
+      border-radius: 13px;
+
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+
+      background: linear-gradient(
+        100deg,
+        #8b5cf6,
+        #ec4899
+      );
+    }
+
+    .login-btn:hover {
+      opacity: .9;
+    }
+
+    .back {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+
+      color: #a8a8bd;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .error {
+      display: none;
+      margin-bottom: 15px;
+      padding: 11px;
+
+      border-radius: 10px;
+
+      background: rgba(239,68,68,.10);
+      border: 1px solid rgba(239,68,68,.25);
+
+      color: #fca5a5;
+      font-size: 13px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-card">
+
+    <div class="logo">
+      SPM ADMIN
+    </div>
+
+    <div class="subtitle">
+      SPM TOP AGENCY • Owner Dashboard
+    </div>
+
+    <div class="security">
+      🔐 Protected Admin Area
+    </div>
+
+    <div class="error" id="error">
+      Please enter your admin details.
+    </div>
+
+    <form onsubmit="demoLogin(event)">
+
+      <label for="adminId">
+        Admin ID
+      </label>
+
+      <input
+        id="adminId"
+        type="text"
+        placeholder="Enter Admin ID"
+        autocomplete="username"
+        required
+      >
+
+
+      <label for="adminPassword">
+        Password
+      </label>
+
+      <input
+        id="adminPassword"
+        type="password"
+        placeholder="Enter Password"
+        autocomplete="current-password"
+        required
+      >
+
+
+      <button
+        type="submit"
+        class="login-btn"
+      >
+        🔐 Login to Dashboard
+      </button>
+
+    </form>
+
+
+    <a href="index.html" class="back">
+      ← Back to Website
+    </a>
+
+  </div>
+
+
+  <script>
+
+    function demoLogin(event) {
+
+      event.preventDefault();
+
+      const error = document.getElementById("error");
+
+      error.textContent =
+        "Backend authentication is not connected yet.";
+
+      error.style.display = "block";
+    }
+
+  </script>
+
+</body>
+</html>
