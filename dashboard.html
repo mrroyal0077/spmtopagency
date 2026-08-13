@@ -1,715 +1,832 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>SPM Admin Dashboard</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --bg: #070711;
-      --sidebar: #0d0d1b;
-      --card: rgba(255,255,255,.06);
-      --border: rgba(255,255,255,.11);
-      --text: #fff;
-      --muted: #a8a8bd;
-      --purple: #8b5cf6;
-      --pink: #ec4899;
-      --cyan: #06b6d4;
-      --gold: #fbbf24;
-      --green: #22c55e;
-      --red: #ef4444;
-    }
-
-    body {
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 80% 10%, rgba(139,92,246,.18), transparent 30%),
-        var(--bg);
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    .layout {
-      min-height: 100vh;
-      display: flex;
-    }
-
-    /* SIDEBAR */
-
-    .sidebar {
-      width: 250px;
-      flex-shrink: 0;
-      padding: 22px 15px;
-      background: rgba(13,13,27,.95);
-      border-right: 1px solid var(--border);
-    }
-
-    .logo {
-      padding: 10px;
-      margin-bottom: 28px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: 900;
-
-      background: linear-gradient(
-        90deg,
-        #fff,
-        var(--gold),
-        var(--pink),
-        var(--cyan)
-      );
-
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .admin-label {
-      color: var(--muted);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      padding: 0 12px;
-      margin-bottom: 10px;
-    }
-
-    .menu {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .menu button {
-      width: 100%;
-      padding: 13px;
-      border: 0;
-      border-radius: 12px;
-
-      background: transparent;
-      color: #cfcfe0;
-
-      text-align: left;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .menu button:hover,
-    .menu button.active {
-      background: linear-gradient(
-        100deg,
-        rgba(139,92,246,.25),
-        rgba(236,72,153,.13)
-      );
-
-      color: white;
-    }
-
-    .logout {
-      margin-top: 25px !important;
-      color: #fca5a5 !important;
-    }
-
-    /* MAIN */
-
-    .main {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .topbar {
-      min-height: 70px;
-      padding: 15px 25px;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-
-      border-bottom: 1px solid var(--border);
-      background: rgba(7,7,17,.75);
-      backdrop-filter: blur(18px);
-    }
-
-    .topbar h1 {
-      font-size: 21px;
-    }
-
-    .owner {
-      padding: 9px 13px;
-      border-radius: 20px;
-
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-
-      color: #ddd;
-      font-size: 12px;
-    }
-
-    .content {
-      padding: 25px;
-    }
-
-    /* STAT CARDS */
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .stat {
-      padding: 20px;
-      border-radius: 18px;
-
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-
-    .stat-icon {
-      font-size: 25px;
-      margin-bottom: 12px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 26px;
-      margin-bottom: 5px;
-    }
-
-    .stat span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* GRID */
-
-    .grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 18px;
-    }
-
-    .panel {
-      padding: 22px;
-      border-radius: 20px;
-
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-
-    .panel-title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      margin-bottom: 20px;
-    }
-
-    .panel-title h2 {
-      font-size: 17px;
-    }
-
-    .view {
-      color: #c4b5fd;
-      font-size: 12px;
-      cursor: pointer;
-    }
-
-    /* ORDERS */
-
-    .order {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr auto;
-      gap: 12px;
-      align-items: center;
-
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .order:last-child {
-      border-bottom: 0;
-    }
-
-    .order strong {
-      font-size: 13px;
-    }
-
-    .order span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .status {
-      display: inline-block;
-      width: fit-content;
-      padding: 6px 9px;
-      border-radius: 20px;
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .pending {
-      color: #fde68a;
-      background: rgba(234,179,8,.12);
-    }
-
-    .completed {
-      color: #86efac;
-      background: rgba(34,197,94,.12);
-    }
-
-    .processing {
-      color: #93c5fd;
-      background: rgba(59,130,246,.12);
-    }
-
-    /* VISITORS */
-
-    .visitor {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      padding: 13px 0;
-      border-bottom: 1px solid rgba(255,255,255,.07);
-    }
-
-    .visitor:last-child {
-      border-bottom: 0;
-    }
-
-    .visitor-info strong {
-      display: block;
-      font-size: 12px;
-      margin-bottom: 4px;
-    }
-
-    .visitor-info span {
-      color: var(--muted);
-      font-size: 10px;
-    }
-
-    .online-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 12px var(--green);
-    }
-
-    /* QUICK ACTIONS */
-
-    .quick-actions {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .action {
-      padding: 18px;
-      border-radius: 16px;
-
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,.04);
-
-      color: white;
-      cursor: pointer;
-      text-align: left;
-    }
-
-    .action:hover {
-      background: rgba(255,255,255,.08);
-    }
-
-    .action b {
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    .action span {
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    /* MOBILE */
-
-    .mobile-menu {
-      display: none;
-    }
-
-    @media (max-width: 1050px) {
-      .stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .quick-actions {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 700px) {
-      .sidebar {
-        display: none;
-      }
-
-      .mobile-menu {
-        display: block;
-        padding: 12px 15px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .mobile-menu button {
-        border: 1px solid var(--border);
-        background: rgba(255,255,255,.06);
-        color: white;
-        padding: 9px 13px;
-        border-radius: 10px;
-      }
-
-      .content {
-        padding: 15px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .order {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .quick-actions {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SPM Admin Dashboard</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --bg:#05050b;
+  --side:#0b0b16;
+  --card:rgba(255,255,255,.055);
+  --border:rgba(255,255,255,.11);
+  --muted:#a7a7ba;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --gold:#fbbf24;
+  --green:#22c55e;
+  --red:#ef4444;
+  --blue:#3b82f6;
+}
+
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 80% 10%,rgba(139,92,246,.16),transparent 30%),
+    var(--bg);
+}
+
+/* LAYOUT */
+
+.layout{
+  min-height:100vh;
+  display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  width:255px;
+  flex-shrink:0;
+  padding:22px 15px;
+  background:rgba(11,11,22,.96);
+  border-right:1px solid var(--border);
+}
+
+.logo{
+  text-align:center;
+  font-size:21px;
+  font-weight:950;
+  margin-bottom:30px;
+
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--gold),
+    var(--pink),
+    var(--cyan)
+  );
+
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.admin-label{
+  padding:0 11px;
+  margin-bottom:9px;
+
+  color:#66667b;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.menu{
+  display:grid;
+  gap:5px;
+}
+
+.menu button{
+  width:100%;
+  padding:13px;
+
+  border:0;
+  border-radius:11px;
+
+  background:transparent;
+  color:#c8c8d7;
+
+  text-align:left;
+  cursor:pointer;
+
+  font-size:13px;
+}
+
+.menu button:hover,
+.menu button.active{
+  background:linear-gradient(
+    100deg,
+    rgba(139,92,246,.24),
+    rgba(236,72,153,.10)
+  );
+
+  color:#fff;
+}
+
+.logout{
+  margin-top:20px !important;
+  color:#fca5a5 !important;
+}
+
+/* MAIN */
+
+.main{
+  flex:1;
+  min-width:0;
+}
+
+.topbar{
+  min-height:72px;
+  padding:15px 25px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:15px;
+
+  background:rgba(5,5,11,.76);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(20px);
+}
+
+.topbar h1{
+  font-size:21px;
+}
+
+.owner{
+  padding:9px 13px;
+  border-radius:20px;
+
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+
+  color:#ddd;
+  font-size:11px;
+}
+
+.content{
+  padding:25px;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.stat{
+  padding:20px;
+  border-radius:19px;
+
+  background:var(--card);
+  border:1px solid var(--border);
+}
+
+.stat-icon{
+  font-size:25px;
+  margin-bottom:12px;
+}
+
+.stat strong{
+  display:block;
+  font-size:27px;
+  margin-bottom:5px;
+}
+
+.stat span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* PANELS */
+
+.grid{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:18px;
+}
+
+.panel{
+  padding:21px;
+  border-radius:20px;
+
+  background:var(--card);
+  border:1px solid var(--border);
+}
+
+.panel-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:19px;
+}
+
+.panel-title h2{
+  font-size:16px;
+}
+
+.panel-title span{
+  color:#c4b5fd;
+  font-size:11px;
+}
+
+/* ORDERS */
+
+.order{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr auto;
+  align-items:center;
+  gap:10px;
+
+  padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.order:last-child{
+  border-bottom:0;
+}
+
+.order strong{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.order small{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.status{
+  display:inline-block;
+  width:max-content;
+
+  padding:6px 9px;
+  border-radius:20px;
+
+  font-size:9px;
+  font-weight:900;
+}
+
+.pending{
+  color:#fde68a;
+  background:rgba(251,191,36,.10);
+}
+
+.ready{
+  color:#86efac;
+  background:rgba(34,197,94,.10);
+}
+
+.future{
+  color:#93c5fd;
+  background:rgba(59,130,246,.10);
+}
+
+/* VISITORS */
+
+.visitor{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+
+.visitor:last-child{
+  border-bottom:0;
+}
+
+.visitor strong{
+  display:block;
+  font-size:12px;
+  margin-bottom:4px;
+}
+
+.visitor small{
+  color:var(--muted);
+  font-size:10px;
+}
+
+.dot{
+  width:9px;
+  height:9px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px rgba(34,197,94,.8);
+}
+
+/* MANAGEMENT */
+
+.management{
+  margin-top:18px;
+}
+
+.actions{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.action{
+  padding:18px;
+
+  border:1px solid var(--border);
+  border-radius:16px;
+
+  background:rgba(255,255,255,.035);
+  color:#fff;
+
+  cursor:pointer;
+  text-align:left;
+}
+
+.action:hover{
+  background:rgba(255,255,255,.08);
+  transform:translateY(-2px);
+}
+
+.action-icon{
+  font-size:25px;
+  margin-bottom:10px;
+}
+
+.action strong{
+  display:block;
+  font-size:13px;
+  margin-bottom:5px;
+}
+
+.action span{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+}
+
+/* SECURITY */
+
+.security{
+  margin-top:18px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.security-card{
+  padding:22px;
+  border-radius:19px;
+
+  background:var(--card);
+  border:1px solid var(--border);
+}
+
+.security-card h3{
+  margin-bottom:12px;
+  font-size:15px;
+}
+
+.security-card p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.security-list{
+  margin-top:15px;
+  display:grid;
+  gap:8px;
+}
+
+.security-list div{
+  color:#ddd;
+  font-size:11px;
+}
+
+/* MOBILE */
+
+.mobile-bar{
+  display:none;
+  padding:12px 15px;
+  border-bottom:1px solid var(--border);
+}
+
+.mobile-bar button{
+  padding:9px 13px;
+  border:1px solid var(--border);
+  border-radius:10px;
+
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1050px){
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(max-width:700px){
+
+  .sidebar{
+    display:none;
+  }
+
+  .mobile-bar{
+    display:block;
+  }
+
+  .content{
+    padding:15px;
+  }
+
+  .topbar{
+    padding:15px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .order{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .security{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:450px){
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .actions{
+    grid-template-columns:1fr;
+  }
+
+  .order{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+}
+</style>
 </head>
 
 <body>
 
 <div class="layout">
 
-  <!-- SIDEBAR -->
+<!-- SIDEBAR -->
 
-  <aside class="sidebar">
+<aside class="sidebar">
 
-    <div class="logo">
-      SPM ADMIN
-    </div>
+  <div class="logo">
+    SPM ADMIN
+  </div>
 
-    <div class="admin-label">
+  <div class="admin-label">
+    Management
+  </div>
+
+  <div class="menu">
+
+    <button class="active" onclick="selectMenu(this)">
+      📊 Overview
+    </button>
+
+    <button onclick="selectMenu(this)">
+      🛒 Orders
+    </button>
+
+    <button onclick="selectMenu(this)">
+      💰 Coin Recharge
+    </button>
+
+    <button onclick="selectMenu(this)">
+      💸 Paid Sending
+    </button>
+
+    <button onclick="selectMenu(this)">
+      👀 Visitors
+    </button>
+
+    <button onclick="selectMenu(this)">
+      🛡️ Security
+    </button>
+
+    <button onclick="selectMenu(this)">
+      🎁 Events
+    </button>
+
+    <button onclick="selectMenu(this)">
+      🤖 SPM AI
+    </button>
+
+    <button onclick="selectMenu(this)">
+      ⚙️ Settings
+    </button>
+
+    <button class="logout" onclick="logout()">
+      🚪 Logout
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+  <div class="mobile-bar">
+    <button onclick="alert('Full mobile admin navigation will be connected with the backend later.')">
+      ☰ Admin Menu
+    </button>
+  </div>
+
+
+  <header class="topbar">
+
+    <h1>
       Dashboard
+    </h1>
+
+    <div class="owner">
+      👑 OWNER / ADMIN
     </div>
 
-    <div class="menu">
-
-      <button class="active">
-        📊 Overview
-      </button>
-
-      <button onclick="showSection('orders')">
-        🛒 Orders
-      </button>
-
-      <button onclick="showSection('paid')">
-        💸 Paid Sending
-      </button>
-
-      <button onclick="showSection('coins')">
-        💰 Coin Recharge
-      </button>
-
-      <button onclick="showSection('visitors')">
-        👀 Visitors
-      </button>
-
-      <button onclick="showSection('events')">
-        🎁 Events
-      </button>
-
-      <button onclick="showSection('ai')">
-        🤖 SPM AI
-      </button>
-
-      <button onclick="showSection('settings')">
-        ⚙️ Settings
-      </button>
-
-      <button class="logout" onclick="logout()">
-        🚪 Logout
-      </button>
-
-    </div>
-
-  </aside>
+  </header>
 
 
-  <!-- MAIN -->
-
-  <main class="main">
-
-    <div class="mobile-menu">
-      <button onclick="alert('Mobile admin menu will be expanded in the backend phase.')">
-        ☰ Admin Menu
-      </button>
-    </div>
+  <div class="content">
 
 
-    <header class="topbar">
+    <!-- STATISTICS -->
 
-      <h1>
-        Dashboard
-      </h1>
+    <section class="stats">
 
-      <div class="owner">
-        👑 Owner / Admin
-      </div>
+      <div class="stat">
 
-    </header>
-
-
-    <div class="content">
-
-      <!-- STATS -->
-
-      <section class="stats">
-
-        <div class="stat">
-          <div class="stat-icon">🛒</div>
-          <strong>0</strong>
-          <span>Total Orders</span>
+        <div class="stat-icon">
+          🛒
         </div>
 
-        <div class="stat">
-          <div class="stat-icon">⏳</div>
-          <strong>0</strong>
-          <span>Pending Orders</span>
-        </div>
+        <strong>0</strong>
 
-        <div class="stat">
-          <div class="stat-icon">👀</div>
-          <strong>0</strong>
-          <span>Visitors Today</span>
-        </div>
-
-        <div class="stat">
-          <div class="stat-icon">🟢</div>
-          <strong>0</strong>
-          <span>Live Visitors</span>
-        </div>
-
-      </section>
-
-
-      <div class="grid">
-
-        <!-- ORDERS -->
-
-        <section class="panel">
-
-          <div class="panel-title">
-
-            <h2>
-              Recent Orders
-            </h2>
-
-            <span class="view">
-              View All
-            </span>
-
-          </div>
-
-
-          <div class="order">
-
-            <div>
-              <strong>No orders yet</strong>
-              <span>Waiting for backend</span>
-            </div>
-
-            <div>
-              <span>—</span>
-            </div>
-
-            <div>
-              <span>—</span>
-            </div>
-
-            <div>
-              <span class="status pending">
-                WAITING
-              </span>
-            </div>
-
-          </div>
-
-
-          <div class="order">
-
-            <div>
-              <strong>Coin Recharge</strong>
-              <span>System ready</span>
-            </div>
-
-            <div>
-              <span>Coins</span>
-            </div>
-
-            <div>
-              <span>—</span>
-            </div>
-
-            <div>
-              <span class="status processing">
-                READY
-              </span>
-            </div>
-
-          </div>
-
-
-          <div class="order">
-
-            <div>
-              <strong>Paid Sending</strong>
-              <span>System ready</span>
-            </div>
-
-            <div>
-              <span>Sending</span>
-            </div>
-
-            <div>
-              <span>—</span>
-            </div>
-
-            <div>
-              <span class="status processing">
-                READY
-              </span>
-            </div>
-
-          </div>
-
-        </section>
-
-
-        <!-- LIVE VISITORS -->
-
-        <section class="panel">
-
-          <div class="panel-title">
-
-            <h2>
-              Live Visitors
-            </h2>
-
-            <span class="view">
-              Live
-            </span>
-
-          </div>
-
-
-          <div class="visitor">
-
-            <div class="visitor-info">
-              <strong>No live visitors</strong>
-              <span>Visitor tracking backend pending</span>
-            </div>
-
-            <div class="online-dot"></div>
-
-          </div>
-
-
-          <div class="visitor">
-
-            <div class="visitor-info">
-              <strong>VPN Detection</strong>
-              <span>Security module pending</span>
-            </div>
-
-            <div class="online-dot"></div>
-
-          </div>
-
-
-        </section>
+        <span>
+          Total Orders
+        </span>
 
       </div>
 
 
-      <!-- QUICK ACTIONS -->
+      <div class="stat">
 
-      <section class="panel" style="margin-top:18px;">
+        <div class="stat-icon">
+          ⏳
+        </div>
+
+        <strong>0</strong>
+
+        <span>
+          Pending Orders
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          👀
+        </div>
+
+        <strong>0</strong>
+
+        <span>
+          Visitors Today
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          🟢
+        </div>
+
+        <strong>0</strong>
+
+        <span>
+          Live Visitors
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- ORDERS + VISITORS -->
+
+    <div class="grid">
+
+
+      <section class="panel">
 
         <div class="panel-title">
+
           <h2>
-            Quick Management
+            Recent Orders
           </h2>
+
+          <span>
+            Frontend Preview
+          </span>
+
         </div>
 
 
-        <div class="quick-actions">
+        <div class="order">
 
-          <button class="action" onclick="showSection('orders')">
-            <b>🛒 Orders</b>
-            <span>Manage all orders</span>
-          </button>
+          <div>
+            <strong>
+              No live orders
+            </strong>
 
-          <button class="action" onclick="showSection('coins')">
-            <b>💰 Coin Packages</b>
-            <span>Manage recharge rates</span>
-          </button>
+            <small>
+              Orders will appear here
+            </small>
+          </div>
 
-          <button class="action" onclick="showSection('paid')">
-            <b>💸 Paid Sending</b>
-            <span>Manage sending rates</span>
-          </button>
+          <div>
+            <small>
+              —
+            </small>
+          </div>
 
-          <button class="action" onclick="showSection('events')">
-            <b>🎁 Events</b>
-            <span>Add or edit events</span>
-          </button>
+          <div>
+            <small>
+              —
+            </small>
+          </div>
 
-          <button class="action" onclick="showSection('visitors')">
-            <b>👀 Visitors</b>
-            <span>View visitor analytics</span>
-          </button>
+          <div>
+            <span class="status pending">
+              WAITING
+            </span>
+          </div>
 
-          <button class="action" onclick="showSection('ai')">
-            <b>🤖 SPM AI</b>
-            <span>Manage AI assistant</span>
-          </button>
+        </div>
 
-          <button class="action" onclick="showSection('settings')">
-            <b>⚙️ Settings</b>
-            <span>Website settings</span>
-          </button>
 
-          <button class="action" onclick="alert('Backup system will be connected in the backend phase.')">
-            <b>💾 Backup</b>
-            <span>Database backup</span>
-          </button>
+        <div class="order">
+
+          <div>
+            <strong>
+              Coin Recharge
+            </strong>
+
+            <small>
+              Package orders
+            </small>
+          </div>
+
+          <div>
+            <small>
+              Coins
+            </small>
+          </div>
+
+          <div>
+            <small>
+              —
+            </small>
+          </div>
+
+          <div>
+            <span class="status future">
+              READY
+            </span>
+          </div>
+
+        </div>
+
+
+        <div class="order">
+
+          <div>
+            <strong>
+              Paid Sending
+            </strong>
+
+            <small>
+              Sending orders
+            </small>
+          </div>
+
+          <div>
+            <small>
+              Sending
+            </small>
+          </div>
+
+          <div>
+            <small>
+              —
+            </small>
+          </div>
+
+          <div>
+            <span class="status ready">
+              READY
+            </span>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- VISITORS -->
+
+      <section class="panel">
+
+        <div class="panel-title">
+
+          <h2>
+            Live Visitors
+          </h2>
+
+          <span>
+            Preview
+          </span>
+
+        </div>
+
+
+        <div class="visitor">
+
+          <div>
+            <strong>
+              Visitor Tracking
+            </strong>
+
+            <small>
+              Backend connection pending
+            </small>
+          </div>
+
+          <div class="dot"></div>
+
+        </div>
+
+
+        <div class="visitor">
+
+          <div>
+            <strong>
+              VPN Detection
+            </strong>
+
+            <small>
+              Security module
+            </small>
+          </div>
+
+          <div class="dot"></div>
+
+        </div>
+
+
+        <div class="visitor">
+
+          <div>
+            <strong>
+              Location Analytics
+            </strong>
+
+            <small>
+              Approximate location
+            </small>
+          </div>
+
+          <div class="dot"></div>
 
         </div>
 
@@ -717,30 +834,295 @@
 
     </div>
 
-  </main>
+
+    <!-- MANAGEMENT -->
+
+    <section class="panel management">
+
+      <div class="panel-title">
+
+        <h2>
+          Quick Management
+        </h2>
+
+        <span>
+          Admin Tools
+        </span>
+
+      </div>
+
+
+      <div class="actions">
+
+
+        <button class="action"
+          onclick="moduleMessage('Orders')">
+
+          <div class="action-icon">
+            🛒
+          </div>
+
+          <strong>
+            Orders
+          </strong>
+
+          <span>
+            View and manage customer orders.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Coin Recharge')">
+
+          <div class="action-icon">
+            💰
+          </div>
+
+          <strong>
+            Coin Recharge
+          </strong>
+
+          <span>
+            Manage coin packages and rates.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Paid Sending')">
+
+          <div class="action-icon">
+            💸
+          </div>
+
+          <strong>
+            Paid Sending
+          </strong>
+
+          <span>
+            Manage Paid Sending packages.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Visitors')">
+
+          <div class="action-icon">
+            👀
+          </div>
+
+          <strong>
+            Visitors
+          </strong>
+
+          <span>
+            View visitor activity and analytics.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Security')">
+
+          <div class="action-icon">
+            🛡️
+          </div>
+
+          <strong>
+            Security
+          </strong>
+
+          <span>
+            VPN, proxy and bot protection controls.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Events')">
+
+          <div class="action-icon">
+            🎁
+          </div>
+
+          <strong>
+            Events
+          </strong>
+
+          <span>
+            Create and manage agency events.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('SPM AI')">
+
+          <div class="action-icon">
+            🤖
+          </div>
+
+          <strong>
+            SPM AI
+          </strong>
+
+          <span>
+            Manage chatbot responses and AI settings.
+          </span>
+
+        </button>
+
+
+        <button class="action"
+          onclick="moduleMessage('Settings')">
+
+          <div class="action-icon">
+            ⚙️
+          </div>
+
+          <strong>
+            Settings
+          </strong>
+
+          <span>
+            Website and admin settings.
+          </span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- SECURITY -->
+
+    <section class="security">
+
+
+      <div class="security-card">
+
+        <h3>
+          🛡️ Website Security
+        </h3>
+
+        <p>
+          Security controls planned for the
+          future backend system.
+        </p>
+
+        <div class="security-list">
+
+          <div>✓ VPN / Proxy Detection</div>
+
+          <div>✓ Bot Protection</div>
+
+          <div>✓ Visitor Monitoring</div>
+
+          <div>✓ Admin Authentication</div>
+
+        </div>
+
+      </div>
+
+
+      <div class="security-card">
+
+        <h3>
+          📊 Visitor Information
+        </h3>
+
+        <p>
+          The future dashboard can display
+          useful technical visitor information.
+        </p>
+
+        <div class="security-list">
+
+          <div>✓ Visit Time</div>
+
+          <div>✓ IP Address</div>
+
+          <div>✓ Approximate Location</div>
+
+          <div>✓ Device / Browser</div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+</main>
 
 </div>
 
 
 <script>
 
-  function showSection(section) {
+/* MENU */
 
-    alert(
-      section.toUpperCase() +
-      " management module will be connected to the database in the backend phase."
-    );
+function selectMenu(button){
+
+  document
+    .querySelectorAll(".menu button")
+    .forEach(function(item){
+
+      item.classList.remove("active");
+
+    });
+
+  button.classList.add("active");
+
+  alert(
+    button.textContent.trim() +
+    " module will be connected after the frontend is complete."
+  );
+
+}
+
+
+/* MODULE */
+
+function moduleMessage(name){
+
+  alert(
+    "📊 " + name +
+    "\n\nFrontend module is ready.\n" +
+    "Actual data connection will be added later."
+  );
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+  const confirmLogout =
+    confirm("Logout from Admin Dashboard?");
+
+  if(confirmLogout){
+
+    window.location.href =
+      "admin.html";
 
   }
 
-
-  function logout() {
-
-    window.location.href = "admin.html";
-
-  }
+}
 
 </script>
 
 </body>
-            </html>
+</html>
