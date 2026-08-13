@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Login | SPM TOP AGENCY</title>
+<title>SPM Admin Dashboard</title>
 
 <style>
+
 *{
   margin:0;
   padding:0;
@@ -15,148 +18,147 @@
 
 :root{
   --bg:#05050b;
-  --card:rgba(255,255,255,.065);
+  --panel:#0d0d18;
+  --card:rgba(255,255,255,.06);
   --border:rgba(255,255,255,.12);
   --muted:#a7a7ba;
   --purple:#8b5cf6;
   --pink:#ec4899;
   --cyan:#06b6d4;
   --gold:#fbbf24;
+  --green:#22c55e;
+  --red:#ef4444;
 }
 
 body{
   min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
 
   font-family:Arial,Helvetica,sans-serif;
+
   color:#fff;
 
   background:
-    radial-gradient(circle at 10% 10%,rgba(139,92,246,.25),transparent 30%),
-    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 30%),
-    radial-gradient(circle at 50% 90%,rgba(236,72,153,.14),transparent 32%),
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(139,92,246,.18),
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(6,182,212,.13),
+      transparent 30%
+    ),
+
     var(--bg);
 }
 
-/* LOGIN CARD */
 
-.login-card{
-  width:min(440px,100%);
-  padding:36px;
+/* ================= LOGIN ================= */
 
-  border-radius:28px;
+.login-page{
+  min-height:100vh;
 
-  background:rgba(255,255,255,.065);
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+}
+
+.login-box{
+  width:min(420px,100%);
+
+  padding:35px;
+
+  border-radius:25px;
+
+  background:
+    rgba(13,13,24,.94);
+
   border:1px solid var(--border);
 
-  backdrop-filter:blur(22px);
-
   box-shadow:
-    0 30px 100px rgba(0,0,0,.55);
+    0 30px 100px rgba(0,0,0,.6);
+
+  text-align:center;
 }
 
-/* LOGO */
+.login-logo{
+  width:70px;
+  height:70px;
 
-.logo{
-  text-align:center;
+  margin:0 auto 18px;
 
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  border-radius:20px;
+
+  font-size:32px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--pink),
+      var(--cyan)
+    );
+}
+
+.login-box h1{
   font-size:27px;
-  font-weight:950;
-
-  letter-spacing:.5px;
-
-  background:linear-gradient(
-    90deg,
-    #fff,
-    var(--gold),
-    var(--pink),
-    var(--cyan)
-  );
-
-  -webkit-background-clip:text;
-  color:transparent;
 
   margin-bottom:8px;
 }
 
-.subtitle{
-  text-align:center;
+.login-box p{
   color:var(--muted);
-  font-size:13px;
-  margin-bottom:28px;
-}
 
-/* SECURITY */
-
-.security{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-
-  padding:11px;
+  font-size:12px;
 
   margin-bottom:25px;
-
-  border-radius:12px;
-
-  background:rgba(34,197,94,.07);
-  border:1px solid rgba(34,197,94,.20);
-
-  color:#86efac;
-  font-size:12px;
 }
-
-/* FORM */
 
 .form-group{
-  margin-bottom:17px;
+  text-align:left;
+
+  margin-bottom:15px;
 }
 
-label{
+.form-group label{
   display:block;
-  margin-bottom:8px;
+
+  margin-bottom:7px;
+
+  font-size:12px;
+
+  font-weight:700;
 
   color:#ddd;
-  font-size:13px;
-  font-weight:700;
-}
-
-.input-wrap{
-  position:relative;
-}
-
-.input-icon{
-  position:absolute;
-  left:14px;
-  top:50%;
-  transform:translateY(-50%);
-
-  font-size:16px;
-  opacity:.75;
 }
 
 input{
   width:100%;
-  padding:14px 45px;
 
-  border-radius:13px;
+  padding:14px;
+
+  border-radius:12px;
 
   border:1px solid var(--border);
+
+  outline:none;
 
   background:rgba(255,255,255,.055);
 
   color:#fff;
-  outline:none;
 
   font-size:14px;
-}
-
-input::placeholder{
-  color:#77778c;
 }
 
 input:focus{
@@ -166,332 +168,1726 @@ input:focus{
     0 0 0 3px rgba(139,92,246,.10);
 }
 
-/* PASSWORD BUTTON */
-
-.password-toggle{
-  position:absolute;
-  right:8px;
-  top:50%;
-  transform:translateY(-50%);
-
-  width:35px;
-  height:35px;
-
-  border:0;
-  border-radius:9px;
-
-  background:transparent;
-  color:#aaa;
-
-  cursor:pointer;
-}
-
-/* LOGIN BUTTON */
-
 .login-btn{
   width:100%;
 
-  padding:15px;
+  padding:14px;
 
   margin-top:5px;
 
   border:0;
-  border-radius:13px;
+
+  border-radius:12px;
 
   color:#fff;
 
-  font-size:14px;
   font-weight:900;
 
   cursor:pointer;
 
-  background:linear-gradient(
-    100deg,
-    var(--purple),
-    var(--pink)
-  );
-
-  box-shadow:
-    0 12px 30px rgba(139,92,246,.20);
-
-  transition:.2s;
+  background:
+    linear-gradient(
+      100deg,
+      var(--purple),
+      var(--pink)
+    );
 }
 
-.login-btn:hover{
-  transform:translateY(-2px);
-}
-
-/* MESSAGE */
-
-.message{
+.login-error{
   display:none;
 
-  margin-top:15px;
+  margin-top:14px;
+
   padding:11px;
 
-  border-radius:11px;
+  border-radius:10px;
 
-  text-align:center;
+  background:rgba(239,68,68,.10);
 
-  font-size:12px;
-}
+  border:1px solid rgba(239,68,68,.25);
 
-.error{
-  background:rgba(239,68,68,.09);
-  border:1px solid rgba(239,68,68,.22);
   color:#fca5a5;
+
+  font-size:11px;
 }
 
-.info{
-  background:rgba(59,130,246,.09);
-  border:1px solid rgba(59,130,246,.22);
-  color:#93c5fd;
+.security-note{
+  margin-top:20px;
+
+  color:#77778c;
+
+  font-size:10px;
+
+  line-height:1.5;
 }
 
-/* BACK */
 
-.back{
-  display:block;
+/* ================= DASHBOARD ================= */
 
-  margin-top:23px;
+.dashboard{
+  display:none;
 
-  text-align:center;
+  min-height:100vh;
+}
 
+.topbar{
+  position:sticky;
+
+  top:0;
+
+  z-index:1000;
+
+  min-height:70px;
+
+  padding:0 3%;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  background:rgba(5,5,11,.95);
+
+  backdrop-filter:blur(20px);
+
+  border-bottom:1px solid var(--border);
+}
+
+.brand{
+  font-size:18px;
+
+  font-weight:900;
+
+  background:
+    linear-gradient(
+      90deg,
+      #fff,
+      var(--gold),
+      var(--pink),
+      var(--cyan)
+    );
+
+  -webkit-background-clip:text;
+
+  background-clip:text;
+
+  color:transparent;
+}
+
+.admin-label{
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+.logout-btn{
+  padding:9px 13px;
+
+  border-radius:10px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.05);
+
+  color:#fff;
+
+  cursor:pointer;
+
+  font-size:11px;
+}
+
+
+/* ================= CONTENT ================= */
+
+.content{
+  width:min(1200px,94%);
+
+  margin:30px auto 60px;
+}
+
+.welcome{
+  margin-bottom:25px;
+}
+
+.welcome h1{
+  font-size:32px;
+
+  margin-bottom:7px;
+}
+
+.welcome p{
   color:var(--muted);
 
   font-size:13px;
-  text-decoration:none;
 }
 
-.back:hover{
-  color:#fff;
+
+/* ================= STATS ================= */
+
+.stats{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:15px;
+
+  margin-bottom:25px;
 }
 
-/* FOOTER */
+.stat{
+  padding:22px;
 
-.footer{
-  margin-top:25px;
+  border-radius:19px;
 
-  text-align:center;
+  background:var(--card);
 
-  color:#66667b;
+  border:1px solid var(--border);
+}
+
+.stat-icon{
+  font-size:25px;
+
+  margin-bottom:12px;
+}
+
+.stat strong{
+  display:block;
+
+  font-size:25px;
+
+  margin-bottom:5px;
+}
+
+.stat span{
+  color:var(--muted);
+
+  font-size:11px;
+}
+
+
+/* ================= PANELS ================= */
+
+.panels{
+  display:grid;
+
+  grid-template-columns:
+    1.5fr 1fr;
+
+  gap:18px;
+}
+
+.panel{
+  padding:22px;
+
+  border-radius:20px;
+
+  background:var(--card);
+
+  border:1px solid var(--border);
+}
+
+.panel h2{
+  font-size:17px;
+
+  margin-bottom:18px;
+}
+
+.activity{
+  display:grid;
+
+  gap:10px;
+}
+
+.activity-item{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:12px;
+
+  padding:13px;
+
+  border-radius:12px;
+
+  background:rgba(255,255,255,.04);
+}
+
+.activity-left{
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-width:0;
+}
+
+.activity-icon{
+  font-size:21px;
+}
+
+.activity-text{
+  min-width:0;
+}
+
+.activity-text strong{
+  display:block;
+
+  font-size:12px;
+
+  white-space:nowrap;
+
+  overflow:hidden;
+
+  text-overflow:ellipsis;
+}
+
+.activity-text small{
+  color:var(--muted);
 
   font-size:10px;
 }
 
-/* MOBILE */
+.status{
+  padding:6px 9px;
+
+  border-radius:20px;
+
+  font-size:9px;
+
+  font-weight:800;
+}
+
+.status.green{
+  color:#86efac;
+
+  background:rgba(34,197,94,.10);
+}
+
+.status.yellow{
+  color:#fde68a;
+
+  background:rgba(251,191,36,.10);
+}
+
+
+/* ================= QUICK ACTIONS ================= */
+
+.actions{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+}
+
+.action{
+  padding:17px 12px;
+
+  border-radius:13px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.045);
+
+  color:#fff;
+
+  text-align:center;
+
+  cursor:pointer;
+
+  transition:.2s;
+}
+
+.action:hover{
+  transform:translateY(-2px);
+
+  background:rgba(139,92,246,.10);
+}
+
+.action-icon{
+  font-size:24px;
+
+  margin-bottom:7px;
+}
+
+.action strong{
+  display:block;
+
+  font-size:11px;
+}
+
+.action small{
+  display:block;
+
+  margin-top:4px;
+
+  color:var(--muted);
+
+  font-size:9px;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+  .stats{
+    grid-template-columns:
+      repeat(2,1fr);
+  }
+
+  .panels{
+    grid-template-columns:1fr;
+  }
+
+}
 
 @media(max-width:500px){
 
-  .login-card{
+  .login-box{
     padding:27px 21px;
-    border-radius:22px;
   }
 
-  .logo{
-    font-size:24px;
+  .content{
+    width:94%;
   }
+
+  .welcome h1{
+    font-size:26px;
+  }
+
+  .stats{
+    grid-template-columns:
+      repeat(2,1fr);
+
+    gap:10px;
+  }
+
+  .stat{
+    padding:17px;
+  }
+
+  .stat strong{
+    font-size:21px;
+  }
+
+  .brand{
+    font-size:15px;
+  }
+
+  .admin-label{
+    display:none;
+  }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<div class="login-card">
 
-  <div class="logo">
-    SPM ADMIN
-  </div>
+<!-- ================= LOGIN ================= -->
 
-  <div class="subtitle">
-    SPM TOP AGENCY • Owner Control Center
-  </div>
+<div
+  class="login-page"
+  id="loginPage"
+>
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      🔐
+    </div>
+
+    <h1>
+      Admin Login
+    </h1>
+
+    <p>
+      SPM TOP AGENCY • Protected Dashboard
+    </p>
 
 
-  <div class="security">
-    🔐 Protected Admin Area
-  </div>
+    <form
+      id="loginForm"
+    >
 
+      <div class="form-group">
 
-  <form id="loginForm">
-
-    <!-- ADMIN ID -->
-
-    <div class="form-group">
-
-      <label for="adminId">
-        Admin ID
-      </label>
-
-      <div class="input-wrap">
-
-        <span class="input-icon">
-          👤
-        </span>
+        <label>
+          Admin Username
+        </label>
 
         <input
-          id="adminId"
+          id="adminUsername"
           type="text"
-          placeholder="Enter Admin ID"
+          placeholder="Enter username"
           autocomplete="username"
           required
         >
 
       </div>
 
-    </div>
 
+      <div class="form-group">
 
-    <!-- PASSWORD -->
-
-    <div class="form-group">
-
-      <label for="password">
-        Password
-      </label>
-
-      <div class="input-wrap">
-
-        <span class="input-icon">
-          🔑
-        </span>
+        <label>
+          Admin Password
+        </label>
 
         <input
-          id="password"
+          id="adminPassword"
           type="password"
-          placeholder="Enter Password"
+          placeholder="Enter password"
           autocomplete="current-password"
           required
         >
 
-        <button
-          type="button"
-          class="password-toggle"
-          onclick="togglePassword()"
-          aria-label="Show password"
-        >
-          👁️
-        </button>
+      </div>
+
+
+      <button
+        class="login-btn"
+        type="submit"
+      >
+        🔐 Secure Login
+      </button>
+
+
+      <div
+        class="login-error"
+        id="loginError"
+      >
+        Invalid admin credentials.
+      </div>
+
+    </form>
+
+
+    <div class="security-note">
+
+      Admin access only.<br>
+      Never share your admin credentials.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<div
+  class="dashboard"
+  id="dashboard"
+>
+
+  <header class="topbar">
+
+    <div class="brand">
+      SPM ADMIN
+    </div>
+
+    <div class="admin-label">
+      Admin Dashboard
+    </div>
+
+    <button
+      class="logout-btn"
+      onclick="logout()"
+    >
+      Logout
+    </button>
+
+  </header>
+
+
+  <main class="content">
+
+
+    <div class="welcome">
+
+      <h1>
+        Dashboard 👋
+      </h1>
+
+      <p>
+        SPM TOP AGENCY • Agency Code 100857
+      </p>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <section class="stats">
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          👥
+        </div>
+
+        <strong id="visitorCount">
+          0
+        </strong>
+
+        <span>
+          Visitors
+        </span>
 
       </div>
 
-    </div>
+
+      <div class="stat">
+
+        <div class="stat-icon">
+          💰
+        </div>
+
+        <strong id="coinOrders">
+          0
+        </strong>
+
+        <span>
+          Coin Orders
+        </span>
+
+      </div>
 
 
-    <button
-      type="submit"
-      class="login-btn"
-    >
-      🔐 Login to Dashboard
-    </button>
+      <div class="stat">
+
+        <div class="stat-icon">
+          💸
+        </div>
+
+        <strong id="paidOrders">
+          0
+        </strong>
+
+        <span>
+          Paid Sending
+        </span>
+
+      </div>
 
 
-    <div
-      class="message error"
-      id="errorMessage"
-    >
-      Please enter your Admin ID and Password.
-    </div>
+      <div class="stat">
+
+        <div class="stat-icon">
+          🟢
+        </div>
+
+        <strong>
+          Online
+        </strong>
+
+        <span>
+          System Status
+        </span>
+
+      </div>
+
+    </section>
 
 
-    <div
-      class="message info"
-      id="infoMessage"
-    >
-      Backend authentication will be connected later.
-    </div>
+    <!-- PANELS -->
 
-  </form>
+    <section class="panels">
 
 
-  <a
-    href="index.html"
-    class="back"
-  >
-    ← Back to Website
-  </a>
+      <!-- ACTIVITY -->
+
+      <div class="panel">
+
+        <h2>
+          📋 Recent Activity
+        </h2>
+
+        <div class="activity">
+
+          <div class="activity-item">
+
+            <div class="activity-left">
+
+              <div class="activity-icon">
+                💰
+              </div>
+
+              <div class="activity-text">
+
+                <strong>
+                  Coin Recharge
+                </strong>
+
+                <small>
+                  Waiting for backend connection
+                </small>
+
+              </div>
+
+            </div>
+
+            <span class="status yellow">
+              Pending
+            </span>
+
+          </div>
 
 
-  <div class="footer">
-    SPM TOP AGENCY • Agency Code 100857
-  </div>
+          <div class="activity-item">
+
+            <div class="activity-left">
+
+              <div class="activity-icon">
+                💸
+              </div>
+
+              <div class="activity-text">
+
+                <strong>
+                  Paid Sending
+                </strong>
+
+                <small>
+                  Waiting for backend connection
+                </small>
+
+              </div>
+
+            </div>
+
+            <span class="status yellow">
+              Pending
+            </span>
+
+          </div>
+
+
+          <div class="activity-item">
+
+            <div class="activity-left">
+
+              <div class="activity-icon">
+                🌍
+              </div>
+
+              <div class="activity-text">
+
+                <strong>
+                  Visitor Analytics
+                </strong>
+
+                <small>
+                  Backend required for real data
+                </small>
+
+              </div>
+
+            </div>
+
+            <span class="status green">
+              Ready
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUICK ACTIONS -->
+
+      <div class="panel">
+
+        <h2>
+          ⚡ Quick Actions
+        </h2>
+
+        <div class="actions">
+
+          <button
+            class="action"
+            onclick="showNotice('Coin Orders')"
+          >
+
+            <div class="action-icon">
+              💰
+            </div>
+
+            <strong>
+              Coin Orders
+            </strong>
+
+            <small>
+              Manage orders
+            </small>
+
+          </button>
+
+
+          <button
+            class="action"
+            onclick="showNotice('Paid Sending')"
+          >
+
+            <div class="action-icon">
+              💸
+            </div>
+
+            <strong>
+              Paid Sending
+            </strong>
+
+            <small>
+              Manage orders
+            </small>
+
+          </button>
+
+
+          <button
+            class="action"
+            onclick="showNotice('Visitors')"
+          >
+
+            <div class="action-icon">
+              👥
+            </div>
+
+            <strong>
+              Visitors
+            </strong>
+
+            <small>
+              View analytics
+            </small>
+
+          </button>
+
+
+          <button
+            class="action"
+            onclick="showNotice('Events')"
+          >
+
+            <div class="action-icon">
+              🎁
+            </div>
+
+            <strong>
+              Events
+            </strong>
+
+            <small>
+              Manage events
+            </small>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
 
 </div>
 
 
 <script>
 
-/* PASSWORD SHOW / HIDE */
+/*
+  IMPORTANT:
 
-function togglePassword(){
+  This frontend must NOT contain the real
+  admin password.
 
-  const password =
-    document.getElementById("password");
-
-  const button =
-    document.querySelector(".password-toggle");
+  Secure authentication will be connected
+  to a backend in the next stage.
+*/
 
 
-  if(password.type === "password"){
+const loginForm =
+  document.getElementById("loginForm");
 
-    password.type = "text";
+const loginPage =
+  document.getElementById("loginPage");
 
-    button.textContent = "🙈";
+const dashboard =
+  document.getElementById("dashboard");
 
-  }else{
+const loginError =
+  document.getElementById("loginError");
 
-    password.type = "password";
 
-    button.textContent = "👁️";
+loginForm.addEventListener(
+  "submit",
+  function(event){
+
+    event.preventDefault();
+
+    /*
+      Demo-only login state.
+
+      Do not put real credentials here.
+    */
+
+    loginError.style.display =
+      "block";
+
+    loginError.textContent =
+      "Secure backend authentication is required before enabling admin access.";
 
   }
+);
+
+
+function logout(){
+
+  dashboard.style.display =
+    "none";
+
+  loginPage.style.display =
+    "flex";
 
 }
 
 
-/* FRONTEND DEMO */
+function showNotice(section){
 
-document
-  .getElementById("loginForm")
-  .addEventListener("submit", function(event){
+  alert(
+    section +
+    " management will be connected to the secure backend."
+  );
 
-    event.preventDefault();
-
-
-    const adminId =
-      document.getElementById("adminId").value.trim();
-
-    const password =
-      document.getElementById("password").value.trim();
-
-
-    const error =
-      document.getElementById("errorMessage");
-
-    const info =
-      document.getElementById("infoMessage");
-
-
-    error.style.display = "none";
-    info.style.display = "none";
-
-
-    if(!adminId || !password){
-
-      error.style.display = "block";
-
-      return;
-    }
-
-
-    info.textContent =
-      "Login system is ready for backend authentication.";
-
-    info.style.display = "block";
-
-  });
+}
 
 </script>
+
+</body>
+</html>
+<!-- ================= ADMIN DATA PANELS ================= -->
+
+<section
+  class="panels"
+  style="margin-top:18px;"
+>
+
+
+  <!-- COIN ORDERS -->
+
+  <div class="panel">
+
+    <h2>
+      💰 Coin Orders
+    </h2>
+
+    <div
+      class="activity"
+      id="coinOrderList"
+    >
+
+      <div class="activity-item">
+
+        <div class="activity-left">
+
+          <div class="activity-icon">
+            💰
+          </div>
+
+          <div class="activity-text">
+
+            <strong>
+              No live orders yet
+            </strong>
+
+            <small>
+              Connect backend/database to receive orders.
+            </small>
+
+          </div>
+
+        </div>
+
+        <span class="status yellow">
+          Waiting
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- PAID ORDERS -->
+
+  <div class="panel">
+
+    <h2>
+      💸 Paid Sending Orders
+    </h2>
+
+    <div
+      class="activity"
+      id="paidOrderList"
+    >
+
+      <div class="activity-item">
+
+        <div class="activity-left">
+
+          <div class="activity-icon">
+            💸
+          </div>
+
+          <div class="activity-text">
+
+            <strong>
+              No live orders yet
+            </strong>
+
+            <small>
+              Connect backend/database to receive orders.
+            </small>
+
+          </div>
+
+        </div>
+
+        <span class="status yellow">
+          Waiting
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+
+<!-- ================= VISITOR SECURITY ================= -->
+
+<section
+  class="panel"
+  style="margin-top:18px;"
+>
+
+  <h2>
+    👥 Visitor & Security Analytics
+  </h2>
+
+
+  <div
+    style="
+      display:grid;
+      grid-template-columns:
+        repeat(4,1fr);
+      gap:12px;
+    "
+  >
+
+
+    <div
+      style="
+        padding:17px;
+        border-radius:14px;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--border);
+      "
+    >
+
+      <div
+        style="
+          font-size:23px;
+          margin-bottom:8px;
+        "
+      >
+        🌍
+      </div>
+
+      <strong>
+        Location
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:5px;
+          color:var(--muted);
+          font-size:10px;
+        "
+      >
+        Backend required
+      </small>
+
+    </div>
+
+
+    <div
+      style="
+        padding:17px;
+        border-radius:14px;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--border);
+      "
+    >
+
+      <div
+        style="
+          font-size:23px;
+          margin-bottom:8px;
+        "
+      >
+        📱
+      </div>
+
+      <strong>
+        Device
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:5px;
+          color:var(--muted);
+          font-size:10px;
+        "
+      >
+        Browser analytics
+      </small>
+
+    </div>
+
+
+    <div
+      style="
+        padding:17px;
+        border-radius:14px;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--border);
+      "
+    >
+
+      <div
+        style="
+          font-size:23px;
+          margin-bottom:8px;
+        "
+      >
+        🛡️
+      </div>
+
+      <strong>
+        VPN
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:5px;
+          color:var(--muted);
+          font-size:10px;
+        "
+      >
+        Server-side detection
+      </small>
+
+    </div>
+
+
+    <div
+      style="
+        padding:17px;
+        border-radius:14px;
+        background:rgba(255,255,255,.04);
+        border:1px solid var(--border);
+      "
+    >
+
+      <div
+        style="
+          font-size:23px;
+          margin-bottom:8px;
+        "
+      >
+        🤖
+      </div>
+
+      <strong>
+        Bot
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:5px;
+          color:var(--muted);
+          font-size:10px;
+        "
+      >
+        Server-side protection
+      </small>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= VISITOR TABLE ================= -->
+
+<section
+  class="panel"
+  style="margin-top:18px;"
+>
+
+  <div
+    style="
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:15px;
+      margin-bottom:18px;
+    "
+  >
+
+    <h2 style="margin-bottom:0;">
+      🌐 Recent Visitors
+    </h2>
+
+    <button
+      onclick="showNotice('Visitor Analytics')"
+      style="
+        padding:9px 12px;
+        border-radius:9px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.05);
+        color:#fff;
+        cursor:pointer;
+        font-size:10px;
+      "
+    >
+      Refresh
+    </button>
+
+  </div>
+
+
+  <div
+    style="
+      overflow-x:auto;
+    "
+  >
+
+    <table
+      style="
+        width:100%;
+        border-collapse:collapse;
+        min-width:650px;
+      "
+    >
+
+      <thead>
+
+        <tr
+          style="
+            border-bottom:1px solid var(--border);
+            color:var(--muted);
+            font-size:10px;
+            text-align:left;
+          "
+        >
+
+          <th style="padding:12px;">
+            Time
+          </th>
+
+          <th style="padding:12px;">
+            IP
+          </th>
+
+          <th style="padding:12px;">
+            Location
+          </th>
+
+          <th style="padding:12px;">
+            Device
+          </th>
+
+          <th style="padding:12px;">
+            VPN
+          </th>
+
+        </tr>
+
+      </thead>
+
+
+      <tbody>
+
+        <tr
+          style="
+            border-bottom:1px solid rgba(255,255,255,.06);
+            color:#aaa;
+            font-size:11px;
+          "
+        >
+
+          <td style="padding:14px;">
+            —
+          </td>
+
+          <td style="padding:14px;">
+            —
+          </td>
+
+          <td style="padding:14px;">
+            Backend required
+          </td>
+
+          <td style="padding:14px;">
+            —
+          </td>
+
+          <td style="padding:14px;">
+            —
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+
+  <p
+    style="
+      margin-top:15px;
+      color:#77778c;
+      font-size:10px;
+      line-height:1.6;
+    "
+  >
+    Visitor IP, approximate location, VPN/proxy
+    detection and device information should be
+    collected server-side with appropriate
+    privacy notices and access controls.
+  </p>
+
+</section>
+
+
+<!-- ================= EVENT MANAGEMENT ================= -->
+
+<section
+  class="panel"
+  style="margin-top:18px;"
+>
+
+  <h2>
+    🎁 Event Management
+  </h2>
+
+
+  <div
+    style="
+      display:grid;
+      grid-template-columns:
+        repeat(3,1fr);
+      gap:12px;
+    "
+  >
+
+
+    <button
+      onclick="showNotice('Daily Recharge Event')"
+      style="
+        padding:18px;
+        border-radius:14px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.04);
+        color:#fff;
+        cursor:pointer;
+      "
+    >
+
+      <div style="font-size:27px;">
+        💰
+      </div>
+
+      <strong>
+        Daily Recharge
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:6px;
+          color:var(--muted);
+        "
+      >
+        Manage event
+      </small>
+
+    </button>
+
+
+    <button
+      onclick="showNotice('Paid Sending Event')"
+      style="
+        padding:18px;
+        border-radius:14px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.04);
+        color:#fff;
+        cursor:pointer;
+      "
+    >
+
+      <div style="font-size:27px;">
+        💸
+      </div>
+
+      <strong>
+        Paid Sending
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:6px;
+          color:var(--muted);
+        "
+      >
+        Manage event
+      </small>
+
+    </button>
+
+
+    <button
+      onclick="showNotice('Agency Announcement')"
+      style="
+        padding:18px;
+        border-radius:14px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.04);
+        color:#fff;
+        cursor:pointer;
+      "
+    >
+
+      <div style="font-size:27px;">
+        📢
+      </div>
+
+      <strong>
+        Announcement
+      </strong>
+
+      <small
+        style="
+          display:block;
+          margin-top:6px;
+          color:var(--muted);
+        "
+      >
+        Publish update
+      </small>
+
+    </button>
+
+
+  </div>
+
+</section>
+
+
+<!-- ================= SYSTEM STATUS ================= -->
+
+<section
+  class="panel"
+  style="margin-top:18px;"
+>
+
+  <h2>
+    ⚙️ System Status
+  </h2>
+
+
+  <div
+    style="
+      display:grid;
+      gap:10px;
+    "
+  >
+
+    <div class="activity-item">
+
+      <div class="activity-left">
+
+        <div class="activity-icon">
+          🌐
+        </div>
+
+        <div class="activity-text">
+
+          <strong>
+            Website
+          </strong>
+
+          <small>
+            Frontend is loaded
+          </small>
+
+        </div>
+
+      </div>
+
+      <span class="status green">
+        Online
+      </span>
+
+    </div>
+
+
+    <div class="activity-item">
+
+      <div class="activity-left">
+
+        <div class="activity-icon">
+          🤖
+        </div>
+
+        <div class="activity-text">
+
+          <strong>
+            SPM AI
+          </strong>
+
+          <small>
+            Frontend automatic replies
+          </small>
+
+        </div>
+
+      </div>
+
+      <span class="status green">
+        Ready
+      </span>
+
+    </div>
+
+
+    <div class="activity-item">
+
+      <div class="activity-left">
+
+        <div class="activity-icon">
+          🗄️
+        </div>
+
+        <div class="activity-text">
+
+          <strong>
+            Database
+          </strong>
+
+          <small>
+            Secure backend not connected
+          </small>
+
+        </div>
+
+      </div>
+
+      <span class="status yellow">
+        Pending
+      </span>
+
+    </div>
+
+
+  </div>
+
+</section>
+<!-- ================= ADMIN FOOTER ================= -->
+
+<footer
+  style="
+    margin-top:30px;
+    padding:30px 0;
+    border-top:1px solid var(--border);
+    text-align:center;
+    color:var(--muted);
+    font-size:10px;
+  "
+>
+
+  <strong
+    style="
+      color:#fff;
+      font-size:15px;
+    "
+  >
+    SPM TOP AGENCY
+  </strong>
+
+  <br><br>
+
+  Agency Code: 100857
+
+  <br><br>
+
+  Protected Admin Dashboard
+
+  <br><br>
+
+  © 2026 SPM TOP AGENCY
+
+</footer>
+
+
+<script>
+
+/* ================= SESSION ================= */
+
+/*
+  IMPORTANT:
+  This is only frontend session UI.
+
+  Real admin authentication must be handled
+  by a secure backend/server.
+*/
+
+
+function setAdminSession(){
+
+  sessionStorage.setItem(
+    "spm_admin_session",
+    "active"
+  );
+
+}
+
+
+function clearAdminSession(){
+
+  sessionStorage.removeItem(
+    "spm_admin_session"
+  );
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+  clearAdminSession();
+
+  dashboard.style.display =
+    "none";
+
+  loginPage.style.display =
+    "flex";
+
+  document.getElementById(
+    "adminPassword"
+  ).value = "";
+
+}
+
+
+/* ================= NOTICE ================= */
+
+function showNotice(section){
+
+  alert(
+    section +
+    " is ready in the dashboard UI.\n\n" +
+    "Secure backend/database connection " +
+    "is required for live data."
+  );
+
+}
+
+
+/* ================= DEMO COUNTERS ================= */
+
+/*
+  These remain zero until the backend sends
+  real order/visitor data.
+*/
+
+document.getElementById(
+  "visitorCount"
+).textContent = "0";
+
+
+document.getElementById(
+  "coinOrders"
+).textContent = "0";
+
+
+document.getElementById(
+  "paidOrders"
+).textContent = "0";
+
+
+/* ================= RESPONSIVE FIX ================= */
+
+function checkMobileLayout(){
+
+  const analytics =
+    document.querySelector(
+      ".panel > div[style*='grid-template-columns']"
+    );
+
+}
+
+
+/* ================= PAGE READY ================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    console.log(
+      "SPM Admin Dashboard loaded."
+    );
+
+    console.log(
+      "Backend authentication required."
+    );
+
+  }
+);
+
+</script>
+
 
 </body>
 </html>
