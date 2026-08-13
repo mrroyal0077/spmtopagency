@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Paid Sending | SPM TOP AGENCY</title>
+  <meta name="description" content="SPM TOP AGENCY Paid Sending service.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070711;
+      --card: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.13);
+      --text: #fff;
+      --muted: #a8a8bd;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+      --cyan: #06b6d4;
+      --gold: #fbbf24;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(139,92,246,.25), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(6,182,212,.20), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.15), transparent 35%),
+        var(--bg);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1050px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,7,17,.82);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(
+        90deg,
+        #fff,
+        var(--gold),
+        var(--pink),
+        var(--cyan)
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .back {
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 0 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: rgba(236,72,153,.12);
+      border: 1px solid rgba(236,72,153,.4);
+      color: #ffc5e4;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 65px);
+      margin-bottom: 15px;
+      background: linear-gradient(
+        90deg,
+        #fff,
+        #c084fc,
+        #22d3ee,
+        #f472b6,
+        #fbbf24
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 300%;
+      animation: gradient 6s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0%; }
+      50% { background-position: 100%; }
+      100% { background-position: 0%; }
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+
+    .agency {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #ddd;
+    }
+
+    .rates {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      padding: 20px 0 70px;
+    }
+
+    .rate-card {
+      position: relative;
+      overflow: hidden;
+      padding: 35px 28px;
+      border-radius: 26px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      transition: .25s;
+    }
+
+    .rate-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .rate-card::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      right: -90px;
+      top: -90px;
+      background: var(--pink);
+      filter: blur(65px);
+      opacity: .25;
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .coins {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .rate {
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .rate span {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .order-btn {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 13px;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(
+        100deg,
+        var(--purple),
+        var(--pink)
+      );
+    }
+
+    .info {
+      padding: 25px;
+      margin-bottom: 70px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+    }
+
+    .info h2 {
+      margin-bottom: 15px;
+    }
+
+    .info p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,.78);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal-box {
+      width: min(440px, 100%);
+      padding: 28px;
+      border-radius: 24px;
+      background: #11111d;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+    }
+
+    .modal-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .selected {
+      color: var(--gold);
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--purple);
+    }
+
+    .submit {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(
+        100deg,
+        var(--purple),
+        var(--pink)
+      );
+    }
+
+    .close {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 650px) {
+      .rates {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      SPM TOP AGENCY
+    </a>
+
+    <a href="index.html" class="back">
+      ← Home
+    </a>
+
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="badge">
+        💸 PAID SENDING SERVICE
+      </div>
+
+      <h1>PAID SENDING</h1>
+
+      <p>
+        Fast Paid Sending service with clear rates
+        and easy order submission.
+      </p>
+
+      <div class="agency">
+        Agency Code: <strong>100857</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RATES -->
+
+  <section class="container rates">
+
+    <div class="rate-card">
+
+      <div class="icon">💎</div>
+
+      <div class="coins">
+        10,000 Coins
+      </div>
+
+      <div class="rate">
+        ₹600
+        <span>/ sending</span>
+      </div>
+
+      <button
+        class="order-btn"
+        onclick="openOrder('10,000 Coins','₹600')">
+        Order Paid Sending
+      </button>
+
+    </div>
+
+
+    <div class="rate-card">
+
+      <div class="icon">🚀</div>
+
+      <div class="coins">
+        100,000 Coins
+      </div>
+
+      <div class="rate">
+        ₹6,000
+        <span>/ sending</span>
+      </div>
+
+      <button
+        class="order-btn"
+        onclick="openOrder('100,000 Coins','₹6,000')">
+        Order Paid Sending
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- INFORMATION -->
+
+  <section class="container">
+
+    <div class="info">
+
+      <h2>How It Works</h2>
+
+      <p>
+        1. Select your Paid Sending package.<br>
+        2. Enter your YOYO ID and required details.<br>
+        3. Submit your order.<br>
+        4. Your order will receive a unique Order ID.<br>
+        5. Admin will process the request.
+      </p>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+  © 2026 SPM TOP AGENCY • Agency Code 100857
+</footer>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+  <div class="modal-box">
+
+    <h2>Paid Sending Order</h2>
+
+    <div class="selected" id="selectedPackage"></div>
+
+    <input
+      type="text"
+      id="yoyoId"
+      placeholder="YOYO ID"
+      autocomplete="off"
+    >
+
+    <input
+      type="text"
+      id="receiverId"
+      placeholder="Receiver YOYO ID"
+      autocomplete="off"
+    >
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Your Name"
+      autocomplete="name"
+    >
+
+    <input
+      type="text"
+      id="whatsapp"
+      placeholder="WhatsApp Number"
+      autocomplete="tel"
+    >
+
+    <button class="submit" onclick="submitOrder()">
+      Submit Order
+    </button>
+
+    <button class="close" onclick="closeOrder()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  let selectedCoins = "";
+  let selectedPrice = "";
+
+  function openOrder(coins, price) {
+
+    selectedCoins = coins;
+    selectedPrice = price;
+
+    document.getElementById("selectedPackage").textContent =
+      coins + " • " + price;
+
+    document.getElementById("orderModal").style.display = "flex";
+  }
+
+
+  function closeOrder() {
+    document.getElementById("orderModal").style.display = "none";
+  }
+
+
+  function submitOrder() {
+
+    const yoyoId =
+      document.getElementById("yoyoId").value.trim();
+
+    const receiverId =
+      document.getElementById("receiverId").value.trim();
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const whatsapp =
+      document.getElementById("whatsapp").value.trim();
+
+
+    if (!yoyoId || !receiverId || !name || !whatsapp) {
+      alert("Please fill all details.");
+      return;
+    }
+
+
+    alert(
+      "Paid Sending Order Received!\n\n" +
+      "Package: " + selectedCoins + "\n" +
+      "Rate: " + selectedPrice + "\n" +
+      "YOYO ID: " + yoyoId + "\n" +
+      "Receiver ID: " + receiverId + "\n\n" +
+      "Backend order system will be connected later."
+    );
+
+    closeOrder();
+  }
+
+</script>
+
+</body>
+</html>
