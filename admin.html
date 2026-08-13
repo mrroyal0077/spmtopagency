@@ -1,269 +1,497 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Admin Login | SPM TOP AGENCY</title>
+<title>Admin Login | SPM TOP AGENCY</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      color: white;
+:root{
+  --bg:#05050b;
+  --card:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.12);
+  --muted:#a7a7ba;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --gold:#fbbf24;
+}
 
-      background:
-        radial-gradient(circle at 15% 15%, rgba(139,92,246,.30), transparent 30%),
-        radial-gradient(circle at 85% 20%, rgba(6,182,212,.22), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(236,72,153,.20), transparent 35%),
-        #070711;
-    }
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 
-    .login-card {
-      width: min(430px, 100%);
-      padding: 35px;
-      border-radius: 28px;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
 
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.13);
-      backdrop-filter: blur(20px);
+  background:
+    radial-gradient(circle at 10% 10%,rgba(139,92,246,.25),transparent 30%),
+    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 30%),
+    radial-gradient(circle at 50% 90%,rgba(236,72,153,.14),transparent 32%),
+    var(--bg);
+}
 
-      box-shadow: 0 30px 100px rgba(0,0,0,.55);
-    }
+/* LOGIN CARD */
 
-    .logo {
-      text-align: center;
-      font-size: 25px;
-      font-weight: 900;
-      margin-bottom: 10px;
+.login-card{
+  width:min(440px,100%);
+  padding:36px;
 
-      background: linear-gradient(
-        90deg,
-        #fff,
-        #fbbf24,
-        #ec4899,
-        #06b6d4
-      );
+  border-radius:28px;
 
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+  background:rgba(255,255,255,.065);
+  border:1px solid var(--border);
 
-    .subtitle {
-      text-align: center;
-      color: #a8a8bd;
-      font-size: 13px;
-      margin-bottom: 30px;
-    }
+  backdrop-filter:blur(22px);
 
-    .security {
-      text-align: center;
-      margin-bottom: 25px;
-      padding: 10px;
-      border-radius: 12px;
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.55);
+}
 
-      background: rgba(34,197,94,.08);
-      border: 1px solid rgba(34,197,94,.2);
+/* LOGO */
 
-      color: #86efac;
-      font-size: 12px;
-    }
+.logo{
+  text-align:center;
 
-    label {
-      display: block;
-      color: #ddd;
-      font-size: 13px;
-      margin-bottom: 7px;
-    }
+  font-size:27px;
+  font-weight:950;
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin-bottom: 17px;
+  letter-spacing:.5px;
 
-      border-radius: 13px;
-      border: 1px solid rgba(255,255,255,.12);
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--gold),
+    var(--pink),
+    var(--cyan)
+  );
 
-      background: rgba(255,255,255,.06);
-      color: white;
+  -webkit-background-clip:text;
+  color:transparent;
 
-      outline: none;
-    }
+  margin-bottom:8px;
+}
 
-    input:focus {
-      border-color: #8b5cf6;
-    }
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:28px;
+}
 
-    .login-btn {
-      width: 100%;
-      padding: 14px;
+/* SECURITY */
 
-      border: 0;
-      border-radius: 13px;
+.security{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
 
-      color: white;
-      font-weight: 800;
-      cursor: pointer;
+  padding:11px;
 
-      background: linear-gradient(
-        100deg,
-        #8b5cf6,
-        #ec4899
-      );
-    }
+  margin-bottom:25px;
 
-    .login-btn:hover {
-      opacity: .9;
-    }
+  border-radius:12px;
 
-    .back {
-      display: block;
-      text-align: center;
-      margin-top: 20px;
+  background:rgba(34,197,94,.07);
+  border:1px solid rgba(34,197,94,.20);
 
-      color: #a8a8bd;
-      font-size: 13px;
-      text-decoration: none;
-    }
+  color:#86efac;
+  font-size:12px;
+}
 
-    .error {
-      display: none;
-      margin-bottom: 15px;
-      padding: 11px;
+/* FORM */
 
-      border-radius: 10px;
+.form-group{
+  margin-bottom:17px;
+}
 
-      background: rgba(239,68,68,.10);
-      border: 1px solid rgba(239,68,68,.25);
+label{
+  display:block;
+  margin-bottom:8px;
 
-      color: #fca5a5;
-      font-size: 13px;
-      text-align: center;
-    }
-  </style>
+  color:#ddd;
+  font-size:13px;
+  font-weight:700;
+}
+
+.input-wrap{
+  position:relative;
+}
+
+.input-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+
+  font-size:16px;
+  opacity:.75;
+}
+
+input{
+  width:100%;
+  padding:14px 45px;
+
+  border-radius:13px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.055);
+
+  color:#fff;
+  outline:none;
+
+  font-size:14px;
+}
+
+input::placeholder{
+  color:#77778c;
+}
+
+input:focus{
+  border-color:var(--purple);
+
+  box-shadow:
+    0 0 0 3px rgba(139,92,246,.10);
+}
+
+/* PASSWORD BUTTON */
+
+.password-toggle{
+  position:absolute;
+  right:8px;
+  top:50%;
+  transform:translateY(-50%);
+
+  width:35px;
+  height:35px;
+
+  border:0;
+  border-radius:9px;
+
+  background:transparent;
+  color:#aaa;
+
+  cursor:pointer;
+}
+
+/* LOGIN BUTTON */
+
+.login-btn{
+  width:100%;
+
+  padding:15px;
+
+  margin-top:5px;
+
+  border:0;
+  border-radius:13px;
+
+  color:#fff;
+
+  font-size:14px;
+  font-weight:900;
+
+  cursor:pointer;
+
+  background:linear-gradient(
+    100deg,
+    var(--purple),
+    var(--pink)
+  );
+
+  box-shadow:
+    0 12px 30px rgba(139,92,246,.20);
+
+  transition:.2s;
+}
+
+.login-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* MESSAGE */
+
+.message{
+  display:none;
+
+  margin-top:15px;
+  padding:11px;
+
+  border-radius:11px;
+
+  text-align:center;
+
+  font-size:12px;
+}
+
+.error{
+  background:rgba(239,68,68,.09);
+  border:1px solid rgba(239,68,68,.22);
+  color:#fca5a5;
+}
+
+.info{
+  background:rgba(59,130,246,.09);
+  border:1px solid rgba(59,130,246,.22);
+  color:#93c5fd;
+}
+
+/* BACK */
+
+.back{
+  display:block;
+
+  margin-top:23px;
+
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:13px;
+  text-decoration:none;
+}
+
+.back:hover{
+  color:#fff;
+}
+
+/* FOOTER */
+
+.footer{
+  margin-top:25px;
+
+  text-align:center;
+
+  color:#66667b;
+
+  font-size:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+  .login-card{
+    padding:27px 21px;
+    border-radius:22px;
+  }
+
+  .logo{
+    font-size:24px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="login-card">
+<div class="login-card">
 
-    <div class="logo">
-      SPM ADMIN
-    </div>
+  <div class="logo">
+    SPM ADMIN
+  </div>
 
-    <div class="subtitle">
-      SPM TOP AGENCY • Owner Dashboard
-    </div>
+  <div class="subtitle">
+    SPM TOP AGENCY • Owner Control Center
+  </div>
 
-    <div class="security">
-      🔐 Protected Admin Area
-    </div>
 
-    <div class="error" id="error">
-      Please enter your admin details.
-    </div>
+  <div class="security">
+    🔐 Protected Admin Area
+  </div>
 
-    <form onsubmit="demoLogin(event)">
+
+  <form id="loginForm">
+
+    <!-- ADMIN ID -->
+
+    <div class="form-group">
 
       <label for="adminId">
         Admin ID
       </label>
 
-      <input
-        id="adminId"
-        type="text"
-        placeholder="Enter Admin ID"
-        autocomplete="username"
-        required
-      >
+      <div class="input-wrap">
+
+        <span class="input-icon">
+          👤
+        </span>
+
+        <input
+          id="adminId"
+          type="text"
+          placeholder="Enter Admin ID"
+          autocomplete="username"
+          required
+        >
+
+      </div>
+
+    </div>
 
 
-      <label for="adminPassword">
+    <!-- PASSWORD -->
+
+    <div class="form-group">
+
+      <label for="password">
         Password
       </label>
 
-      <input
-        id="adminPassword"
-        type="password"
-        placeholder="Enter Password"
-        autocomplete="current-password"
-        required
-      >
+      <div class="input-wrap">
+
+        <span class="input-icon">
+          🔑
+        </span>
+
+        <input
+          id="password"
+          type="password"
+          placeholder="Enter Password"
+          autocomplete="current-password"
+          required
+        >
+
+        <button
+          type="button"
+          class="password-toggle"
+          onclick="togglePassword()"
+          aria-label="Show password"
+        >
+          👁️
+        </button>
+
+      </div>
+
+    </div>
 
 
-      <button
-        type="submit"
-        class="login-btn"
-      >
-        🔐 Login to Dashboard
-      </button>
-
-    </form>
+    <button
+      type="submit"
+      class="login-btn"
+    >
+      🔐 Login to Dashboard
+    </button>
 
 
-    <a href="index.html" class="back">
-      ← Back to Website
-    </a>
+    <div
+      class="message error"
+      id="errorMessage"
+    >
+      Please enter your Admin ID and Password.
+    </div>
 
+
+    <div
+      class="message info"
+      id="infoMessage"
+    >
+      Backend authentication will be connected later.
+    </div>
+
+  </form>
+
+
+  <a
+    href="index.html"
+    class="back"
+  >
+    ← Back to Website
+  </a>
+
+
+  <div class="footer">
+    SPM TOP AGENCY • Agency Code 100857
   </div>
 
+</div>
 
-  <script>
 
-    function demoLogin(event) {
+<script>
 
-  event.preventDefault();
+/* PASSWORD SHOW / HIDE */
 
-  const adminId =
-    document.getElementById("adminId").value.trim();
+function togglePassword(){
 
   const password =
-    document.getElementById("adminPassword").value.trim();
+    document.getElementById("password");
 
-  const error =
-    document.getElementById("error");
+  const button =
+    document.querySelector(".password-toggle");
 
 
-  if (!adminId || !password) {
+  if(password.type === "password"){
 
-    error.textContent =
-      "Please enter Admin ID and Password.";
+    password.type = "text";
 
-    error.style.display = "block";
+    button.textContent = "🙈";
 
-    return;
+  }else{
+
+    password.type = "password";
+
+    button.textContent = "👁️";
+
   }
 
-
-  /*
-    DEMO ONLY
-
-    This is NOT real security.
-    Real authentication will be moved
-    to the backend/database.
-  */
-
-  sessionStorage.setItem(
-    "spm_admin_demo",
-    "true"
-  );
+}
 
 
-  window.location.href =
-    "dashboard.html";
+/* FRONTEND DEMO */
+
+document
+  .getElementById("loginForm")
+  .addEventListener("submit", function(event){
+
+    event.preventDefault();
+
+
+    const adminId =
+      document.getElementById("adminId").value.trim();
+
+    const password =
+      document.getElementById("password").value.trim();
+
+
+    const error =
+      document.getElementById("errorMessage");
+
+    const info =
+      document.getElementById("infoMessage");
+
+
+    error.style.display = "none";
+    info.style.display = "none";
+
+
+    if(!adminId || !password){
+
+      error.style.display = "block";
+
+      return;
     }
 
-  </script>
+
+    info.textContent =
+      "Login system is ready for backend authentication.";
+
+    info.style.display = "block";
+
+  });
+
+</script>
 
 </body>
 </html>
