@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Coin Recharge | SPM TOP AGENCY</title>
+  <meta name="description" content="SPM TOP AGENCY Coin Recharge. Fast 24/7 service. Agency Code 100857.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070711;
+      --card: rgba(255,255,255,.07);
+      --border: rgba(255,255,255,.12);
+      --text: #fff;
+      --muted: #a8a8bd;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+      --cyan: #06b6d4;
+      --gold: #fbbf24;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(139,92,246,.25), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(6,182,212,.18), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(236,72,153,.14), transparent 35%),
+        var(--bg);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: rgba(7,7,17,.82);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 900;
+      background: linear-gradient(
+        90deg,
+        #fff,
+        var(--gold),
+        var(--pink),
+        var(--cyan)
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .back {
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 70px 0 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 50px;
+      background: rgba(139,92,246,.12);
+      border: 1px solid rgba(139,92,246,.4);
+      color: #d8c8ff;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 65px);
+      margin-bottom: 15px;
+      background: linear-gradient(
+        90deg,
+        #fff,
+        #c084fc,
+        #22d3ee,
+        #f472b6,
+        #fbbf24
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+      background-size: 300%;
+      animation: gradient 6s linear infinite;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0%; }
+      50% { background-position: 100%; }
+      100% { background-position: 0%; }
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .agency {
+      margin-top: 18px;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    .packages {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 35px 0 80px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 27px;
+      border-radius: 24px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      transition: .25s;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      right: -80px;
+      top: -80px;
+      background: var(--purple);
+      filter: blur(60px);
+      opacity: .25;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,.25);
+    }
+
+    .coin-icon {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .coins {
+      font-size: 25px;
+      font-weight: 900;
+      margin-bottom: 7px;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .order-btn {
+      width: 100%;
+      border: 0;
+      padding: 13px;
+      border-radius: 13px;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(
+        100deg,
+        var(--purple),
+        var(--pink)
+      );
+    }
+
+    .note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding-bottom: 70px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ORDER MODAL */
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      width: min(440px, 100%);
+      padding: 28px;
+      border-radius: 24px;
+      background: #11111d;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 80px rgba(0,0,0,.6);
+    }
+
+    .modal-box h2 {
+      margin-bottom: 8px;
+    }
+
+    .selected {
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: white;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--purple);
+    }
+
+    .submit {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 12px;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+      background: linear-gradient(100deg, var(--purple), var(--pink));
+    }
+
+    .close {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+      .packages {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 550px) {
+      .packages {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      SPM TOP AGENCY
+    </a>
+
+    <a href="index.html" class="back">
+      ← Home
+    </a>
+  </div>
+</header>
+
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="badge">
+        ⚡ 24/7 FAST COIN SERVICE
+      </div>
+
+      <h1>COIN RECHARGE</h1>
+
+      <p>
+        Choose your package and submit your order.
+      </p>
+
+      <div class="agency">
+        Agency Code: <strong>100857</strong>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="container packages">
+
+    <!-- 100 -->
+    <div class="card">
+      <div class="coin-icon">🪙</div>
+      <div class="coins">1,260 Coins</div>
+      <div class="price">₹100</div>
+      <button class="order-btn"
+        onclick="openOrder('1,260 Coins','₹100')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 200 -->
+    <div class="card">
+      <div class="coin-icon">💎</div>
+      <div class="coins">2,520 Coins</div>
+      <div class="price">₹200</div>
+      <button class="order-btn"
+        onclick="openOrder('2,520 Coins','₹200')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 300 -->
+    <div class="card">
+      <div class="coin-icon">💎</div>
+      <div class="coins">3,780 Coins</div>
+      <div class="price">₹300</div>
+      <button class="order-btn"
+        onclick="openOrder('3,780 Coins','₹300')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 500 -->
+    <div class="card">
+      <div class="coin-icon">🔥</div>
+      <div class="coins">6,300 Coins</div>
+      <div class="price">₹500</div>
+      <button class="order-btn"
+        onclick="openOrder('6,300 Coins','₹500')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 1000 -->
+    <div class="card">
+      <div class="coin-icon">👑</div>
+      <div class="coins">12,600 Coins</div>
+      <div class="price">₹1,000</div>
+      <button class="order-btn"
+        onclick="openOrder('12,600 Coins','₹1,000')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 3000 -->
+    <div class="card">
+      <div class="coin-icon">💰</div>
+      <div class="coins">37,800 Coins</div>
+      <div class="price">₹3,000</div>
+      <button class="order-btn"
+        onclick="openOrder('37,800 Coins','₹3,000')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 5000 -->
+    <div class="card">
+      <div class="coin-icon">💰</div>
+      <div class="coins">63,000 Coins</div>
+      <div class="price">₹5,000</div>
+      <button class="order-btn"
+        onclick="openOrder('63,000 Coins','₹5,000')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 10000 -->
+    <div class="card">
+      <div class="coin-icon">🚀</div>
+      <div class="coins">126,000 Coins</div>
+      <div class="price">₹10,000</div>
+      <button class="order-btn"
+        onclick="openOrder('126,000 Coins','₹10,000')">
+        Order Now
+      </button>
+    </div>
+
+    <!-- 20000 -->
+    <div class="card">
+      <div class="coin-icon">👑</div>
+      <div class="coins">252,000 Coins</div>
+      <div class="price">₹20,000</div>
+      <button class="order-btn"
+        onclick="openOrder('252,000 Coins','₹20,000')">
+        Order Now
+      </button>
+    </div>
+
+  </section>
+
+
+  <div class="container note">
+    🔒 Secure ordering • ⚡ Fast service • 📱 Mobile friendly
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 SPM TOP AGENCY • Agency Code 100857
+</footer>
+
+
+<!-- ORDER MODAL -->
+
+<div class="modal" id="orderModal">
+
+  <div class="modal-box">
+
+    <h2>Place Your Order</h2>
+
+    <div class="selected" id="selectedPackage"></div>
+
+    <input
+      type="text"
+      id="yoyoId"
+      placeholder="Enter YOYO ID"
+      autocomplete="off"
+    >
+
+    <input
+      type="text"
+      id="name"
+      placeholder="Your Name"
+      autocomplete="name"
+    >
+
+    <input
+      type="text"
+      id="whatsapp"
+      placeholder="WhatsApp Number"
+      autocomplete="tel"
+    >
+
+    <button class="submit" onclick="submitOrder()">
+      Submit Order
+    </button>
+
+    <button class="close" onclick="closeOrder()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+  let selectedCoins = "";
+  let selectedPrice = "";
+
+  function openOrder(coins, price) {
+
+    selectedCoins = coins;
+    selectedPrice = price;
+
+    document.getElementById("selectedPackage").textContent =
+      coins + " • " + price;
+
+    document.getElementById("orderModal").style.display = "flex";
+  }
+
+
+  function closeOrder() {
+    document.getElementById("orderModal").style.display = "none";
+  }
+
+
+  function submitOrder() {
+
+    const yoyoId =
+      document.getElementById("yoyoId").value.trim();
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const whatsapp =
+      document.getElementById("whatsapp").value.trim();
+
+
+    if (!yoyoId || !name || !whatsapp) {
+      alert("Please fill all details.");
+      return;
+    }
+
+
+    alert(
+      "Order received!\n\n" +
+      "Package: " + selectedCoins + "\n" +
+      "Price: " + selectedPrice + "\n" +
+      "YOYO ID: " + yoyoId + "\n\n" +
+      "Order system backend will be connected in the next part."
+    );
+
+    closeOrder();
+  }
+
+</script>
+
+</body>
+</html>
