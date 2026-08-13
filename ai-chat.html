@@ -1,248 +1,320 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SPM AI Chat | SPM TOP AGENCY</title>
+<title>SPM AI Chat | SPM TOP AGENCY</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      color: white;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(139,92,246,.25), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(6,182,212,.18), transparent 30%),
-        #070711;
-    }
+:root{
+  --bg:#05050b;
+  --card:rgba(255,255,255,.065);
+  --border:rgba(255,255,255,.12);
+  --muted:#a7a7ba;
+  --purple:#8b5cf6;
+  --pink:#ec4899;
+  --cyan:#06b6d4;
+  --gold:#fbbf24;
+}
 
-    .container {
-      width: min(850px, 94%);
-      margin: auto;
-    }
+body{
+  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(139,92,246,.22),transparent 28%),
+    radial-gradient(circle at 90% 15%,rgba(6,182,212,.18),transparent 28%),
+    radial-gradient(circle at 50% 90%,rgba(236,72,153,.12),transparent 32%),
+    var(--bg);
+}
 
-    header {
-      border-bottom: 1px solid rgba(255,255,255,.12);
-      background: rgba(7,7,17,.85);
-      backdrop-filter: blur(18px);
-    }
+a{
+  color:#c4b5fd;
+}
 
-    .nav {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+.container{
+  width:min(900px,94%);
+  margin:auto;
+}
 
-    .logo {
-      font-size: 20px;
-      font-weight: 900;
-      background: linear-gradient(
-        90deg,
-        white,
-        #fbbf24,
-        #ec4899,
-        #06b6d4
-      );
-      -webkit-background-clip: text;
-      color: transparent;
-    }
+/* NAV */
 
-    .home {
-      padding: 10px 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.12);
-      color: #ddd;
-      text-decoration: none;
-      font-size: 13px;
-    }
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,11,.80);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
 
-    .chat-wrapper {
-      padding: 35px 0;
-    }
+.nav{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
 
-    .chat-box {
-      height: 720px;
-      max-height: calc(100vh - 120px);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border-radius: 26px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.13);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 25px 100px rgba(0,0,0,.45);
-    }
+.logo{
+  font-size:20px;
+  font-weight:900;
+  background:linear-gradient(
+    90deg,
+    #fff,
+    var(--gold),
+    var(--pink),
+    var(--cyan)
+  );
+  -webkit-background-clip:text;
+  color:transparent;
+}
 
-    .chat-header {
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
+.back{
+  padding:10px 15px;
+  border-radius:11px;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+}
 
-    .ai-icon {
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 24px;
-      background: linear-gradient(
-        135deg,
-        #8b5cf6,
-        #ec4899,
-        #06b6d4
-      );
-      box-shadow: 0 0 30px rgba(139,92,246,.35);
-    }
+/* CHAT */
 
-    .chat-title strong {
-      display: block;
-      font-size: 16px;
-    }
+.chat-area{
+  padding:28px 0;
+}
 
-    .online {
-      color: #4ade80;
-      font-size: 12px;
-      margin-top: 4px;
-    }
+.chat-box{
+  height:calc(100vh - 125px);
+  min-height:600px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
 
-    .messages {
-      flex: 1;
-      overflow-y: auto;
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+  border-radius:26px;
+  background:rgba(255,255,255,.055);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
 
-    .message {
-      max-width: 82%;
-      padding: 13px 15px;
-      border-radius: 17px;
-      font-size: 14px;
-      line-height: 1.55;
-    }
+  box-shadow:0 25px 100px rgba(0,0,0,.45);
+}
 
-    .bot {
-      align-self: flex-start;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.08);
-    }
+/* CHAT HEADER */
 
-    .user {
-      align-self: flex-end;
-      background: linear-gradient(
-        100deg,
-        #8b5cf6,
-        #ec4899
-      );
-    }
+.chat-header{
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  border-bottom:1px solid var(--border);
+}
 
-    .quick-buttons {
-      padding: 10px 18px;
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
+.ai-icon{
+  width:48px;
+  height:48px;
+  flex-shrink:0;
 
-    .quick-buttons button {
-      white-space: nowrap;
-      border: 1px solid rgba(255,255,255,.13);
-      background: rgba(255,255,255,.06);
-      color: white;
-      padding: 9px 12px;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 12px;
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-    .input-area {
-      padding: 15px;
-      display: flex;
-      gap: 9px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
+  border-radius:50%;
+  font-size:24px;
 
-    #messageInput {
-      flex: 1;
-      min-width: 0;
-      padding: 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color: white;
-      outline: none;
-    }
+  background:linear-gradient(
+    135deg,
+    var(--purple),
+    var(--pink),
+    var(--cyan)
+  );
 
-    #sendButton {
-      width: 52px;
-      border: 0;
-      border-radius: 14px;
-      color: white;
-      background: linear-gradient(
-        100deg,
-        #8b5cf6,
-        #ec4899
-      );
-      cursor: pointer;
-      font-size: 18px;
-    }
+  box-shadow:0 0 30px rgba(139,92,246,.35);
+}
 
-    .typing {
-      color: #aaa;
-      font-size: 12px;
-      display: none;
-    }
+.chat-title strong{
+  display:block;
+  font-size:16px;
+}
 
-    @media (max-width: 600px) {
-      .chat-wrapper {
-        padding: 12px 0;
-      }
+.online{
+  margin-top:4px;
+  color:#4ade80;
+  font-size:12px;
+}
 
-      .chat-box {
-        height: calc(100vh - 95px);
-        border-radius: 20px;
-      }
+/* MESSAGES */
 
-      .message {
-        max-width: 90%;
-      }
-    }
-  </style>
+.messages{
+  flex:1;
+  overflow-y:auto;
+  padding:22px;
+  display:flex;
+  flex-direction:column;
+  gap:13px;
+}
+
+.message{
+  max-width:82%;
+  padding:13px 15px;
+  border-radius:17px;
+  font-size:14px;
+  line-height:1.6;
+  word-wrap:break-word;
+}
+
+.bot{
+  align-self:flex-start;
+  background:rgba(255,255,255,.075);
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.user{
+  align-self:flex-end;
+  background:linear-gradient(
+    100deg,
+    var(--purple),
+    var(--pink)
+  );
+}
+
+.typing{
+  color:#aaa;
+  font-size:12px;
+}
+
+/* QUICK BUTTONS */
+
+.quick{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding:10px 15px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.quick button{
+  white-space:nowrap;
+  padding:9px 13px;
+
+  border-radius:20px;
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.055);
+  color:#fff;
+
+  cursor:pointer;
+  font-size:12px;
+}
+
+.quick button:hover{
+  background:rgba(255,255,255,.11);
+}
+
+/* INPUT */
+
+.input-area{
+  display:flex;
+  gap:9px;
+  padding:15px;
+
+  border-top:1px solid var(--border);
+}
+
+#messageInput{
+  flex:1;
+  min-width:0;
+
+  padding:14px;
+
+  border-radius:14px;
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,.06);
+  color:#fff;
+
+  outline:none;
+  font-size:14px;
+}
+
+#messageInput:focus{
+  border-color:var(--purple);
+}
+
+#sendButton{
+  width:52px;
+  border:0;
+  border-radius:14px;
+
+  color:#fff;
+  font-size:18px;
+
+  cursor:pointer;
+
+  background:linear-gradient(
+    100deg,
+    var(--purple),
+    var(--pink)
+  );
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .chat-area{
+    padding:10px 0;
+  }
+
+  .chat-box{
+    height:calc(100vh - 92px);
+    min-height:0;
+    border-radius:20px;
+  }
+
+  .message{
+    max-width:90%;
+  }
+
+  .messages{
+    padding:15px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
+
   <div class="container nav">
 
     <div class="logo">
       SPM AI
     </div>
 
-    <a href="index.html" class="home">
+    <a href="index.html" class="back">
       ← Home
     </a>
 
   </div>
+
 </header>
 
 
-<main class="container chat-wrapper">
+<main class="container chat-area">
 
   <div class="chat-box">
+
+    <!-- HEADER -->
 
     <div class="chat-header">
 
@@ -251,37 +323,59 @@
       </div>
 
       <div class="chat-title">
-        <strong>SPM AI Assistant</strong>
+
+        <strong>
+          SPM AI Assistant
+        </strong>
+
         <div class="online">
           ● Online • 24/7 Support
         </div>
+
       </div>
 
     </div>
 
+
+    <!-- MESSAGES -->
 
     <div class="messages" id="messages">
 
       <div class="message bot">
-        👋 Hi! I'm <strong>SPM AI</strong>.<br><br>
 
-        I can help you with Coin Recharge,
-        Paid Sending, Events and general SPM
-        TOP AGENCY information.
+        👋 Sat Sri Akal! Welcome to
+        <strong>SPM TOP AGENCY</strong>.
+
         <br><br>
-        Tusi Punjabi, Hindi ya English vich gal kar sakde ho. 😊
+
+        Main tuhanu help kar sakda haan:
+
+        <br><br>
+
+        💰 Coin Recharge<br>
+        💸 Paid Sending<br>
+        🎁 Events<br>
+        📞 Support
+
+        <br><br>
+
+        Tusi Punjabi, Hindi ya English
+        vich message kar sakde ho. 😊
+
       </div>
 
     </div>
 
 
-    <div class="quick-buttons">
+    <!-- QUICK QUESTIONS -->
 
-      <button onclick="quickMessage('Coin Recharge rates')">
+    <div class="quick">
+
+      <button onclick="quickMessage('Coin Recharge')">
         💰 Coins
       </button>
 
-      <button onclick="quickMessage('Paid Sending rates')">
+      <button onclick="quickMessage('Paid Sending')">
         💸 Paid Sending
       </button>
 
@@ -289,12 +383,14 @@
         🎁 Events
       </button>
 
-      <button onclick="quickMessage('Contact Admin')">
-        📞 Admin
+      <button onclick="quickMessage('WhatsApp Support')">
+        📞 Support
       </button>
 
     </div>
 
+
+    <!-- INPUT -->
 
     <div class="input-area">
 
@@ -303,10 +399,12 @@
         type="text"
         placeholder="Type your message..."
         autocomplete="off"
-        onkeydown="handleKey(event)"
       >
 
-      <button id="sendButton" onclick="sendMessage()">
+      <button
+        id="sendButton"
+        onclick="sendMessage()"
+      >
         ➤
       </button>
 
@@ -319,198 +417,319 @@
 
 <script>
 
-  const messages = document.getElementById("messages");
-  const input = document.getElementById("messageInput");
+const messages =
+  document.getElementById("messages");
+
+const input =
+  document.getElementById("messageInput");
 
 
-  function addMessage(text, type) {
+/* ADD MESSAGE */
 
-    const div = document.createElement("div");
+function addMessage(text,type){
 
-    div.className = "message " + type;
+  const message =
+    document.createElement("div");
 
-    div.innerHTML = text;
+  message.className =
+    "message " + type;
 
-    messages.appendChild(div);
+  message.innerHTML =
+    text;
 
-    messages.scrollTop = messages.scrollHeight;
+  messages.appendChild(message);
+
+  messages.scrollTop =
+    messages.scrollHeight;
+}
+
+
+/* SEND */
+
+function sendMessage(){
+
+  const text =
+    input.value.trim();
+
+  if(!text){
+    return;
   }
 
+  addMessage(
+    escapeHTML(text),
+    "user"
+  );
 
-  function sendMessage() {
+  input.value="";
 
-    const text = input.value.trim();
-
-    if (!text) return;
-
-    addMessage(text, "user");
-
-    input.value = "";
-
-    showBotReply(text);
-  }
+  botReply(text);
+}
 
 
-  function quickMessage(text) {
+/* QUICK */
 
-    addMessage(text, "user");
+function quickMessage(text){
 
-    showBotReply(text);
-  }
+  addMessage(
+    escapeHTML(text),
+    "user"
+  );
+
+  botReply(text);
+}
 
 
-  function handleKey(event) {
+/* ENTER */
 
-    if (event.key === "Enter") {
+input.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key === "Enter"){
       sendMessage();
     }
 
   }
+);
 
 
-  function showBotReply(text) {
+/* BOT */
 
-    const typing = document.createElement("div");
+function botReply(text){
 
-    typing.className = "message bot typing";
+  const typing =
+    document.createElement("div");
 
-    typing.textContent = "SPM AI is typing...";
+  typing.className =
+    "message bot typing";
 
-    typing.style.display = "block";
+  typing.textContent =
+    "SPM AI is typing...";
 
-    messages.appendChild(typing);
+  messages.appendChild(typing);
 
-    messages.scrollTop = messages.scrollHeight;
-
-
-    setTimeout(() => {
-
-      typing.remove();
-
-      const reply = generateReply(text);
-
-      addMessage(reply, "bot");
-
-    }, 650);
-
-  }
+  messages.scrollTop =
+    messages.scrollHeight;
 
 
-  function generateReply(text) {
+  setTimeout(function(){
 
-    const message = text.toLowerCase();
+    typing.remove();
 
+    addMessage(
+      generateReply(text),
+      "bot"
+    );
 
-    if (
-      message.includes("coin") ||
-      message.includes("recharge") ||
-      message.includes("coins")
-    ) {
+  },650);
 
-      return `
-        💰 <strong>Coin Recharge</strong><br><br>
-
-        Available packages:<br>
-        ₹100 → 1,260 Coins<br>
-        ₹200 → 2,520 Coins<br>
-        ₹300 → 3,780 Coins<br>
-        ₹500 → 6,300 Coins<br>
-        ₹1,000 → 12,600 Coins<br>
-        ₹3,000 → 37,800 Coins<br>
-        ₹5,000 → 63,000 Coins<br>
-        ₹10,000 → 126,000 Coins<br>
-        ₹20,000 → 252,000 Coins<br><br>
-
-        👉 <a href="coins.html">Open Coin Recharge</a>
-      `;
-
-    }
+}
 
 
-    if (
-      message.includes("paid") ||
-      message.includes("sending") ||
-      message.includes("10k") ||
-      message.includes("100k")
-    ) {
+/* REPLIES */
 
-      return `
-        💸 <strong>Paid Sending</strong><br><br>
+function generateReply(text){
 
-        10,000 Coins → ₹600<br>
-        100,000 Coins → ₹6,000<br><br>
-
-        👉 <a href="paid-sending.html">
-        Open Paid Sending
-        </a>
-      `;
-
-    }
+  const msg =
+    text.toLowerCase();
 
 
-    if (
-      message.includes("event") ||
-      message.includes("offer")
-    ) {
+  /* COINS */
 
-      return `
-        🎁 <strong>SPM Events</strong><br><br>
-
-        • Daily Recharge Event<br>
-        • 200% Coins Level Up Event<br>
-        • Future special events<br><br>
-
-        👉 <a href="events.html">
-        View Events
-        </a>
-      `;
-
-    }
-
-
-    if (
-      message.includes("admin") ||
-      message.includes("contact") ||
-      message.includes("help")
-    ) {
-
-      return `
-        📞 <strong>SPM Support</strong><br><br>
-
-        Please contact SPM TOP AGENCY support
-        for order-related assistance.
-      `;
-
-    }
-
-
-    if (
-      message.includes("hello") ||
-      message.includes("hi") ||
-      message.includes("sat sri akal") ||
-      message.includes("ਸਤ ਸ੍ਰੀ ਅਕਾਲ")
-    ) {
-
-      return `
-        👋 Hello! Welcome to <strong>SPM TOP AGENCY</strong>.<br><br>
-        Main tuhanu Coin Recharge, Paid Sending
-        te Events bare help kar sakda haan. 😊
-      `;
-
-    }
-
+  if(
+    msg.includes("coin") ||
+    msg.includes("recharge") ||
+    msg.includes("coins")
+  ){
 
     return `
-      🤖 Main tuhadi help kar sakda haan.<br><br>
+      💰 <strong>Coin Recharge</strong>
 
-      Try asking:<br>
-      • Coin Recharge rates<br>
-      • Paid Sending rates<br>
-      • Events<br>
-      • Contact Admin
+      <br><br>
+
+      ₹100 → 1,260 Coins<br>
+      ₹200 → 2,520 Coins<br>
+      ₹300 → 3,780 Coins<br>
+      ₹500 → 6,300 Coins<br>
+      ₹1,000 → 12,600 Coins<br>
+      ₹3,000 → 37,800 Coins<br>
+      ₹5,000 → 63,000 Coins<br>
+      ₹10,000 → 126,000 Coins<br>
+      ₹20,000 → 252,000 Coins
+
+      <br><br>
+
+      👉
+      <a href="coins.html">
+        Open Coin Recharge
+      </a>
     `;
-
   }
+
+
+  /* PAID SENDING */
+
+  if(
+    msg.includes("paid") ||
+    msg.includes("sending") ||
+    msg.includes("10k") ||
+    msg.includes("100k")
+  ){
+
+    return `
+      💸 <strong>Paid Sending</strong>
+
+      <br><br>
+
+      10,000 Coins → ₹600<br>
+      100,000 Coins → ₹6,000
+
+      <br><br>
+
+      👉
+      <a href="paid-sending.html">
+        Open Paid Sending
+      </a>
+    `;
+  }
+
+
+  /* EVENTS */
+
+  if(
+    msg.includes("event") ||
+    msg.includes("offer")
+  ){
+
+    return `
+      🎁 <strong>SPM Events</strong>
+
+      <br><br>
+
+      🔥 Daily Recharge Event<br>
+      🚀 200% Coins Level Up Event<br>
+      👑 Future Special Events
+
+      <br><br>
+
+      👉
+      <a href="events.html">
+        View Events
+      </a>
+    `;
+  }
+
+
+  /* SUPPORT */
+
+  if(
+    msg.includes("support") ||
+    msg.includes("contact") ||
+    msg.includes("admin") ||
+    msg.includes("whatsapp")
+  ){
+
+    return `
+      📞 <strong>SPM Support</strong>
+
+      <br><br>
+
+      WhatsApp:
+      <a
+        href="https://wa.me/919329687975"
+        target="_blank"
+        rel="noopener"
+      >
+        +91 93296 87975
+      </a>
+
+      <br><br>
+
+      👉 Tap the number to contact support.
+    `;
+  }
+
+
+  /* GREETING */
+
+  if(
+    msg.includes("hi") ||
+    msg.includes("hello") ||
+    msg.includes("hey") ||
+    msg.includes("sat sri akal") ||
+    msg.includes("ਸਤ ਸ੍ਰੀ ਅਕਾਲ")
+  ){
+
+    return `
+      👋 Sat Sri Akal!
+
+      <br><br>
+
+      Welcome to
+      <strong>SPM TOP AGENCY</strong>.
+
+      <br><br>
+
+      Tusi Coins, Paid Sending,
+      Events ya Support bare puch sakde ho. 😊
+    `;
+  }
+
+
+  /* PUNJABI */
+
+  if(
+    msg.includes("ki haal") ||
+    msg.includes("kive") ||
+    msg.includes("kiven")
+  ){
+
+    return `
+      😊 Main bilkul ready haan!
+
+      <br><br>
+
+      Tusi pucho:
+      <br>
+      💰 Coins rate<br>
+      💸 Paid Sending rate<br>
+      🎁 Events<br>
+      📞 Support
+    `;
+  }
+
+
+  /* DEFAULT */
+
+  return `
+    🤖 Main tuhadi help kar sakda haan.
+
+    <br><br>
+
+    Try asking:
+
+    <br><br>
+
+    💰 "Coin Recharge rate"<br>
+    💸 "Paid Sending rate"<br>
+    🎁 "Events"<br>
+    📞 "Contact Support"
+  `;
+}
+
+
+/* SECURITY */
+
+function escapeHTML(text){
+
+  const div =
+    document.createElement("div");
+
+  div.textContent =
+    text;
+
+  return div.innerHTML;
+}
 
 </script>
 
